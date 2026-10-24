@@ -4,7 +4,8 @@ An LCARS-inspired design system: design tokens, component specs and reference im
 Terminal first; CSS and SVG later.
 
 [See every palette, state and example pill](https://jawsomejason.github.io/lcars-design-system/)
-(generated from the tokens into `docs/index.html`).
+(generated from the tokens into `docs/index.html`; GitHub Pages serves it from `main` `/docs` once
+the repo is public).
 
 ## Layout
 
