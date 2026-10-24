@@ -1,0 +1,169 @@
+{
+  "$description": "The 2375 series from trekcolors lcars_2375(), named by stardate year as trekcolors names it: https://leonawicz.github.io/trekcolors/reference/lcars_colors.html (data: https://github.com/leonawicz/trekcolors/blob/master/data-raw/data.R). Its colors sit off the 0x33 grid; dimmed colors still snap to it.",
+  "$extensions": {
+    "lcars.palette": {
+      "name": "2375"
+    }
+  },
+  "color": {
+    "$type": "color",
+    "danub": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.4,
+          0.5333,
+          0.8
+        ],
+        "hex": "#6688cc"
+      }
+    },
+    "indigo": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.2667,
+          0.3333,
+          0.7333
+        ],
+        "hex": "#4455bb"
+      }
+    },
+    "lavender-purple": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.6,
+          0.4667,
+          0.6667
+        ],
+        "hex": "#9977aa"
+      }
+    },
+    "cosmic": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.4667,
+          0.2667,
+          0.4
+        ],
+        "hex": "#774466"
+      }
+    },
+    "red-damask": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.8667,
+          0.4,
+          0.2667
+        ],
+        "hex": "#dd6644"
+      }
+    },
+    "medium-carmine": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.6667,
+          0.3333,
+          0.2
+        ],
+        "hex": "#aa5533"
+      }
+    },
+    "bourbon": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.7333,
+          0.4,
+          0.1333
+        ],
+        "hex": "#bb6622"
+      }
+    },
+    "sandy-brown": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.9333,
+          0.6,
+          0.3333
+        ],
+        "hex": "#ee9955"
+      }
+    },
+    "unlit": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.2,
+          0.2,
+          0.2
+        ],
+        "hex": "#333333"
+      }
+    },
+    "black": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "hex": "#000000"
+      }
+    }
+  },
+  "role": {
+    "$type": "color",
+    "label-ink": {
+      "$value": "{color.black}"
+    },
+    "emphasis-ink": {
+      "$value": "{color.sandy-brown}"
+    },
+    "unlit": {
+      "$value": "{color.unlit}"
+    },
+    "value": {
+      "$value": "{color.sandy-brown}"
+    },
+    "muted": {
+      "$value": "{color.lavender-purple}"
+    },
+    "alert": {
+      "$value": "{color.red-damask}"
+    },
+    "warning": {
+      "$value": "{color.bourbon}"
+    },
+    "ok": {
+      "$value": "{color.danub}"
+    },
+    "accent": {
+      "$value": "{color.bourbon}"
+    },
+    "accent-2": {
+      "$value": "{color.lavender-purple}"
+    },
+    "accent-3": {
+      "$value": "{color.indigo}"
+    },
+    "accent-4": {
+      "$value": "{color.danub}"
+    },
+    "accent-5": {
+      "$value": "{color.cosmic}"
+    },
+    "added": {
+      "$value": "{color.sandy-brown}"
+    },
+    "removed": {
+      "$value": "{color.red-damask}"
+    }
+  }
+}
