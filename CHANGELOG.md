@@ -2,6 +2,17 @@
 
 Versions follow the rules in the README's "Versions" section.
 
+## 0.6.0
+
+- The docs site becomes a guide to LCARS: its history and Okuda's rules, an annotated anatomy, every
+  era as a live panel, color roles, modes, type, the pill and how to use the tokens, with sources.
+  The page is built in the grammar it teaches, and an era and mode switch repaints it.
+- `spec/anatomy.md`: the frame's geometry in units of u (gap, arm, sidebar, overrun, radii, cut, end
+  cap), with the canon proportions measured from screen captures.
+- `docs/roles.css` (generated) sets `--lcars-<role>` and its blink dim for any element with
+  `data-theme` and `data-mode`; `docs/lcars.css` draws frames, elbows, cut headings, blocks and pills
+  from them. Both ship in the package and are exported as `lcars-design-system/docs/*`.
+
 ## 0.5.0
 
 Canon first (breaking below 1.0: color values change and a field is removed):

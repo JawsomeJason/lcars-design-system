@@ -3,9 +3,9 @@
 An LCARS-inspired design system: design tokens, component specs and reference implementations.
 Terminal first; CSS and SVG later.
 
-[See every theme, state and example pill](https://jawsomejason.github.io/lcars-design-system/)
-(generated from the tokens into `docs/index.html`; GitHub Pages serves it from `main` `/docs` once
-the repo is public).
+**[Read the guide](https://jawsomejason.github.io/lcars-design-system/)**: how LCARS is built, era by
+era, with every theme, role, mode and type level live on the page. It is generated from the tokens
+into `docs/`, which GitHub Pages serves from `main`.
 
 ## Layout
 
@@ -15,11 +15,12 @@ the repo is public).
 | `dist/tokens.json`       | Generated. The tokens resolved to plain hex, for consumers       |
 | `tokens/themes/*.tokens.json` | Themes (eras): each role's color, light-mode measurements, sources |
 | `tokens/modes/*.tokens.json` | Modes: shared `light` and `print` values                 |
+| `spec/anatomy.md`        | Frame geometry: gap, arm, sidebar, elbow radii, cut, end cap    |
 | `spec/pill.md`           | The pill component: anatomy, states, roles                      |
 | `tokens/type.tokens.json`, `spec/type.md` | Typography: faces, weights, tracking, cap ratio, levels |
 | `spec/guidelines.md`     | What colors mean, escalation, shape rules                       |
 | `impl/shell/`            | Terminal implementation: generated theme files and the renderer |
-| `docs/index.html`        | The generated reference page                                    |
+| `docs/`                  | The guide: `index.html` and `roles.css` generated, `lcars.css` hand-written |
 | `scripts/build.mjs`      | Generates every committed output from the tokens                |
 
 Tokens use the [Design Tokens Community Group format](https://www.designtokens.org/tr/drafts/format/)
@@ -35,14 +36,15 @@ A consumer reads the resolved `dist/tokens.json`, never the DTCG files, or uses 
 
 - `impl/shell/` draws pills in truecolor terminals and zsh prompts. See
   [`impl/shell/README.md`](impl/shell/README.md).
-- `impl/css/` is planned. `docs/index.html` already shows how pills look in CSS.
+- `docs/roles.css` and `docs/lcars.css` are the CSS behind the guide: role variables per theme and
+  mode, and the frame, elbow, cut heading, block and pill. A fuller `impl/css/` is planned.
 
 ## Use it from JavaScript
 
 Pin a release straight from GitHub; it is not on npm:
 
 ```json
-"devDependencies": { "lcars-design-system": "github:JawsomeJason/lcars-design-system#semver:^0.4.0" }
+"devDependencies": { "lcars-design-system": "github:JawsomeJason/lcars-design-system#semver:^0.6.0" }
 ```
 
 ```js
@@ -80,7 +82,7 @@ a consumer has to do:
 - **Patch:** descriptions, docs or metadata only.
 
 Below 1.0, a breaking change bumps the minor version instead (0.3 to 0.4), so pin with a caret
-(`^0.4.0`), which stays within one minor.
+(`^0.6.0`), which stays within one minor.
 
 To release: update `version` in `package.json` and `CHANGELOG.md`, run the tests, commit, then
 `git tag vX.Y.Z && git push --tags && gh release create vX.Y.Z --notes-from-tag` or with the changelog

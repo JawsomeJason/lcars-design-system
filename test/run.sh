@@ -114,5 +114,22 @@ t "unknown LCARS_PALETTE falls back to tng" eq \
 t "demo renders every color in every state" sh -c \
   "out=\$(sh demo/pills.sh 2>&1) && [ \$(printf '%s' \"\$out\" | grep -c 'lit') -ge 13 ]"
 
+# The docs site: roles.css sets every role for every theme in every mode, and the page offers every theme
+site_check() {
+  node -e '
+    const fs = require("fs"); const t = require("./dist/tokens.json");
+    const css = fs.readFileSync("docs/roles.css", "utf8"), html = fs.readFileSync("docs/index.html", "utf8");
+    const bad = [];
+    for (const [id, th] of Object.entries(t.themes)) {
+      if (!html.includes(`data-set-theme="${id}"`)) bad.push(`no ${id} button`);
+      for (const [m, roles] of Object.entries(th.modes)) {
+        const block = css.split(`[data-theme="${id}"][data-mode="${m}"] {`)[1]?.split("}")[0] ?? "";
+        for (const [r, h] of Object.entries(roles)) if (!block.includes(`--lcars-${r}: ${h};`)) bad.push(`${id} ${m} ${r}`);
+      }
+    }
+    if (bad.length) { console.log("     " + bad.slice(0, 5).join(", ")); process.exit(1); }'
+}
+t "docs site covers every theme, mode and role" site_check
+
 echo "$n tests, $([ $fail = 0 ] && echo all passed || echo FAILURES)"
 exit $fail

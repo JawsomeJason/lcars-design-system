@@ -1,19 +1,21 @@
 {
   "name": "lcars-design-system",
-  "version": "0.5.0",
-  "description": "LCARS-inspired design system: design tokens and component specs. dist/tokens.json is the resolved form for consumers.",
+  "version": "0.6.0",
+  "description": "LCARS-inspired design system: design tokens, component specs and a docs site. dist/tokens.json is the resolved form for consumers.",
   "main": "./dist/tokens.json",
   "exports": {
     ".": "./dist/tokens.json",
     "./tokens.json": "./dist/tokens.json",
     "./tokens/*": "./tokens/*",
     "./spec/*": "./spec/*",
-    "./package.json": "./package.json"
+    "./package.json": "./package.json",
+    "./docs/*": "./docs/*"
   },
   "files": [
     "dist",
     "tokens",
     "spec",
+    "docs",
     "impl",
     "README.md",
     "CHANGELOG.md"
