@@ -15,7 +15,7 @@ eq() { [ "$1" = "$2" ] || { printf '     want %s\n     got  %s\n' "$2" "$1" | ca
 render() {
   shell=$1 target=$2 palette=$3 now=$4; shift 4
   pal=$SH/palette.sh; [ "$shell" = zsh ] && pal=$SH/palette.zsh
-  LCARS_TARGET=$target LCARS_PALETTE=$palette LCARS_NOW=$now \
+  LCARS_TARGET=$target LCARS_THEME=$palette LCARS_NOW=$now \
     "$shell" -c ". ./$pal; . ./$SH/pill.sh; $*; printf '%s' \"\$lcars_pill_out\""
 }
 # A zsh-target pill with its %{ %} wrappers removed and %% unescaped reads as the ansi pill
@@ -23,54 +23,74 @@ unzsh() { sed -e 's/%{//g' -e 's/%}//g' -e 's/%%/%/g'; }
 
 t "generated outputs match tokens (build --check)" node scripts/build.mjs --check
 
-# Every color and role of every palette, read straight from the token JSON, as "palette name R;G;B"
+# Every role of every theme in dark mode (what the shell implements), as "theme role R;G;B"
 expected=$(node -e '
-  const fs = require("fs"), dir = "tokens/palettes";
-  const roles = JSON.parse(fs.readFileSync("tokens/roles.tokens.json")).role;
+  const t = require("./dist/tokens.json");
   const rgb = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16)).join(";");
-  for (const f of fs.readdirSync(dir)) {
-    const p = JSON.parse(fs.readFileSync(`${dir}/${f}`)), id = f.split(".")[0], hex = {};
-    for (const [k, v] of Object.entries(p.color)) if (!k.startsWith("$")) hex[k] = v.$value.hex;
-    for (const k of Object.keys(roles)) if (!k.startsWith("$")) hex[k] = hex[(p.role[k] ?? roles[k]).$value.slice(7, -1)];
-    for (const [k, h] of Object.entries(hex)) console.log(id, k, rgb(h));
-  }')
+  for (const [id, th] of Object.entries(t.themes)) for (const [k, h] of Object.entries(th.modes.dark)) console.log(id, k, rgb(h));')
 check_palette() {
-  shell=$1 pal=$2 bad=0
+  shell=$1 pal=$2
   got=$(printf '%s\n' "$expected" | while read -r id name want; do
     printf '%s %s ' "$id" "$name"
-    LCARS_PALETTE=$id "$shell" -c ". ./$pal; lcars_rgb '$name' && printf '%s\n' \"\$lcars_rgb_out\""
+    LCARS_THEME=$id "$shell" -c ". ./$pal; lcars_rgb '$name' && printf '%s\n' \"\$lcars_rgb_out\""
   done)
   eq "$got" "$expected"
 }
-check_dist() {
-  got=$(node -e '
-    const t = require("./dist/tokens.json");
-    const rgb = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16)).join(";");
-    for (const f of require("fs").readdirSync("tokens/palettes")) {
-      const id = f.split(".")[0], p = t.palettes[id];
-      for (const [k, h] of Object.entries({ ...p.colors, ...p.roles })) console.log(id, k, rgb(h));
-    }')
-  eq "$(printf '%s\n' "$got" | sort)" "$(printf '%s\n' "$expected" | sort)"
+rgbof() { printf '%s\n' "$expected" | awk -v t="$1" -v r="$2" '$1 == t && $2 == r { print $3 }'; }
+hexof() { node -e 'console.log(require("./dist/tokens.json").themes[process.argv[1]].modes.dark[process.argv[2]])' "$1" "$2"; }
+ACC=$(rgbof tng accent) VAL=$(rgbof tng value) INK=$(rgbof tng label-ink) UNLIT=$(rgbof tng unlit)
+MUTED=$(rgbof tng muted) ALERT=$(rgbof tng alert) ACC2=$(rgbof tng accent-2) EMPH=$(rgbof tng emphasis-ink) REMOVED=$(rgbof tng removed)
+# The renderer's blink dim, computed here independently: channel x 0.4, nearest multiple of 0x33
+DIMACC=$(node -e 'console.log(process.argv[1].split(";").map((c) => Math.round(c * 0.4 / 51) * 51).join(";"))' "$ACC")
+
+# Values measured in the LCARS lab, checked against the resolved tokens
+spot() { eq "$(node -e 'const t=require("./dist/tokens.json"); console.log(t.themes[process.argv[1]].modes[process.argv[2]][process.argv[3]])' "$1" "$2" "$3")" "$4"; }
+t "VOY alert is the lifted Juggernaut stand-in" spot voy dark alert '#bb6655'
+t "VOY points ok at its meter blue"               spot voy dark ok '#88bbdd'
+t "VOY light display is measured, not derived"     spot voy light display '#555566'
+t "NEM light meter-on moved for 3:1"               spot nem light meter-on '#888822'
+t "light mode keeps ink dark"                      spot tng light ink '#000000'
+t "print text is black"  spot fc print text '#000000'
+t "print ink is white"   spot fc print ink '#ffffff'
+
+contrast_ok() {
+  node -e '
+    const t = require("./dist/tokens.json"), lin = (c) => (c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4);
+    const L = (h) => { const [r, g, b] = [1, 3, 5].map((i) => lin(parseInt(h.slice(i, i + 2), 16) / 255)); return 0.2126 * r + 0.7152 * g + 0.0722 * b; };
+    const cr = (a, b) => { const [x, y] = [L(a), L(b)].sort((p, q) => q - p); return (x + 0.05) / (y + 0.05); };
+    // Light mode paints headings and alerts with display and alert-text; fills keep their dark-mode rule.
+    const light = new Set(["text", "display", "alert-text", "data", "meter-on", "focus"]);
+    const bad = [];
+    for (const [id, th] of Object.entries(t.themes)) for (const mode of ["dark", "light"]) {
+      const r = th.modes[mode];
+      for (const [role, min] of Object.entries(t.minContrast)) {
+        if (mode === "light" && !light.has(role)) continue;
+        const c = cr(r[role], r.bg); if (c < min) bad.push(`${id} ${mode} ${role} ${r[role]} on ${r.bg}: ${c.toFixed(2)} < ${min}`);
+      }
+      for (const fill of ["block", "accent", "stub"]) { const c = cr(r.ink, r[fill]); if (c < 4.5) bad.push(`${id} ${mode} ink on ${fill}: ${c.toFixed(2)} < 4.5`); }
+    }
+    if (bad.length) { console.log(bad.join("\n")); process.exit(1); }'
 }
-t "dist/tokens.json resolves every token in every palette" check_dist
-t "palette.sh resolves every token in every palette"  check_palette sh $SH/palette.sh
-t "palette.zsh resolves every token in every palette" check_palette zsh $SH/palette.zsh
+t "every theme meets each role's minimum contrast, dark and light" contrast_ok
+
+t "palette.sh resolves every role in every theme"  check_palette sh $SH/palette.sh
+t "palette.zsh resolves every role in every theme" check_palette zsh $SH/palette.zsh
 t "token count is non-trivial" [ "$(printf '%s\n' "$expected" | wc -l)" -ge 50 ]
 
 lit=$(render sh ansi tng 0 "lcars_pill accent PATH '~/x'")
 t "lit pill: exact bytes" eq "$lit" \
-  "${ESC}[0m${ESC}[38;2;255;153;0m${CL}${ESC}[48;2;255;153;0m${ESC}[38;2;0;0;0mPATH ${ESC}[0m ${ESC}[38;2;255;204;102m~/x ${ESC}[38;2;255;153;0m${CR}${ESC}[0m"
+  "${ESC}[0m${ESC}[38;2;${ACC}m${CL}${ESC}[48;2;${ACC}m${ESC}[38;2;${INK}mPATH ${ESC}[0m ${ESC}[38;2;${VAL}m~/x ${ESC}[38;2;${ACC}m${CR}${ESC}[0m"
 
 off=$(render sh ansi tng 0 "lcars_pill accent DIFF clean '' off")
 t "off pill: unlit block, black label, muted value" eq "$off" \
-  "${ESC}[0m${ESC}[38;2;51;51;51m${CL}${ESC}[48;2;51;51;51m${ESC}[38;2;0;0;0mDIFF ${ESC}[0m ${ESC}[38;2;153;153;204mclean ${ESC}[38;2;51;51;51m${CR}${ESC}[0m"
+  "${ESC}[0m${ESC}[38;2;${UNLIT}m${CL}${ESC}[48;2;${UNLIT}m${ESC}[38;2;${INK}mDIFF ${ESC}[0m ${ESC}[38;2;${MUTED}mclean ${ESC}[38;2;${UNLIT}m${CR}${ESC}[0m"
 
 blink_even=$(render sh ansi tng 10 "lcars_pill accent 7D 91% alert blink")
 blink_odd=$(render sh ansi tng 11 "lcars_pill accent 7D 91% alert blink")
 lit_alert=$(render sh ansi tng 0 "lcars_pill accent 7D 91% alert")
 t "blink, even second: lit" eq "$blink_even" "$lit_alert"
 t "blink, odd second: block dims to 40% on the 0x33 grid, value unchanged" eq "$blink_odd" \
-  "${ESC}[0m${ESC}[38;2;102;51;0m${CL}${ESC}[48;2;102;51;0m${ESC}[38;2;0;0;0m7D ${ESC}[0m ${ESC}[38;2;204;102;102m91% ${ESC}[38;2;102;51;0m${CR}${ESC}[0m"
+  "${ESC}[0m${ESC}[38;2;${DIMACC}m${CL}${ESC}[48;2;${DIMACC}m${ESC}[38;2;${INK}m7D ${ESC}[0m ${ESC}[38;2;${ALERT}m91% ${ESC}[38;2;${DIMACC}m${CR}${ESC}[0m"
 
 # Same pill through both targets and every shell
 same_everywhere() {
@@ -90,24 +110,26 @@ t "identical colors and states: inline ink and link"           same_everywhere "
 
 zsh_pct=$(render zsh zsh tng 0 "lcars_pill alert ERR '50%' '' on '' emphasis-ink")
 t "zsh target escapes % and wraps every escape" eq "$zsh_pct" \
-  "%{${ESC}[0m%}%{${ESC}[38;2;204;102;102m%}${CL}%{${ESC}[48;2;204;102;102m%}%{${ESC}[38;2;255;255;153m%}ERR %{${ESC}[0m%} %{${ESC}[38;2;255;204;102m%}50%% %{${ESC}[38;2;204;102;102m%}${CR}%{${ESC}[0m%}"
+  "%{${ESC}[0m%}%{${ESC}[38;2;${ALERT}m%}${CL}%{${ESC}[48;2;${ALERT}m%}%{${ESC}[38;2;${EMPH}m%}ERR %{${ESC}[0m%} %{${ESC}[38;2;${VAL}m%}50%% %{${ESC}[38;2;${ALERT}m%}${CR}%{${ESC}[0m%}"
 
 ink=$(render sh ansi tng 0 "lcars_ink removed; lcars_pill muted DIFF \"\${lcars_ink_out}-1\"")
 t "inline ink switches the value color mid-text" eq "$ink" \
-  "${ESC}[0m${ESC}[38;2;153;153;204m${CL}${ESC}[48;2;153;153;204m${ESC}[38;2;0;0;0mDIFF ${ESC}[0m ${ESC}[38;2;255;204;102m${ESC}[38;2;204;102;102m-1 ${ESC}[38;2;153;153;204m${CR}${ESC}[0m"
+  "${ESC}[0m${ESC}[38;2;${MUTED}m${CL}${ESC}[48;2;${MUTED}m${ESC}[38;2;${INK}mDIFF ${ESC}[0m ${ESC}[38;2;${VAL}m${ESC}[38;2;${ALERT}m-1 ${ESC}[38;2;${MUTED}m${CR}${ESC}[0m"
 
 link=$(render sh ansi tng 0 "lcars_pill accent-2 BR main '' on https://x.test")
 t "URL wraps the value in an OSC 8 link" eq "$link" \
-  "${ESC}[0m${ESC}[38;2;204;153;204m${CL}${ESC}[48;2;204;153;204m${ESC}[38;2;0;0;0mBR ${ESC}[0m ${ESC}]8;;https://x.test${ESC}\\${ESC}[38;2;255;204;102mmain${ESC}]8;;${ESC}\\ ${ESC}[38;2;204;153;204m${CR}${ESC}[0m"
+  "${ESC}[0m${ESC}[38;2;${ACC2}m${CL}${ESC}[48;2;${ACC2}m${ESC}[38;2;${INK}mBR ${ESC}[0m ${ESC}]8;;https://x.test${ESC}\\${ESC}[38;2;${VAL}mmain${ESC}]8;;${ESC}\\ ${ESC}[38;2;${ACC2}m${CR}${ESC}[0m"
 
 t "R;G;B and #hex literals match names" eq \
-  "$(render sh ansi tng 0 "lcars_pill '255;153;0' A b '#ffcc66'")" "$(render sh ansi tng 0 "lcars_pill accent A b value")"
+  "$(render sh ansi tng 0 "lcars_pill '$ACC' A b '$(hexof tng value)'")" "$(render sh ansi tng 0 "lcars_pill accent A b value")"
 t "unknown color returns 1 and renders nothing" eq \
   "$(render sh ansi tng 0 "lcars_pill nope A b; echo \" rc=\$?\"")" " rc=1"
-t "LCARS_PALETTE=2375 switches roles" eq \
-  "$(LCARS_PALETTE=2375 sh -c ". ./$SH/palette.sh; printf '%s' \"\$lcars_alert\"")" "221;102;68"
+t "LCARS_THEME=voy switches roles" eq \
+  "$(LCARS_THEME=voy sh -c ". ./$SH/palette.sh; printf '%s' \"\$lcars_alert\"")" "187;102;85"
+t "LCARS_PALETTE still selects a theme" eq \
+  "$(LCARS_PALETTE=voy sh -c ". ./$SH/palette.sh; printf '%s' \"\$lcars_theme\"")" "voy"
 t "unknown LCARS_PALETTE falls back to tng" eq \
-  "$(LCARS_PALETTE=nope zsh -c ". ./$SH/palette.zsh; print -r -- \$lcars_palette \$LCARS[alert]")" "tng #cc6666"
+  "$(LCARS_PALETTE=nope zsh -c ". ./$SH/palette.zsh; print -r -- \$lcars_palette \$LCARS[alert]")" "tng #ff2200"
 t "demo renders every color in every state" sh -c \
   "out=\$(sh demo/pills.sh 2>&1) && [ \$(printf '%s' \"\$out\" | grep -c 'lit') -ge 13 ]"
 

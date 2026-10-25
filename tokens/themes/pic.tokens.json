@@ -1,0 +1,174 @@
+{
+  "$description": "Picard season 1. bg, frame, block and alert are the official five from designer Andrew Jarvis; the blue, stub and text are thelcars.com extensions (https://memory-alpha.fandom.com/wiki/Library_Computer_Access_and_Retrieval_System).",
+  "$extensions": {
+    "lcars.theme": {
+      "name": "PIC",
+      "era": "Picard season 1"
+    }
+  },
+  "role": {
+    "$type": "color",
+    "bg": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.0667,
+          0.0784,
+          0.098
+        ],
+        "hex": "#111419"
+      }
+    },
+    "ink": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.0667,
+          0.0784,
+          0.098
+        ],
+        "hex": "#111419"
+      }
+    },
+    "frame": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.4275,
+          0.4549,
+          0.549
+        ],
+        "hex": "#6d748c"
+      }
+    },
+    "block": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.6196,
+          0.6471,
+          0.7294
+        ],
+        "hex": "#9ea5ba"
+      }
+    },
+    "accent": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.2157,
+          0.651,
+          0.8196
+        ],
+        "hex": "#37a6d1"
+      }
+    },
+    "stub": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1.0,
+          0.5922,
+          0.4824
+        ],
+        "hex": "#ff977b"
+      }
+    },
+    "text": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.9529,
+          0.9569,
+          0.9686
+        ],
+        "hex": "#f3f4f7"
+      }
+    },
+    "meter-on": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.2157,
+          0.651,
+          0.8196
+        ],
+        "hex": "#37a6d1"
+      }
+    },
+    "meter-off": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.4275,
+          0.4549,
+          0.549
+        ],
+        "hex": "#6d748c"
+      }
+    },
+    "alert": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.9059,
+          0.2667,
+          0.1647
+        ],
+        "hex": "#e7442a"
+      }
+    },
+    "focus": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.2549,
+          0.7686,
+          0.9686
+        ],
+        "hex": "#41c4f7"
+      }
+    },
+    "data": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1.0,
+          0.5922,
+          0.4824
+        ],
+        "hex": "#ff977b"
+      }
+    },
+    "data-hi": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.9529,
+          0.9569,
+          0.9686
+        ],
+        "hex": "#f3f4f7"
+      }
+    }
+  },
+  "mode": {
+    "light": {
+      "$description": "Light-scheme overrides measured for this theme (lab RS-09).",
+      "role": {
+        "$type": "color",
+        "meter-on": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.2,
+              0.5333,
+              0.7333
+            ],
+            "hex": "#3388bb"
+          }
+        }
+      }
+    }
+  }
+}

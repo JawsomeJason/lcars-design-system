@@ -1,7 +1,7 @@
 #!/bin/sh
-# Every color of the palette in every state, both blink phases side by side.
-#   sh demo/pills.sh            the default palette
-#   LCARS_PALETTE=2375 sh demo/pills.sh
+# Every role of a theme in every state, both blink phases side by side.
+#   sh demo/pills.sh            the default theme (tng)
+#   LCARS_THEME=voy sh demo/pills.sh
 #   sh demo/pills.sh --live     redraws each second so blink blinks; Ctrl-C to stop
 dir=$(cd "$(dirname "$0")/../impl/shell" && pwd)
 . "$dir/palette.sh"
@@ -20,14 +20,9 @@ row() {
 }
 
 draw() {
-  printf '%s palette: colors\n' "$lcars_palette"
-  for c in $lcars_colors; do
-    case $c in black) continue ;; esac
-    row "$c" "$(printf '%s' "${c%%-*}" | cut -c1-6 | tr a-z A-Z)" "$c"
-  done
-  printf '\nroles\n'
+  printf '%s theme, dark mode: roles\n' "$lcars_theme"
   for r in $lcars_roles; do
-    case $r in *-ink) continue ;; esac
+    case $r in bg|ink|*-ink|data-hi) continue ;; esac
     row "$r" "$(printf '%s' "$r" | tr a-z- A-Z_ | cut -c1-6)" "$r"
   done
 }

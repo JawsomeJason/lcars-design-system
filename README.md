@@ -3,7 +3,7 @@
 An LCARS-inspired design system: design tokens, component specs and reference implementations.
 Terminal first; CSS and SVG later.
 
-[See every palette, state and example pill](https://jawsomejason.github.io/lcars-design-system/)
+[See every theme, state and example pill](https://jawsomejason.github.io/lcars-design-system/)
 (generated from the tokens into `docs/index.html`; GitHub Pages serves it from `main` `/docs` once
 the repo is public).
 
@@ -11,19 +11,20 @@ the repo is public).
 
 | Path                     | What it is                                                      |
 | ------------------------ | --------------------------------------------------------------- |
-| `tokens/roles.tokens.json` | Semantic roles components use, plus blink and dim settings    |
+| `tokens/roles.tokens.json` | Every role: structural and semantic, defaults and minimum contrast; blink and dim |
 | `dist/tokens.json`       | Generated. The tokens resolved to plain hex, for consumers       |
-| `tokens/palettes/*.tokens.json` | Palettes: named colors and which color fills each role   |
+| `tokens/themes/*.tokens.json` | Themes (eras): each role's color, light-mode measurements, sources |
+| `tokens/modes/*.tokens.json` | Modes: shared `light` and `print` values                 |
 | `spec/pill.md`           | The pill component: anatomy, states, roles                      |
 | `tokens/type.tokens.json`, `spec/type.md` | Typography: faces, weights, tracking, cap ratio, levels |
 | `spec/guidelines.md`     | What colors mean, escalation, shape rules                       |
-| `impl/shell/`            | Terminal implementation: generated palettes and the renderer    |
+| `impl/shell/`            | Terminal implementation: generated theme files and the renderer |
 | `docs/index.html`        | The generated reference page                                    |
 | `scripts/build.mjs`      | Generates every committed output from the tokens                |
 
 Tokens use the [Design Tokens Community Group format](https://www.designtokens.org/tr/drafts/format/)
-(`$value`, `$type`). Palettes: `tng` (default) and `2375`, both from
-[trekcolors](https://leonawicz.github.io/trekcolors/reference/lcars_colors.html).
+(`$value`, `$type`). Themes: `tng` (default), `pic`, `voy`, `fc` and `nem`, measured or reconstructed
+in the thejase.com LCARS lab; each file cites its sources. Modes: `dark` (default), `light`, `print`.
 
 ## Implementations
 
@@ -41,18 +42,21 @@ A consumer reads the resolved `dist/tokens.json`, never the DTCG files, or uses 
 Pin a release straight from GitHub; it is not on npm:
 
 ```json
-"devDependencies": { "lcars-design-system": "github:JawsomeJason/lcars-design-system#semver:^0.1.0" }
+"devDependencies": { "lcars-design-system": "github:JawsomeJason/lcars-design-system#semver:^0.4.0" }
 ```
 
 ```js
 const tokens = require('lcars-design-system'); // dist/tokens.json
-const tng = tokens.palettes[tokens.default];
-tng.roles.ok;           // '#99ccff'
-tokens.state.dim;       // 0.4
+const { theme, mode } = tokens.default;        // 'tng', 'dark'
+const roles = tokens.themes[theme].modes[mode];
+roles.ok;                                       // '#8899ff'
+tokens.themes.voy.modes.light.display;          // '#555566'
+tokens.type.capRatio;                           // 0.859375
 ```
 
-Each palette has `colors` (name to hex) and `roles` (role to hex); `state` holds `dim`, `dimSnap`
-and `blinkPeriodMs`.
+Each theme has `name`, `era`, `source`, an optional `standIn`, and `modes.{dark,light,print}` (role to
+hex). `minContrast` lists each role's minimum against `bg`; `type` holds typography; `state` holds
+`dim`, `dimSnap` and `blinkPeriodMs`.
 
 ## Use it from a shell
 
@@ -71,9 +75,12 @@ without the repo.
 Releases are git tags (`v0.1.0`) with GitHub releases, listed in `CHANGELOG.md`. A version says what
 a consumer has to do:
 
-- **Major:** a role or palette is removed or renamed, or a role's meaning changes.
-- **Minor:** a new role, palette or component spec, or a color value changes.
+- **Major:** a role, theme or mode is removed or renamed, or a role's meaning changes.
+- **Minor:** a new role, theme, mode or component spec, or a color value changes.
 - **Patch:** descriptions, docs or metadata only.
+
+Below 1.0, a breaking change bumps the minor version instead (0.3 to 0.4), so pin with a caret
+(`^0.4.0`), which stays within one minor.
 
 To release: update `version` in `package.json` and `CHANGELOG.md`, run the tests, commit, then
 `git tag vX.Y.Z && git push --tags && gh release create vX.Y.Z --notes-from-tag` or with the changelog
@@ -93,5 +100,5 @@ sh demo/pills.sh         # look at it
 
 LCARS (Library Computer Access/Retrieval System) was designed by Michael Okuda for Star Trek: The
 Next Generation and is the property of Paramount. This is a fan project, not affiliated with or
-endorsed by Paramount. Color names and values come from Matthew Leonawicz's
-[trekcolors](https://github.com/leonawicz/trekcolors).
+endorsed by Paramount. Theme colors come from the thejase.com LCARS lab: measured from screen
+captures and Blu-ray frames, or reconstructed by thelcars.com; each theme file cites its sources.

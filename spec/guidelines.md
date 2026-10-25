@@ -32,10 +32,20 @@ Pills end in half circles (radius half the block height) on both ends. Never squ
 
 ## No green
 
-The TNG palette has no green, so `ok` is a light blue. Don't add green to signal success; that
-breaks the palette and reads as a different design language.
+No LCARS era uses green for success, so `ok` is a blue in every theme. Don't add green to signal
+success; it reads as a different design language.
 
-## Palettes
+## Themes and modes
 
-Every palette restates every role, so a component written against roles works under any palette.
-Each palette file cites its source in `$description`. Components never name a raw color.
+A **theme** is one era's look: its colors assigned to every role, in every mode, with its sources.
+Themes: TNG, PIC, VOY, FC and NEM; Lower Decks is planned once measured. A **mode** cuts across
+themes: `dark` (default), `light` and `print`. Every theme resolves every role in every mode, so a
+component written against roles works under any combination. Each theme file cites its sources in
+`$description` and marks stand-in values. Components never name a raw color.
+
+Structural roles (`frame`, `block`, `accent`, `stub`, `text`, `meter-on`, `meter-off`, `alert`,
+`focus`, `data`) describe how LCARS is built: frames never carry text, blocks carry `ink`. Semantic
+roles (`ok`, `warning`, `value`, `muted`, `added`, `removed`, `accent-2` to `accent-5`) alias
+structural ones, and a theme may point one elsewhere, as VOY points `ok` at its meter blue. Roles
+with a minimum contrast against `bg` carry it in `$extensions["lcars.minContrast"]`, and the tests
+enforce it in dark and light.

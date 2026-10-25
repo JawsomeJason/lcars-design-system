@@ -1,0 +1,79 @@
+{
+  "$description": "Light scheme shared by every theme: a pale page and dark text. Display and alert text are derived per theme by mixing frame and alert toward black (45% and 40%) unless a theme measures its own; data mixes 45% toward black likewise.",
+  "$extensions": {
+    "lcars.mode": {
+      "derive": {
+        "display": [
+          "frame",
+          0.45
+        ],
+        "alert-text": [
+          "alert",
+          0.4
+        ],
+        "data": [
+          "data",
+          0.45
+        ]
+      }
+    }
+  },
+  "role": {
+    "$type": "color",
+    "bg": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.949,
+          0.9412,
+          0.9176
+        ],
+        "hex": "#f2f0ea"
+      }
+    },
+    "text": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.1137,
+          0.1216,
+          0.1216
+        ],
+        "hex": "#1d1f1f"
+      }
+    },
+    "focus": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.7059,
+          0.3255,
+          0.0353
+        ],
+        "hex": "#b45309"
+      }
+    },
+    "data-hi": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "hex": "#000000"
+      }
+    },
+    "unlit": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.8,
+          0.8,
+          0.8
+        ],
+        "hex": "#cccccc"
+      }
+    }
+  }
+}

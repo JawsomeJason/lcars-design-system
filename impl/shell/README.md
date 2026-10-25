@@ -35,7 +35,7 @@ terminal's own yellow.
 
 | Variable        | Effect                                                              |
 | --------------- | ------------------------------------------------------------------- |
-| `LCARS_PALETTE` | Palette to load (`tng` default, `2375`). Set before sourcing        |
+| `LCARS_THEME`   | Theme to load, dark mode: `tng` (default), `pic`, `voy`, `fc`, `nem`. Set before sourcing. `LCARS_PALETTE` still works |
 | `LCARS_TARGET`  | `ansi` (default) or `zsh`                                           |
 | `LCARS_NOW`     | Epoch seconds that pick the blink phase. Set once per frame to skip a `date` call per pill |
 

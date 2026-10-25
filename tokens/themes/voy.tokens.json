@@ -1,0 +1,244 @@
+{
+  "$description": "Voyager, pastel. Measured from Voyager screen captures on Memory Alpha (DVD era); panel-true values snapped to web-safe or doubled-nibble hex; alert lifted for AA.",
+  "$extensions": {
+    "lcars.theme": {
+      "name": "VOY",
+      "era": "Voyager, pastel",
+      "standIn": "alert #bb6655 is a stand-in: the rust elbow of the Juggernaut display (panel-true #873421), lifted for AA. No red-alert frame measured yet."
+    }
+  },
+  "role": {
+    "$type": "color",
+    "bg": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "hex": "#000000"
+      }
+    },
+    "ink": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "hex": "#000000"
+      }
+    },
+    "frame": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.7333,
+          0.8,
+          0.8667
+        ],
+        "hex": "#bbccdd"
+      }
+    },
+    "block": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.9333,
+          0.7333,
+          0.4667
+        ],
+        "hex": "#eebb77"
+      }
+    },
+    "accent": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.9333,
+          0.6667,
+          0.4
+        ],
+        "hex": "#eeaa66"
+      }
+    },
+    "stub": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.8,
+          0.5333,
+          0.4667
+        ],
+        "hex": "#cc8877"
+      }
+    },
+    "text": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.8,
+          0.8,
+          0.8
+        ],
+        "hex": "#cccccc"
+      }
+    },
+    "meter-on": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.5333,
+          0.7333,
+          0.8667
+        ],
+        "hex": "#88bbdd"
+      }
+    },
+    "meter-off": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.6,
+          0.6,
+          0.8
+        ],
+        "hex": "#9999cc"
+      }
+    },
+    "alert": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.7333,
+          0.4,
+          0.3333
+        ],
+        "hex": "#bb6655"
+      }
+    },
+    "focus": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.8,
+          0.8667,
+          0.6667
+        ],
+        "hex": "#ccddaa"
+      }
+    },
+    "data": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.8,
+          0.8,
+          0.6
+        ],
+        "hex": "#cccc99"
+      }
+    },
+    "data-hi": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "hex": "#ffffff"
+      }
+    },
+    "ok": {
+      "$value": "{role.meter-on}"
+    }
+  },
+  "mode": {
+    "light": {
+      "$description": "Light-scheme overrides measured for this theme (lab RS-09).",
+      "role": {
+        "$type": "color",
+        "bg": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.9333,
+              0.9333,
+              0.9333
+            ],
+            "hex": "#eeeeee"
+          }
+        },
+        "text": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.1333,
+              0.1333,
+              0.1333
+            ],
+            "hex": "#222222"
+          }
+        },
+        "focus": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.7333,
+              0.3333,
+              0.0
+            ],
+            "hex": "#bb5500"
+          }
+        },
+        "meter-on": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.3333,
+              0.5333,
+              0.6667
+            ],
+            "hex": "#5588aa"
+          }
+        },
+        "data": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.3333,
+              0.3333,
+              0.2667
+            ],
+            "hex": "#555544"
+          }
+        },
+        "display": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.3333,
+              0.3333,
+              0.4
+            ],
+            "hex": "#555566"
+          }
+        },
+        "alert-text": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.4,
+              0.2,
+              0.2
+            ],
+            "hex": "#663333"
+          }
+        }
+      }
+    }
+  }
+}

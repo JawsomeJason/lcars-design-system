@@ -1,70 +1,156 @@
 {
-  "$description": "Semantic roles. Components use these, never raw colors. Defaults alias the TNG palette; every palette file restates each role.",
+  "$description": "Every role a component may use. Structural roles come from the LCARS lab; semantic roles alias them by default, and a theme may point one elsewhere. minContrast is against bg, per theme and mode.",
   "role": {
     "$type": "color",
+    "bg": {
+      "$description": "The page behind everything.",
+      "$value": "{theme}"
+    },
+    "ink": {
+      "$description": "Text on a colored shape: labels on blocks, pills and bars.",
+      "$value": "{theme}"
+    },
+    "frame": {
+      "$description": "Elbows, top and bottom bars. Never carries text.",
+      "$value": "{theme}"
+    },
+    "block": {
+      "$description": "Sidebar blocks and buttons. Carries ink.",
+      "$value": "{theme}",
+      "$extensions": {
+        "lcars.minContrast": 3
+      }
+    },
+    "accent": {
+      "$description": "Code bars, tabs, titles and headings.",
+      "$value": "{theme}",
+      "$extensions": {
+        "lcars.minContrast": 4.5
+      }
+    },
+    "stub": {
+      "$description": "Short counter-color segments.",
+      "$value": "{theme}",
+      "$extensions": {
+        "lcars.minContrast": 3
+      }
+    },
     "text": {
-      "$description": "Body text on the background: running prose, as opposed to a value or a label.",
-      "$value": "{color.tanoi}"
+      "$description": "Reading text on the page.",
+      "$value": "{theme}",
+      "$extensions": {
+        "lcars.minContrast": 4.5
+      }
     },
-    "label-ink": {
-      "$description": "Text on a lit label block.",
-      "$value": "{color.black}"
+    "meter-on": {
+      "$description": "Filled meter segments.",
+      "$value": "{theme}",
+      "$extensions": {
+        "lcars.minContrast": 3
+      }
     },
-    "emphasis-ink": {
-      "$description": "Label text that must read as louder than label-ink, such as on an alert block.",
-      "$value": "{color.pale-canary}"
+    "meter-off": {
+      "$description": "Empty meter segments and quiet readouts.",
+      "$value": "{theme}"
+    },
+    "alert": {
+      "$description": "Error state only, always paired with text.",
+      "$value": "{theme}",
+      "$extensions": {
+        "lcars.minContrast": 4.5
+      }
+    },
+    "focus": {
+      "$description": "The lit focus ring in the gap.",
+      "$value": "{theme}",
+      "$extensions": {
+        "lcars.minContrast": 3
+      }
+    },
+    "data": {
+      "$description": "Numbers in a data cascade or readout.",
+      "$value": "{theme}",
+      "$extensions": {
+        "lcars.minContrast": 4.5
+      }
+    },
+    "data-hi": {
+      "$description": "The highlighted number in a cascade.",
+      "$value": "{theme}"
+    },
+    "display": {
+      "$description": "Display text set on the page, such as headings. The accent in dark schemes; light schemes darken the frame.",
+      "$value": "{role.accent}",
+      "$extensions": {
+        "lcars.minContrast": 4.5
+      }
+    },
+    "alert-text": {
+      "$description": "Alert text on the page.",
+      "$value": "{role.alert}",
+      "$extensions": {
+        "lcars.minContrast": 4.5
+      }
     },
     "unlit": {
       "$description": "The block color of an off component.",
-      "$value": "{color.unlit}"
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.2,
+          0.2,
+          0.2
+        ],
+        "hex": "#333333"
+      }
+    },
+    "label-ink": {
+      "$description": "Text on a lit label block.",
+      "$value": "{role.ink}"
+    },
+    "emphasis-ink": {
+      "$description": "Label text that must read louder than label-ink, such as on an alert block.",
+      "$value": "{role.focus}"
     },
     "value": {
       "$description": "Default color of a value.",
-      "$value": "{color.golden-tanoi}"
+      "$value": "{role.data}"
     },
     "muted": {
       "$description": "Value color of an off component, and low-priority readouts.",
-      "$value": "{color.blue-bell}"
+      "$value": "{role.meter-off}"
     },
-    "alert": {
-      "$description": "Something is wrong or needs action now.",
-      "$value": "{color.chestnut-rose}"
+    "ok": {
+      "$description": "Healthy, approved or passing. Never green.",
+      "$value": "{role.accent}"
     },
     "warning": {
       "$description": "Something is approaching a limit.",
-      "$value": "{color.atomic-tangerine}"
-    },
-    "ok": {
-      "$description": "Healthy, approved or passing.",
-      "$value": "{color.anakiwa}"
-    },
-    "accent": {
-      "$description": "Primary identity color, for the most prominent component in a group.",
-      "$value": "{color.atomic-tangerine}"
-    },
-    "accent-2": {
-      "$description": "Secondary identity color.",
-      "$value": "{color.lilac}"
-    },
-    "accent-3": {
-      "$description": "Tertiary identity color.",
-      "$value": "{color.melrose}"
-    },
-    "accent-4": {
-      "$description": "Fourth identity color.",
-      "$value": "{color.anakiwa}"
-    },
-    "accent-5": {
-      "$description": "Fifth identity color.",
-      "$value": "{color.hopbush}"
+      "$value": "{role.stub}"
     },
     "added": {
       "$description": "A count of additions.",
-      "$value": "{color.tanoi}"
+      "$value": "{role.data}"
     },
     "removed": {
       "$description": "A count of removals.",
-      "$value": "{color.chestnut-rose}"
+      "$value": "{role.alert}"
+    },
+    "accent-2": {
+      "$description": "Second identity color.",
+      "$value": "{role.block}"
+    },
+    "accent-3": {
+      "$description": "Third identity color.",
+      "$value": "{role.frame}"
+    },
+    "accent-4": {
+      "$description": "Fourth identity color.",
+      "$value": "{role.meter-on}"
+    },
+    "accent-5": {
+      "$description": "Fifth identity color.",
+      "$value": "{role.stub}"
     }
   },
   "state": {

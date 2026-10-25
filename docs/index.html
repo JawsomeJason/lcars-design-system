@@ -13,9 +13,9 @@
     color-scheme: dark;
     --h: 1.6rem;
     --page: #000;
-    --text: #ffcc99;
-    --muted: #9999cc;
-    --rule: #ff9900;
+    --text: #d29b7f;
+    --muted: #d29b7f;
+    --rule: #8899ff;
     --blink: 2s;
   }
   * { box-sizing: border-box; }
@@ -29,18 +29,18 @@
   }
   main { max-width: 70rem; margin-inline: auto; }
   h1, h2, h3 { text-transform: uppercase; letter-spacing: 0.06em; text-wrap: balance; margin-block: 2rem 0.75rem; }
-  h1 { color: #ff9900; font-size: clamp(2rem, 6vw, 3.5rem); margin-top: 0; }
-  h2 { color: #ffcc66; border-bottom: 0.4rem solid var(--rule); border-radius: 0 0 0 1rem; padding-bottom: 0.2rem; }
-  h3 { color: #cc99cc; font-size: 1.1rem; }
+  h1 { color: #8899ff; font-size: clamp(2rem, 6vw, 3.5rem); margin-top: 0; }
+  h2 { color: #eb943a; border-bottom: 0.4rem solid var(--rule); border-radius: 0 0 0 1rem; padding-bottom: 0.2rem; }
+  h3 { color: #baa4e5; font-size: 1.1rem; }
   p, li { text-wrap: pretty; }
-  a { color: #99ccff; }
+  a { color: #8899ff; }
   code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 0.85em; }
   .muted, .desc { color: var(--muted); }
   .hex { display: block; color: var(--muted); font-family: ui-monospace, Menlo, monospace; font-size: 0.75rem; }
   .scroll { overflow-x: auto; }
   table { border-collapse: collapse; }
   th, td { padding: 0.35rem 1rem 0.35rem 0; text-align: left; vertical-align: middle; font-weight: 400; }
-  thead th { color: #cc99cc; text-transform: uppercase; letter-spacing: 0.06em; }
+  thead th { color: #baa4e5; text-transform: uppercase; letter-spacing: 0.06em; }
   .roles { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: 0.25rem 1rem; }
   .chip { display: inline-block; width: 1.4rem; height: 0.8rem; border-radius: 0.4rem; margin-right: 0.5rem; vertical-align: middle; }
   .row { display: flex; flex-wrap: wrap; gap: calc(var(--h) * 0.5); align-items: center; }
@@ -68,7 +68,7 @@
   .anatomy { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); align-items: start; }
   .anatomy svg { width: 100%; max-width: 32rem; height: auto; }
   .anatomy dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 0.25rem 1rem; }
-  .anatomy dt { color: #ffcc66; text-transform: uppercase; }
+  .anatomy dt { color: #eb943a; text-transform: uppercase; }
   .anatomy dd { margin: 0; }
   nav a { margin-right: 1rem; text-transform: uppercase; letter-spacing: 0.06em; }
 </style>
@@ -77,18 +77,18 @@
 <main>
   <h1>LCARS Design System</h1>
   <p>An LCARS-inspired design system: tokens, component specs and reference implementations. This page is generated from <code>tokens/</code>. Terminal first; CSS and SVG later.</p>
-  <nav><a href="#tng">TNG</a><a href="#2375">2375</a><a href="#anatomy">Anatomy</a></nav>
+  <nav><a href="#tng">TNG</a><a href="#fc">FC</a><a href="#nem">NEM</a><a href="#pic">PIC</a><a href="#voy">VOY</a><a href="#anatomy">Anatomy</a></nav>
 
   <section id="anatomy">
     <h2>Pill anatomy</h2>
     <div class="anatomy">
       <svg viewBox="0 0 400 120" role="img" aria-label="Pill anatomy: start cap, label block, value, end cap">
-        <rect x="20" y="40" width="40" height="40" rx="20" fill="#ff9900"/>
-        <rect x="40" y="40" width="120" height="40" fill="#ff9900"/>
+        <rect x="20" y="40" width="40" height="40" rx="20" fill="#8899ff"/>
+        <rect x="40" y="40" width="120" height="40" fill="#8899ff"/>
         <text x="60" y="68" font-family="Antonio, Arial Narrow, sans-serif" font-weight="700" font-size="24" fill="#000">LABEL</text>
-        <text x="180" y="68" font-family="Antonio, Arial Narrow, sans-serif" font-size="24" fill="#ffcc66">VALUE</text>
-        <path d="M 260 40 A 20 20 0 0 1 260 80 Z" fill="#ff9900"/>
-        <g fill="#9999cc" font-family="Antonio, Arial Narrow, sans-serif" font-size="13">
+        <text x="180" y="68" font-family="Antonio, Arial Narrow, sans-serif" font-size="24" fill="#eb943a">VALUE</text>
+        <path d="M 260 40 A 20 20 0 0 1 260 80 Z" fill="#8899ff"/>
+        <g fill="#d29b7f" font-family="Antonio, Arial Narrow, sans-serif" font-size="13">
           <text x="14" y="28">START CAP</text>
           <text x="80" y="104">LABEL BLOCK</text>
           <text x="182" y="28">VALUE</text>
@@ -106,187 +106,771 @@
     <p class="muted">Here the caps are CSS border radii. Terminals draw them with the Nerd Font half-circle glyphs U+E0B6 and U+E0B4; see <code>impl/shell/README.md</code>.</p>
     <h3>States</h3>
     <div class="row">
-      <span class="pill" style="--bg:#ff9900;--lit:#ff9900;--dim:#663300;--ink:#000000;--vc:#ffcc66"><span class="label">LIT</span><span class="value">value</span><span class="end"></span></span>
-      <span class="pill" style="--bg:#333333;--lit:#ff9900;--dim:#663300;--ink:#000000;--vc:#9999cc"><span class="label">OFF</span><span class="value">value</span><span class="end"></span></span>
-      <span class="pill blink" style="--bg:#ff9900;--lit:#ff9900;--dim:#663300;--ink:#000000;--vc:#ffcc66"><span class="label">BLINK</span><span class="value">value</span><span class="end"></span></span>
+      <span class="pill" style="--bg:#8899ff;--lit:#8899ff;--dim:#333366;--ink:#000000;--vc:#eb943a"><span class="label">LIT</span><span class="value">value</span><span class="end"></span></span>
+      <span class="pill" style="--bg:#333333;--lit:#8899ff;--dim:#333366;--ink:#000000;--vc:#d29b7f"><span class="label">OFF</span><span class="value">value</span><span class="end"></span></span>
+      <span class="pill blink" style="--bg:#8899ff;--lit:#8899ff;--dim:#333366;--ink:#000000;--vc:#eb943a"><span class="label">BLINK</span><span class="value">value</span><span class="end"></span></span>
     </div>
     <p class="muted">Blink alternates lit and the dimmed hue (×0.4, snapped to the 0x33 grid) every 1s. With reduced motion it holds lit and marks the end cap with a dashed outline.</p>
   </section>
 
   <section id="tng">
-  <h2>TNG palette</h2>
-  <p class="desc">The Next Generation era (default). Named colors from trekcolors lcars_colors(), series 2357 and 2369: https://leonawicz.github.io/trekcolors/reference/lcars_colors.html. Every color but eggplant (#664466) sits on the 0x33 grid.</p>
+  <h2>TNG theme</h2>
+  <p class="desc">The Next Generation, classic warm. Fan reconstruction (thelcars.com Classic, https://www.thelcars.com/colors.php). No production hex values exist for TNG.</p>
   <h3>Roles</h3>
-  <ul class="roles"><li><span class="chip" style="background:#ffcc99"></span><code>text</code> <span class="muted">tanoi #ffcc99</span></li>
-<li><span class="chip" style="background:#000000"></span><code>label-ink</code> <span class="muted">black #000000</span></li>
-<li><span class="chip" style="background:#ffff99"></span><code>emphasis-ink</code> <span class="muted">pale-canary #ffff99</span></li>
-<li><span class="chip" style="background:#333333"></span><code>unlit</code> <span class="muted">unlit #333333</span></li>
-<li><span class="chip" style="background:#ffcc66"></span><code>value</code> <span class="muted">golden-tanoi #ffcc66</span></li>
-<li><span class="chip" style="background:#9999cc"></span><code>muted</code> <span class="muted">blue-bell #9999cc</span></li>
-<li><span class="chip" style="background:#cc6666"></span><code>alert</code> <span class="muted">chestnut-rose #cc6666</span></li>
-<li><span class="chip" style="background:#ff9900"></span><code>warning</code> <span class="muted">atomic-tangerine #ff9900</span></li>
-<li><span class="chip" style="background:#99ccff"></span><code>ok</code> <span class="muted">anakiwa #99ccff</span></li>
-<li><span class="chip" style="background:#ff9900"></span><code>accent</code> <span class="muted">atomic-tangerine #ff9900</span></li>
-<li><span class="chip" style="background:#cc99cc"></span><code>accent-2</code> <span class="muted">lilac #cc99cc</span></li>
-<li><span class="chip" style="background:#9999ff"></span><code>accent-3</code> <span class="muted">melrose #9999ff</span></li>
-<li><span class="chip" style="background:#99ccff"></span><code>accent-4</code> <span class="muted">anakiwa #99ccff</span></li>
-<li><span class="chip" style="background:#cc6699"></span><code>accent-5</code> <span class="muted">hopbush #cc6699</span></li>
-<li><span class="chip" style="background:#ffcc99"></span><code>added</code> <span class="muted">tanoi #ffcc99</span></li>
-<li><span class="chip" style="background:#cc6666"></span><code>removed</code> <span class="muted">chestnut-rose #cc6666</span></li></ul>
-  <h3>Colors by state</h3>
+  <ul class="roles"><li><span class="chip" style="background:#000000"></span><code>bg</code> <span class="muted"> #000000</span></li>
+<li><span class="chip" style="background:#000000"></span><code>ink</code> <span class="muted"> #000000</span></li>
+<li><span class="chip" style="background:#ea9c72"></span><code>frame</code> <span class="muted"> #ea9c72</span></li>
+<li><span class="chip" style="background:#baa4e5"></span><code>block</code> <span class="muted"> #baa4e5</span></li>
+<li><span class="chip" style="background:#8899ff"></span><code>accent</code> <span class="muted"> #8899ff</span></li>
+<li><span class="chip" style="background:#eb943a"></span><code>stub</code> <span class="muted"> #eb943a</span></li>
+<li><span class="chip" style="background:#d29b7f"></span><code>text</code> <span class="muted"> #d29b7f</span></li>
+<li><span class="chip" style="background:#8899ff"></span><code>meter-on</code> <span class="muted"> #8899ff</span></li>
+<li><span class="chip" style="background:#d29b7f"></span><code>meter-off</code> <span class="muted"> #d29b7f</span></li>
+<li><span class="chip" style="background:#ff2200"></span><code>alert</code> <span class="muted"> #ff2200</span></li>
+<li><span class="chip" style="background:#ffff99"></span><code>focus</code> <span class="muted"> #ffff99</span></li>
+<li><span class="chip" style="background:#eb943a"></span><code>data</code> <span class="muted"> #eb943a</span></li>
+<li><span class="chip" style="background:#ffffff"></span><code>data-hi</code> <span class="muted"> #ffffff</span></li>
+<li><span class="chip" style="background:#8899ff"></span><code>display</code> <span class="muted">accent #8899ff</span></li>
+<li><span class="chip" style="background:#ff2200"></span><code>alert-text</code> <span class="muted">alert #ff2200</span></li>
+<li><span class="chip" style="background:#333333"></span><code>unlit</code> <span class="muted"> #333333</span></li>
+<li><span class="chip" style="background:#000000"></span><code>label-ink</code> <span class="muted">ink #000000</span></li>
+<li><span class="chip" style="background:#ffff99"></span><code>emphasis-ink</code> <span class="muted">focus #ffff99</span></li>
+<li><span class="chip" style="background:#eb943a"></span><code>value</code> <span class="muted">data #eb943a</span></li>
+<li><span class="chip" style="background:#d29b7f"></span><code>muted</code> <span class="muted">meter-off #d29b7f</span></li>
+<li><span class="chip" style="background:#8899ff"></span><code>ok</code> <span class="muted">accent #8899ff</span></li>
+<li><span class="chip" style="background:#eb943a"></span><code>warning</code> <span class="muted">stub #eb943a</span></li>
+<li><span class="chip" style="background:#eb943a"></span><code>added</code> <span class="muted">data #eb943a</span></li>
+<li><span class="chip" style="background:#ff2200"></span><code>removed</code> <span class="muted">alert #ff2200</span></li>
+<li><span class="chip" style="background:#baa4e5"></span><code>accent-2</code> <span class="muted">block #baa4e5</span></li>
+<li><span class="chip" style="background:#ea9c72"></span><code>accent-3</code> <span class="muted">frame #ea9c72</span></li>
+<li><span class="chip" style="background:#8899ff"></span><code>accent-4</code> <span class="muted">meter-on #8899ff</span></li>
+<li><span class="chip" style="background:#eb943a"></span><code>accent-5</code> <span class="muted">stub #eb943a</span></li></ul>
+  <h3>Roles by state</h3>
   <div class="scroll"><table>
-    <thead><tr><th scope="col">Color</th><th scope="col">Lit</th><th scope="col">Off</th><th scope="col">Blink</th></tr></thead>
-    <tbody><tr><th scope="row"><code>atomic-tangerine</code><span class="hex">#ff9900</span></th>
-        <td><span class="pill" style="--bg:#ff9900;--lit:#ff9900;--dim:#663300;--ink:#000000;--vc:#ffcc66"><span class="label">atomic</span><span class="value">lit</span><span class="end"></span></span></td>
-        <td><span class="pill" style="--bg:#333333;--lit:#ff9900;--dim:#663300;--ink:#000000;--vc:#9999cc"><span class="label">atomic</span><span class="value">off</span><span class="end"></span></span></td>
-        <td><span class="pill blink" style="--bg:#ff9900;--lit:#ff9900;--dim:#663300;--ink:#000000;--vc:#ffcc66"><span class="label">atomic</span><span class="value">blink</span><span class="end"></span></span></td></tr>
-<tr><th scope="row"><code>golden-tanoi</code><span class="hex">#ffcc66</span></th>
-        <td><span class="pill" style="--bg:#ffcc66;--lit:#ffcc66;--dim:#666633;--ink:#000000;--vc:#ffcc66"><span class="label">golden</span><span class="value">lit</span><span class="end"></span></span></td>
-        <td><span class="pill" style="--bg:#333333;--lit:#ffcc66;--dim:#666633;--ink:#000000;--vc:#9999cc"><span class="label">golden</span><span class="value">off</span><span class="end"></span></span></td>
-        <td><span class="pill blink" style="--bg:#ffcc66;--lit:#ffcc66;--dim:#666633;--ink:#000000;--vc:#ffcc66"><span class="label">golden</span><span class="value">blink</span><span class="end"></span></span></td></tr>
-<tr><th scope="row"><code>tanoi</code><span class="hex">#ffcc99</span></th>
-        <td><span class="pill" style="--bg:#ffcc99;--lit:#ffcc99;--dim:#666633;--ink:#000000;--vc:#ffcc66"><span class="label">tanoi</span><span class="value">lit</span><span class="end"></span></span></td>
-        <td><span class="pill" style="--bg:#333333;--lit:#ffcc99;--dim:#666633;--ink:#000000;--vc:#9999cc"><span class="label">tanoi</span><span class="value">off</span><span class="end"></span></span></td>
-        <td><span class="pill blink" style="--bg:#ffcc99;--lit:#ffcc99;--dim:#666633;--ink:#000000;--vc:#ffcc66"><span class="label">tanoi</span><span class="value">blink</span><span class="end"></span></span></td></tr>
-<tr><th scope="row"><code>pale-canary</code><span class="hex">#ffff99</span></th>
-        <td><span class="pill" style="--bg:#ffff99;--lit:#ffff99;--dim:#666633;--ink:#000000;--vc:#ffcc66"><span class="label">pale</span><span class="value">lit</span><span class="end"></span></span></td>
-        <td><span class="pill" style="--bg:#333333;--lit:#ffff99;--dim:#666633;--ink:#000000;--vc:#9999cc"><span class="label">pale</span><span class="value">off</span><span class="end"></span></span></td>
-        <td><span class="pill blink" style="--bg:#ffff99;--lit:#ffff99;--dim:#666633;--ink:#000000;--vc:#ffcc66"><span class="label">pale</span><span class="value">blink</span><span class="end"></span></span></td></tr>
-<tr><th scope="row"><code>lilac</code><span class="hex">#cc99cc</span></th>
-        <td><span class="pill" style="--bg:#cc99cc;--lit:#cc99cc;--dim:#663366;--ink:#000000;--vc:#ffcc66"><span class="label">lilac</span><span class="value">lit</span><span class="end"></span></span></td>
-        <td><span class="pill" style="--bg:#333333;--lit:#cc99cc;--dim:#663366;--ink:#000000;--vc:#9999cc"><span class="label">lilac</span><span class="value">off</span><span class="end"></span></span></td>
-        <td><span class="pill blink" style="--bg:#cc99cc;--lit:#cc99cc;--dim:#663366;--ink:#000000;--vc:#ffcc66"><span class="label">lilac</span><span class="value">blink</span><span class="end"></span></span></td></tr>
-<tr><th scope="row"><code>hopbush</code><span class="hex">#cc6699</span></th>
-        <td><span class="pill" style="--bg:#cc6699;--lit:#cc6699;--dim:#663333;--ink:#000000;--vc:#ffcc66"><span class="label">hopbus</span><span class="value">lit</span><span class="end"></span></span></td>
-        <td><span class="pill" style="--bg:#333333;--lit:#cc6699;--dim:#663333;--ink:#000000;--vc:#9999cc"><span class="label">hopbus</span><span class="value">off</span><span class="end"></span></span></td>
-        <td><span class="pill blink" style="--bg:#cc6699;--lit:#cc6699;--dim:#663333;--ink:#000000;--vc:#ffcc66"><span class="label">hopbus</span><span class="value">blink</span><span class="end"></span></span></td></tr>
-<tr><th scope="row"><code>melrose</code><span class="hex">#9999ff</span></th>
-        <td><span class="pill" style="--bg:#9999ff;--lit:#9999ff;--dim:#333366;--ink:#000000;--vc:#ffcc66"><span class="label">melros</span><span class="value">lit</span><span class="end"></span></span></td>
-        <td><span class="pill" style="--bg:#333333;--lit:#9999ff;--dim:#333366;--ink:#000000;--vc:#9999cc"><span class="label">melros</span><span class="value">off</span><span class="end"></span></span></td>
-        <td><span class="pill blink" style="--bg:#9999ff;--lit:#9999ff;--dim:#333366;--ink:#000000;--vc:#ffcc66"><span class="label">melros</span><span class="value">blink</span><span class="end"></span></span></td></tr>
-<tr><th scope="row"><code>blue-bell</code><span class="hex">#9999cc</span></th>
-        <td><span class="pill" style="--bg:#9999cc;--lit:#9999cc;--dim:#333366;--ink:#000000;--vc:#ffcc66"><span class="label">blue</span><span class="value">lit</span><span class="end"></span></span></td>
-        <td><span class="pill" style="--bg:#333333;--lit:#9999cc;--dim:#333366;--ink:#000000;--vc:#9999cc"><span class="label">blue</span><span class="value">off</span><span class="end"></span></span></td>
-        <td><span class="pill blink" style="--bg:#9999cc;--lit:#9999cc;--dim:#333366;--ink:#000000;--vc:#ffcc66"><span class="label">blue</span><span class="value">blink</span><span class="end"></span></span></td></tr>
-<tr><th scope="row"><code>anakiwa</code><span class="hex">#99ccff</span></th>
-        <td><span class="pill" style="--bg:#99ccff;--lit:#99ccff;--dim:#336666;--ink:#000000;--vc:#ffcc66"><span class="label">anakiw</span><span class="value">lit</span><span class="end"></span></span></td>
-        <td><span class="pill" style="--bg:#333333;--lit:#99ccff;--dim:#336666;--ink:#000000;--vc:#9999cc"><span class="label">anakiw</span><span class="value">off</span><span class="end"></span></span></td>
-        <td><span class="pill blink" style="--bg:#99ccff;--lit:#99ccff;--dim:#336666;--ink:#000000;--vc:#ffcc66"><span class="label">anakiw</span><span class="value">blink</span><span class="end"></span></span></td></tr>
-<tr><th scope="row"><code>mariner</code><span class="hex">#3366cc</span></th>
-        <td><span class="pill" style="--bg:#3366cc;--lit:#3366cc;--dim:#003366;--ink:#000000;--vc:#ffcc66"><span class="label">marine</span><span class="value">lit</span><span class="end"></span></span></td>
-        <td><span class="pill" style="--bg:#333333;--lit:#3366cc;--dim:#003366;--ink:#000000;--vc:#9999cc"><span class="label">marine</span><span class="value">off</span><span class="end"></span></span></td>
-        <td><span class="pill blink" style="--bg:#3366cc;--lit:#3366cc;--dim:#003366;--ink:#000000;--vc:#ffcc66"><span class="label">marine</span><span class="value">blink</span><span class="end"></span></span></td></tr>
-<tr><th scope="row"><code>chestnut-rose</code><span class="hex">#cc6666</span></th>
-        <td><span class="pill" style="--bg:#cc6666;--lit:#cc6666;--dim:#663333;--ink:#000000;--vc:#ffcc66"><span class="label">chestn</span><span class="value">lit</span><span class="end"></span></span></td>
-        <td><span class="pill" style="--bg:#333333;--lit:#cc6666;--dim:#663333;--ink:#000000;--vc:#9999cc"><span class="label">chestn</span><span class="value">off</span><span class="end"></span></span></td>
-        <td><span class="pill blink" style="--bg:#cc6666;--lit:#cc6666;--dim:#663333;--ink:#000000;--vc:#ffcc66"><span class="label">chestn</span><span class="value">blink</span><span class="end"></span></span></td></tr>
-<tr><th scope="row"><code>eggplant</code><span class="hex">#664466</span></th>
-        <td><span class="pill" style="--bg:#664466;--lit:#664466;--dim:#333333;--ink:#000000;--vc:#ffcc66"><span class="label">eggpla</span><span class="value">lit</span><span class="end"></span></span></td>
-        <td><span class="pill" style="--bg:#333333;--lit:#664466;--dim:#333333;--ink:#000000;--vc:#9999cc"><span class="label">eggpla</span><span class="value">off</span><span class="end"></span></span></td>
-        <td><span class="pill blink" style="--bg:#664466;--lit:#664466;--dim:#333333;--ink:#000000;--vc:#ffcc66"><span class="label">eggpla</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+    <thead><tr><th scope="col">Role</th><th scope="col">Lit</th><th scope="col">Off</th><th scope="col">Blink</th></tr></thead>
+    <tbody><tr><th scope="row"><code>frame</code><span class="hex">#ea9c72</span></th>
+        <td><span class="pill" style="--bg:#ea9c72;--lit:#ea9c72;--dim:#663333;--ink:#000000;--vc:#eb943a"><span class="label">frame</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#ea9c72;--dim:#663333;--ink:#000000;--vc:#d29b7f"><span class="label">frame</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#ea9c72;--lit:#ea9c72;--dim:#663333;--ink:#000000;--vc:#eb943a"><span class="label">frame</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>block</code><span class="hex">#baa4e5</span></th>
+        <td><span class="pill" style="--bg:#baa4e5;--lit:#baa4e5;--dim:#333366;--ink:#000000;--vc:#eb943a"><span class="label">block</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#baa4e5;--dim:#333366;--ink:#000000;--vc:#d29b7f"><span class="label">block</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#baa4e5;--lit:#baa4e5;--dim:#333366;--ink:#000000;--vc:#eb943a"><span class="label">block</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>accent</code><span class="hex">#8899ff</span></th>
+        <td><span class="pill" style="--bg:#8899ff;--lit:#8899ff;--dim:#333366;--ink:#000000;--vc:#eb943a"><span class="label">accent</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#8899ff;--dim:#333366;--ink:#000000;--vc:#d29b7f"><span class="label">accent</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#8899ff;--lit:#8899ff;--dim:#333366;--ink:#000000;--vc:#eb943a"><span class="label">accent</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>stub</code><span class="hex">#eb943a</span></th>
+        <td><span class="pill" style="--bg:#eb943a;--lit:#eb943a;--dim:#663300;--ink:#000000;--vc:#eb943a"><span class="label">stub</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#eb943a;--dim:#663300;--ink:#000000;--vc:#d29b7f"><span class="label">stub</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#eb943a;--lit:#eb943a;--dim:#663300;--ink:#000000;--vc:#eb943a"><span class="label">stub</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>text</code><span class="hex">#d29b7f</span></th>
+        <td><span class="pill" style="--bg:#d29b7f;--lit:#d29b7f;--dim:#663333;--ink:#000000;--vc:#eb943a"><span class="label">text</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#d29b7f;--dim:#663333;--ink:#000000;--vc:#d29b7f"><span class="label">text</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#d29b7f;--lit:#d29b7f;--dim:#663333;--ink:#000000;--vc:#eb943a"><span class="label">text</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>meter-on</code><span class="hex">#8899ff</span></th>
+        <td><span class="pill" style="--bg:#8899ff;--lit:#8899ff;--dim:#333366;--ink:#000000;--vc:#eb943a"><span class="label">meter</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#8899ff;--dim:#333366;--ink:#000000;--vc:#d29b7f"><span class="label">meter</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#8899ff;--lit:#8899ff;--dim:#333366;--ink:#000000;--vc:#eb943a"><span class="label">meter</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>meter-off</code><span class="hex">#d29b7f</span></th>
+        <td><span class="pill" style="--bg:#d29b7f;--lit:#d29b7f;--dim:#663333;--ink:#000000;--vc:#eb943a"><span class="label">meter</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#d29b7f;--dim:#663333;--ink:#000000;--vc:#d29b7f"><span class="label">meter</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#d29b7f;--lit:#d29b7f;--dim:#663333;--ink:#000000;--vc:#eb943a"><span class="label">meter</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>alert</code><span class="hex">#ff2200</span></th>
+        <td><span class="pill" style="--bg:#ff2200;--lit:#ff2200;--dim:#660000;--ink:#000000;--vc:#eb943a"><span class="label">alert</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#ff2200;--dim:#660000;--ink:#000000;--vc:#d29b7f"><span class="label">alert</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#ff2200;--lit:#ff2200;--dim:#660000;--ink:#000000;--vc:#eb943a"><span class="label">alert</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>focus</code><span class="hex">#ffff99</span></th>
+        <td><span class="pill" style="--bg:#ffff99;--lit:#ffff99;--dim:#666633;--ink:#000000;--vc:#eb943a"><span class="label">focus</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#ffff99;--dim:#666633;--ink:#000000;--vc:#d29b7f"><span class="label">focus</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#ffff99;--lit:#ffff99;--dim:#666633;--ink:#000000;--vc:#eb943a"><span class="label">focus</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>data</code><span class="hex">#eb943a</span></th>
+        <td><span class="pill" style="--bg:#eb943a;--lit:#eb943a;--dim:#663300;--ink:#000000;--vc:#eb943a"><span class="label">data</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#eb943a;--dim:#663300;--ink:#000000;--vc:#d29b7f"><span class="label">data</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#eb943a;--lit:#eb943a;--dim:#663300;--ink:#000000;--vc:#eb943a"><span class="label">data</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>display</code><span class="hex">#8899ff</span></th>
+        <td><span class="pill" style="--bg:#8899ff;--lit:#8899ff;--dim:#333366;--ink:#000000;--vc:#eb943a"><span class="label">displa</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#8899ff;--dim:#333366;--ink:#000000;--vc:#d29b7f"><span class="label">displa</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#8899ff;--lit:#8899ff;--dim:#333366;--ink:#000000;--vc:#eb943a"><span class="label">displa</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>alert-text</code><span class="hex">#ff2200</span></th>
+        <td><span class="pill" style="--bg:#ff2200;--lit:#ff2200;--dim:#660000;--ink:#000000;--vc:#eb943a"><span class="label">alert</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#ff2200;--dim:#660000;--ink:#000000;--vc:#d29b7f"><span class="label">alert</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#ff2200;--lit:#ff2200;--dim:#660000;--ink:#000000;--vc:#eb943a"><span class="label">alert</span><span class="value">blink</span><span class="end"></span></span></td></tr>
 <tr><th scope="row"><code>unlit</code><span class="hex">#333333</span></th>
-        <td><span class="pill" style="--bg:#333333;--lit:#333333;--dim:#000000;--ink:#000000;--vc:#ffcc66"><span class="label">unlit</span><span class="value">lit</span><span class="end"></span></span></td>
-        <td><span class="pill" style="--bg:#333333;--lit:#333333;--dim:#000000;--ink:#000000;--vc:#9999cc"><span class="label">unlit</span><span class="value">off</span><span class="end"></span></span></td>
-        <td><span class="pill blink" style="--bg:#333333;--lit:#333333;--dim:#000000;--ink:#000000;--vc:#ffcc66"><span class="label">unlit</span><span class="value">blink</span><span class="end"></span></span></td></tr></tbody>
+        <td><span class="pill" style="--bg:#333333;--lit:#333333;--dim:#000000;--ink:#000000;--vc:#eb943a"><span class="label">unlit</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#333333;--dim:#000000;--ink:#000000;--vc:#d29b7f"><span class="label">unlit</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#333333;--lit:#333333;--dim:#000000;--ink:#000000;--vc:#eb943a"><span class="label">unlit</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>emphasis-ink</code><span class="hex">#ffff99</span></th>
+        <td><span class="pill" style="--bg:#ffff99;--lit:#ffff99;--dim:#666633;--ink:#000000;--vc:#eb943a"><span class="label">emphas</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#ffff99;--dim:#666633;--ink:#000000;--vc:#d29b7f"><span class="label">emphas</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#ffff99;--lit:#ffff99;--dim:#666633;--ink:#000000;--vc:#eb943a"><span class="label">emphas</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>value</code><span class="hex">#eb943a</span></th>
+        <td><span class="pill" style="--bg:#eb943a;--lit:#eb943a;--dim:#663300;--ink:#000000;--vc:#eb943a"><span class="label">value</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#eb943a;--dim:#663300;--ink:#000000;--vc:#d29b7f"><span class="label">value</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#eb943a;--lit:#eb943a;--dim:#663300;--ink:#000000;--vc:#eb943a"><span class="label">value</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>muted</code><span class="hex">#d29b7f</span></th>
+        <td><span class="pill" style="--bg:#d29b7f;--lit:#d29b7f;--dim:#663333;--ink:#000000;--vc:#eb943a"><span class="label">muted</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#d29b7f;--dim:#663333;--ink:#000000;--vc:#d29b7f"><span class="label">muted</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#d29b7f;--lit:#d29b7f;--dim:#663333;--ink:#000000;--vc:#eb943a"><span class="label">muted</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>ok</code><span class="hex">#8899ff</span></th>
+        <td><span class="pill" style="--bg:#8899ff;--lit:#8899ff;--dim:#333366;--ink:#000000;--vc:#eb943a"><span class="label">ok</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#8899ff;--dim:#333366;--ink:#000000;--vc:#d29b7f"><span class="label">ok</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#8899ff;--lit:#8899ff;--dim:#333366;--ink:#000000;--vc:#eb943a"><span class="label">ok</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>warning</code><span class="hex">#eb943a</span></th>
+        <td><span class="pill" style="--bg:#eb943a;--lit:#eb943a;--dim:#663300;--ink:#000000;--vc:#eb943a"><span class="label">warnin</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#eb943a;--dim:#663300;--ink:#000000;--vc:#d29b7f"><span class="label">warnin</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#eb943a;--lit:#eb943a;--dim:#663300;--ink:#000000;--vc:#eb943a"><span class="label">warnin</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>added</code><span class="hex">#eb943a</span></th>
+        <td><span class="pill" style="--bg:#eb943a;--lit:#eb943a;--dim:#663300;--ink:#000000;--vc:#eb943a"><span class="label">added</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#eb943a;--dim:#663300;--ink:#000000;--vc:#d29b7f"><span class="label">added</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#eb943a;--lit:#eb943a;--dim:#663300;--ink:#000000;--vc:#eb943a"><span class="label">added</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>removed</code><span class="hex">#ff2200</span></th>
+        <td><span class="pill" style="--bg:#ff2200;--lit:#ff2200;--dim:#660000;--ink:#000000;--vc:#eb943a"><span class="label">remove</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#ff2200;--dim:#660000;--ink:#000000;--vc:#d29b7f"><span class="label">remove</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#ff2200;--lit:#ff2200;--dim:#660000;--ink:#000000;--vc:#eb943a"><span class="label">remove</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>accent-2</code><span class="hex">#baa4e5</span></th>
+        <td><span class="pill" style="--bg:#baa4e5;--lit:#baa4e5;--dim:#333366;--ink:#000000;--vc:#eb943a"><span class="label">accent</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#baa4e5;--dim:#333366;--ink:#000000;--vc:#d29b7f"><span class="label">accent</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#baa4e5;--lit:#baa4e5;--dim:#333366;--ink:#000000;--vc:#eb943a"><span class="label">accent</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>accent-3</code><span class="hex">#ea9c72</span></th>
+        <td><span class="pill" style="--bg:#ea9c72;--lit:#ea9c72;--dim:#663333;--ink:#000000;--vc:#eb943a"><span class="label">accent</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#ea9c72;--dim:#663333;--ink:#000000;--vc:#d29b7f"><span class="label">accent</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#ea9c72;--lit:#ea9c72;--dim:#663333;--ink:#000000;--vc:#eb943a"><span class="label">accent</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>accent-4</code><span class="hex">#8899ff</span></th>
+        <td><span class="pill" style="--bg:#8899ff;--lit:#8899ff;--dim:#333366;--ink:#000000;--vc:#eb943a"><span class="label">accent</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#8899ff;--dim:#333366;--ink:#000000;--vc:#d29b7f"><span class="label">accent</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#8899ff;--lit:#8899ff;--dim:#333366;--ink:#000000;--vc:#eb943a"><span class="label">accent</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>accent-5</code><span class="hex">#eb943a</span></th>
+        <td><span class="pill" style="--bg:#eb943a;--lit:#eb943a;--dim:#663300;--ink:#000000;--vc:#eb943a"><span class="label">accent</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#eb943a;--dim:#663300;--ink:#000000;--vc:#d29b7f"><span class="label">accent</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#eb943a;--lit:#eb943a;--dim:#663300;--ink:#000000;--vc:#eb943a"><span class="label">accent</span><span class="value">blink</span><span class="end"></span></span></td></tr></tbody>
   </table></div>
   <h3>Examples</h3>
   <p class="muted">A system readout:</p>
   <div class="row">
-    <span class="pill" style="--bg:#99ccff;--lit:#99ccff;--dim:#336666;--ink:#000000;--vc:#99ccff"><span class="label">CTX</span><span class="value">42%</span><span class="end"></span></span>
-    <span class="pill" style="--bg:#ff9900;--lit:#ff9900;--dim:#663300;--ink:#000000;--vc:#ffcc66"><span class="label">5H</span><span class="value">8%</span><span class="end"></span></span>
-    <span class="pill blink" style="--bg:#ff9900;--lit:#ff9900;--dim:#663300;--ink:#000000;--vc:#cc6666"><span class="label">7D</span><span class="value">91% ↻Tue</span><span class="end"></span></span>
-    <span class="pill" style="--bg:#99ccff;--lit:#99ccff;--dim:#336666;--ink:#000000;--vc:#ffcc66"><span class="label">DISK</span><span class="value">▓▓▓▓▓▓░░░░ 120G free</span><span class="end"></span></span>
-    <span class="pill" style="--bg:#9999ff;--lit:#9999ff;--dim:#333366;--ink:#000000;--vc:#ffcc66"><span class="label">MODEL</span><span class="value">Opus</span><span class="end"></span></span>
-    <span class="pill" style="--bg:#cc99cc;--lit:#cc99cc;--dim:#663366;--ink:#000000;--vc:#ffcc66"><span class="label">BR</span><span class="value">main</span><span class="end"></span></span>
+    <span class="pill" style="--bg:#8899ff;--lit:#8899ff;--dim:#333366;--ink:#000000;--vc:#8899ff"><span class="label">CTX</span><span class="value">42%</span><span class="end"></span></span>
+    <span class="pill" style="--bg:#8899ff;--lit:#8899ff;--dim:#333366;--ink:#000000;--vc:#eb943a"><span class="label">5H</span><span class="value">8%</span><span class="end"></span></span>
+    <span class="pill blink" style="--bg:#8899ff;--lit:#8899ff;--dim:#333366;--ink:#000000;--vc:#ff2200"><span class="label">7D</span><span class="value">91% ↻Tue</span><span class="end"></span></span>
+    <span class="pill" style="--bg:#8899ff;--lit:#8899ff;--dim:#333366;--ink:#000000;--vc:#eb943a"><span class="label">DISK</span><span class="value">▓▓▓▓▓▓░░░░ 120G free</span><span class="end"></span></span>
+    <span class="pill" style="--bg:#ea9c72;--lit:#ea9c72;--dim:#663333;--ink:#000000;--vc:#eb943a"><span class="label">MODEL</span><span class="value">Opus</span><span class="end"></span></span>
+    <span class="pill" style="--bg:#baa4e5;--lit:#baa4e5;--dim:#333366;--ink:#000000;--vc:#eb943a"><span class="label">BR</span><span class="value">main</span><span class="end"></span></span>
+    <span class="pill" style="--bg:#333333;--lit:#d29b7f;--dim:#663333;--ink:#000000;--vc:#d29b7f"><span class="label">DIFF</span><span class="value">clean</span><span class="end"></span></span>
+  </div>
+  <p class="muted">A navigation row with an alert indicator:</p>
+  <div class="row">
+    <span class="pill" style="--bg:#8899ff;--lit:#8899ff;--dim:#333366;--ink:#000000;--vc:#eb943a"><span class="label">PATH</span><span class="value">~/code/lcars</span><span class="end"></span></span>
+    <span class="pill" style="--bg:#baa4e5;--lit:#baa4e5;--dim:#333366;--ink:#000000;--vc:#eb943a"><span class="label">BR</span><span class="value">feature</span><span class="end"></span></span>
+    <span class="pill" style="--bg:#8899ff;--lit:#8899ff;--dim:#333366;--ink:#000000;--vc:#8899ff"><span class="label">PR</span><span class="value">#12 APPR</span><span class="end"></span></span>
+    <span class="pill" style="--bg:#d29b7f;--lit:#d29b7f;--dim:#663333;--ink:#000000;--vc:#eb943a"><span class="label">DIFF</span><span class="value"><span style="color:#eb943a">+12</span> <span style="color:#ff2200">-3</span></span><span class="end"></span></span>
+    <span class="pill" style="--bg:#ff2200;--lit:#ff2200;--dim:#660000;--ink:#ffff99;--vc:#eb943a"><span class="label">ERR</span><span class="value">1</span><span class="end"></span></span>
+  </div>
+</section>
+<section id="fc">
+  <h2>FC theme</h2>
+  <p class="desc">First Contact, Enterprise-E ops. Measured from First Contact 2023 Blu-ray frames (TrekCore) and Memory Alpha captures of the ops and helm consoles; exposure-normalized, snapped; alert lifted for AA (panel-true #930021).</p>
+  <h3>Roles</h3>
+  <ul class="roles"><li><span class="chip" style="background:#000000"></span><code>bg</code> <span class="muted"> #000000</span></li>
+<li><span class="chip" style="background:#000000"></span><code>ink</code> <span class="muted"> #000000</span></li>
+<li><span class="chip" style="background:#aa7744"></span><code>frame</code> <span class="muted"> #aa7744</span></li>
+<li><span class="chip" style="background:#9988bb"></span><code>block</code> <span class="muted"> #9988bb</span></li>
+<li><span class="chip" style="background:#99ccdd"></span><code>accent</code> <span class="muted"> #99ccdd</span></li>
+<li><span class="chip" style="background:#dd7722"></span><code>stub</code> <span class="muted"> #dd7722</span></li>
+<li><span class="chip" style="background:#ccddee"></span><code>text</code> <span class="muted"> #ccddee</span></li>
+<li><span class="chip" style="background:#6688ee"></span><code>meter-on</code> <span class="muted"> #6688ee</span></li>
+<li><span class="chip" style="background:#777799"></span><code>meter-off</code> <span class="muted"> #777799</span></li>
+<li><span class="chip" style="background:#cc4455"></span><code>alert</code> <span class="muted"> #cc4455</span></li>
+<li><span class="chip" style="background:#997733"></span><code>focus</code> <span class="muted"> #997733</span></li>
+<li><span class="chip" style="background:#44ffee"></span><code>data</code> <span class="muted"> #44ffee</span></li>
+<li><span class="chip" style="background:#ffffff"></span><code>data-hi</code> <span class="muted"> #ffffff</span></li>
+<li><span class="chip" style="background:#99ccdd"></span><code>display</code> <span class="muted">accent #99ccdd</span></li>
+<li><span class="chip" style="background:#cc4455"></span><code>alert-text</code> <span class="muted">alert #cc4455</span></li>
+<li><span class="chip" style="background:#333333"></span><code>unlit</code> <span class="muted"> #333333</span></li>
+<li><span class="chip" style="background:#000000"></span><code>label-ink</code> <span class="muted">ink #000000</span></li>
+<li><span class="chip" style="background:#997733"></span><code>emphasis-ink</code> <span class="muted">focus #997733</span></li>
+<li><span class="chip" style="background:#44ffee"></span><code>value</code> <span class="muted">data #44ffee</span></li>
+<li><span class="chip" style="background:#777799"></span><code>muted</code> <span class="muted">meter-off #777799</span></li>
+<li><span class="chip" style="background:#99ccdd"></span><code>ok</code> <span class="muted">accent #99ccdd</span></li>
+<li><span class="chip" style="background:#dd7722"></span><code>warning</code> <span class="muted">stub #dd7722</span></li>
+<li><span class="chip" style="background:#44ffee"></span><code>added</code> <span class="muted">data #44ffee</span></li>
+<li><span class="chip" style="background:#cc4455"></span><code>removed</code> <span class="muted">alert #cc4455</span></li>
+<li><span class="chip" style="background:#9988bb"></span><code>accent-2</code> <span class="muted">block #9988bb</span></li>
+<li><span class="chip" style="background:#aa7744"></span><code>accent-3</code> <span class="muted">frame #aa7744</span></li>
+<li><span class="chip" style="background:#6688ee"></span><code>accent-4</code> <span class="muted">meter-on #6688ee</span></li>
+<li><span class="chip" style="background:#dd7722"></span><code>accent-5</code> <span class="muted">stub #dd7722</span></li></ul>
+  <h3>Roles by state</h3>
+  <div class="scroll"><table>
+    <thead><tr><th scope="col">Role</th><th scope="col">Lit</th><th scope="col">Off</th><th scope="col">Blink</th></tr></thead>
+    <tbody><tr><th scope="row"><code>frame</code><span class="hex">#aa7744</span></th>
+        <td><span class="pill" style="--bg:#aa7744;--lit:#aa7744;--dim:#333333;--ink:#000000;--vc:#44ffee"><span class="label">frame</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#aa7744;--dim:#333333;--ink:#000000;--vc:#777799"><span class="label">frame</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#aa7744;--lit:#aa7744;--dim:#333333;--ink:#000000;--vc:#44ffee"><span class="label">frame</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>block</code><span class="hex">#9988bb</span></th>
+        <td><span class="pill" style="--bg:#9988bb;--lit:#9988bb;--dim:#333333;--ink:#000000;--vc:#44ffee"><span class="label">block</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#9988bb;--dim:#333333;--ink:#000000;--vc:#777799"><span class="label">block</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#9988bb;--lit:#9988bb;--dim:#333333;--ink:#000000;--vc:#44ffee"><span class="label">block</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>accent</code><span class="hex">#99ccdd</span></th>
+        <td><span class="pill" style="--bg:#99ccdd;--lit:#99ccdd;--dim:#336666;--ink:#000000;--vc:#44ffee"><span class="label">accent</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#99ccdd;--dim:#336666;--ink:#000000;--vc:#777799"><span class="label">accent</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#99ccdd;--lit:#99ccdd;--dim:#336666;--ink:#000000;--vc:#44ffee"><span class="label">accent</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>stub</code><span class="hex">#dd7722</span></th>
+        <td><span class="pill" style="--bg:#dd7722;--lit:#dd7722;--dim:#663300;--ink:#000000;--vc:#44ffee"><span class="label">stub</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#dd7722;--dim:#663300;--ink:#000000;--vc:#777799"><span class="label">stub</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#dd7722;--lit:#dd7722;--dim:#663300;--ink:#000000;--vc:#44ffee"><span class="label">stub</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>text</code><span class="hex">#ccddee</span></th>
+        <td><span class="pill" style="--bg:#ccddee;--lit:#ccddee;--dim:#666666;--ink:#000000;--vc:#44ffee"><span class="label">text</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#ccddee;--dim:#666666;--ink:#000000;--vc:#777799"><span class="label">text</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#ccddee;--lit:#ccddee;--dim:#666666;--ink:#000000;--vc:#44ffee"><span class="label">text</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>meter-on</code><span class="hex">#6688ee</span></th>
+        <td><span class="pill" style="--bg:#6688ee;--lit:#6688ee;--dim:#333366;--ink:#000000;--vc:#44ffee"><span class="label">meter</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#6688ee;--dim:#333366;--ink:#000000;--vc:#777799"><span class="label">meter</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#6688ee;--lit:#6688ee;--dim:#333366;--ink:#000000;--vc:#44ffee"><span class="label">meter</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>meter-off</code><span class="hex">#777799</span></th>
+        <td><span class="pill" style="--bg:#777799;--lit:#777799;--dim:#333333;--ink:#000000;--vc:#44ffee"><span class="label">meter</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#777799;--dim:#333333;--ink:#000000;--vc:#777799"><span class="label">meter</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#777799;--lit:#777799;--dim:#333333;--ink:#000000;--vc:#44ffee"><span class="label">meter</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>alert</code><span class="hex">#cc4455</span></th>
+        <td><span class="pill" style="--bg:#cc4455;--lit:#cc4455;--dim:#663333;--ink:#000000;--vc:#44ffee"><span class="label">alert</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#cc4455;--dim:#663333;--ink:#000000;--vc:#777799"><span class="label">alert</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#cc4455;--lit:#cc4455;--dim:#663333;--ink:#000000;--vc:#44ffee"><span class="label">alert</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>focus</code><span class="hex">#997733</span></th>
+        <td><span class="pill" style="--bg:#997733;--lit:#997733;--dim:#333300;--ink:#000000;--vc:#44ffee"><span class="label">focus</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#997733;--dim:#333300;--ink:#000000;--vc:#777799"><span class="label">focus</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#997733;--lit:#997733;--dim:#333300;--ink:#000000;--vc:#44ffee"><span class="label">focus</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>data</code><span class="hex">#44ffee</span></th>
+        <td><span class="pill" style="--bg:#44ffee;--lit:#44ffee;--dim:#336666;--ink:#000000;--vc:#44ffee"><span class="label">data</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#44ffee;--dim:#336666;--ink:#000000;--vc:#777799"><span class="label">data</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#44ffee;--lit:#44ffee;--dim:#336666;--ink:#000000;--vc:#44ffee"><span class="label">data</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>display</code><span class="hex">#99ccdd</span></th>
+        <td><span class="pill" style="--bg:#99ccdd;--lit:#99ccdd;--dim:#336666;--ink:#000000;--vc:#44ffee"><span class="label">displa</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#99ccdd;--dim:#336666;--ink:#000000;--vc:#777799"><span class="label">displa</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#99ccdd;--lit:#99ccdd;--dim:#336666;--ink:#000000;--vc:#44ffee"><span class="label">displa</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>alert-text</code><span class="hex">#cc4455</span></th>
+        <td><span class="pill" style="--bg:#cc4455;--lit:#cc4455;--dim:#663333;--ink:#000000;--vc:#44ffee"><span class="label">alert</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#cc4455;--dim:#663333;--ink:#000000;--vc:#777799"><span class="label">alert</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#cc4455;--lit:#cc4455;--dim:#663333;--ink:#000000;--vc:#44ffee"><span class="label">alert</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>unlit</code><span class="hex">#333333</span></th>
+        <td><span class="pill" style="--bg:#333333;--lit:#333333;--dim:#000000;--ink:#000000;--vc:#44ffee"><span class="label">unlit</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#333333;--dim:#000000;--ink:#000000;--vc:#777799"><span class="label">unlit</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#333333;--lit:#333333;--dim:#000000;--ink:#000000;--vc:#44ffee"><span class="label">unlit</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>emphasis-ink</code><span class="hex">#997733</span></th>
+        <td><span class="pill" style="--bg:#997733;--lit:#997733;--dim:#333300;--ink:#000000;--vc:#44ffee"><span class="label">emphas</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#997733;--dim:#333300;--ink:#000000;--vc:#777799"><span class="label">emphas</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#997733;--lit:#997733;--dim:#333300;--ink:#000000;--vc:#44ffee"><span class="label">emphas</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>value</code><span class="hex">#44ffee</span></th>
+        <td><span class="pill" style="--bg:#44ffee;--lit:#44ffee;--dim:#336666;--ink:#000000;--vc:#44ffee"><span class="label">value</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#44ffee;--dim:#336666;--ink:#000000;--vc:#777799"><span class="label">value</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#44ffee;--lit:#44ffee;--dim:#336666;--ink:#000000;--vc:#44ffee"><span class="label">value</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>muted</code><span class="hex">#777799</span></th>
+        <td><span class="pill" style="--bg:#777799;--lit:#777799;--dim:#333333;--ink:#000000;--vc:#44ffee"><span class="label">muted</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#777799;--dim:#333333;--ink:#000000;--vc:#777799"><span class="label">muted</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#777799;--lit:#777799;--dim:#333333;--ink:#000000;--vc:#44ffee"><span class="label">muted</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>ok</code><span class="hex">#99ccdd</span></th>
+        <td><span class="pill" style="--bg:#99ccdd;--lit:#99ccdd;--dim:#336666;--ink:#000000;--vc:#44ffee"><span class="label">ok</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#99ccdd;--dim:#336666;--ink:#000000;--vc:#777799"><span class="label">ok</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#99ccdd;--lit:#99ccdd;--dim:#336666;--ink:#000000;--vc:#44ffee"><span class="label">ok</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>warning</code><span class="hex">#dd7722</span></th>
+        <td><span class="pill" style="--bg:#dd7722;--lit:#dd7722;--dim:#663300;--ink:#000000;--vc:#44ffee"><span class="label">warnin</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#dd7722;--dim:#663300;--ink:#000000;--vc:#777799"><span class="label">warnin</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#dd7722;--lit:#dd7722;--dim:#663300;--ink:#000000;--vc:#44ffee"><span class="label">warnin</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>added</code><span class="hex">#44ffee</span></th>
+        <td><span class="pill" style="--bg:#44ffee;--lit:#44ffee;--dim:#336666;--ink:#000000;--vc:#44ffee"><span class="label">added</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#44ffee;--dim:#336666;--ink:#000000;--vc:#777799"><span class="label">added</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#44ffee;--lit:#44ffee;--dim:#336666;--ink:#000000;--vc:#44ffee"><span class="label">added</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>removed</code><span class="hex">#cc4455</span></th>
+        <td><span class="pill" style="--bg:#cc4455;--lit:#cc4455;--dim:#663333;--ink:#000000;--vc:#44ffee"><span class="label">remove</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#cc4455;--dim:#663333;--ink:#000000;--vc:#777799"><span class="label">remove</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#cc4455;--lit:#cc4455;--dim:#663333;--ink:#000000;--vc:#44ffee"><span class="label">remove</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>accent-2</code><span class="hex">#9988bb</span></th>
+        <td><span class="pill" style="--bg:#9988bb;--lit:#9988bb;--dim:#333333;--ink:#000000;--vc:#44ffee"><span class="label">accent</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#9988bb;--dim:#333333;--ink:#000000;--vc:#777799"><span class="label">accent</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#9988bb;--lit:#9988bb;--dim:#333333;--ink:#000000;--vc:#44ffee"><span class="label">accent</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>accent-3</code><span class="hex">#aa7744</span></th>
+        <td><span class="pill" style="--bg:#aa7744;--lit:#aa7744;--dim:#333333;--ink:#000000;--vc:#44ffee"><span class="label">accent</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#aa7744;--dim:#333333;--ink:#000000;--vc:#777799"><span class="label">accent</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#aa7744;--lit:#aa7744;--dim:#333333;--ink:#000000;--vc:#44ffee"><span class="label">accent</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>accent-4</code><span class="hex">#6688ee</span></th>
+        <td><span class="pill" style="--bg:#6688ee;--lit:#6688ee;--dim:#333366;--ink:#000000;--vc:#44ffee"><span class="label">accent</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#6688ee;--dim:#333366;--ink:#000000;--vc:#777799"><span class="label">accent</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#6688ee;--lit:#6688ee;--dim:#333366;--ink:#000000;--vc:#44ffee"><span class="label">accent</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>accent-5</code><span class="hex">#dd7722</span></th>
+        <td><span class="pill" style="--bg:#dd7722;--lit:#dd7722;--dim:#663300;--ink:#000000;--vc:#44ffee"><span class="label">accent</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#dd7722;--dim:#663300;--ink:#000000;--vc:#777799"><span class="label">accent</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#dd7722;--lit:#dd7722;--dim:#663300;--ink:#000000;--vc:#44ffee"><span class="label">accent</span><span class="value">blink</span><span class="end"></span></span></td></tr></tbody>
+  </table></div>
+  <h3>Examples</h3>
+  <p class="muted">A system readout:</p>
+  <div class="row">
+    <span class="pill" style="--bg:#6688ee;--lit:#6688ee;--dim:#333366;--ink:#000000;--vc:#99ccdd"><span class="label">CTX</span><span class="value">42%</span><span class="end"></span></span>
+    <span class="pill" style="--bg:#99ccdd;--lit:#99ccdd;--dim:#336666;--ink:#000000;--vc:#44ffee"><span class="label">5H</span><span class="value">8%</span><span class="end"></span></span>
+    <span class="pill blink" style="--bg:#99ccdd;--lit:#99ccdd;--dim:#336666;--ink:#000000;--vc:#cc4455"><span class="label">7D</span><span class="value">91% ↻Tue</span><span class="end"></span></span>
+    <span class="pill" style="--bg:#99ccdd;--lit:#99ccdd;--dim:#336666;--ink:#000000;--vc:#44ffee"><span class="label">DISK</span><span class="value">▓▓▓▓▓▓░░░░ 120G free</span><span class="end"></span></span>
+    <span class="pill" style="--bg:#aa7744;--lit:#aa7744;--dim:#333333;--ink:#000000;--vc:#44ffee"><span class="label">MODEL</span><span class="value">Opus</span><span class="end"></span></span>
+    <span class="pill" style="--bg:#9988bb;--lit:#9988bb;--dim:#333333;--ink:#000000;--vc:#44ffee"><span class="label">BR</span><span class="value">main</span><span class="end"></span></span>
+    <span class="pill" style="--bg:#333333;--lit:#777799;--dim:#333333;--ink:#000000;--vc:#777799"><span class="label">DIFF</span><span class="value">clean</span><span class="end"></span></span>
+  </div>
+  <p class="muted">A navigation row with an alert indicator:</p>
+  <div class="row">
+    <span class="pill" style="--bg:#99ccdd;--lit:#99ccdd;--dim:#336666;--ink:#000000;--vc:#44ffee"><span class="label">PATH</span><span class="value">~/code/lcars</span><span class="end"></span></span>
+    <span class="pill" style="--bg:#9988bb;--lit:#9988bb;--dim:#333333;--ink:#000000;--vc:#44ffee"><span class="label">BR</span><span class="value">feature</span><span class="end"></span></span>
+    <span class="pill" style="--bg:#6688ee;--lit:#6688ee;--dim:#333366;--ink:#000000;--vc:#99ccdd"><span class="label">PR</span><span class="value">#12 APPR</span><span class="end"></span></span>
+    <span class="pill" style="--bg:#777799;--lit:#777799;--dim:#333333;--ink:#000000;--vc:#44ffee"><span class="label">DIFF</span><span class="value"><span style="color:#44ffee">+12</span> <span style="color:#cc4455">-3</span></span><span class="end"></span></span>
+    <span class="pill" style="--bg:#cc4455;--lit:#cc4455;--dim:#663333;--ink:#997733;--vc:#44ffee"><span class="label">ERR</span><span class="value">1</span><span class="end"></span></span>
+  </div>
+</section>
+<section id="nem">
+  <h2>NEM theme</h2>
+  <p class="desc">Nemesis, Enterprise-E blue. Measured from Nemesis 2023 Blu-ray frames (TrekCore) and Memory Alpha captures; blue grade cast removed, snapped; alert lifted for AA (panel-true #bf0000).</p>
+  <h3>Roles</h3>
+  <ul class="roles"><li><span class="chip" style="background:#000000"></span><code>bg</code> <span class="muted"> #000000</span></li>
+<li><span class="chip" style="background:#000000"></span><code>ink</code> <span class="muted"> #000000</span></li>
+<li><span class="chip" style="background:#1177bb"></span><code>frame</code> <span class="muted"> #1177bb</span></li>
+<li><span class="chip" style="background:#3399cc"></span><code>block</code> <span class="muted"> #3399cc</span></li>
+<li><span class="chip" style="background:#44ccee"></span><code>accent</code> <span class="muted"> #44ccee</span></li>
+<li><span class="chip" style="background:#cc9966"></span><code>stub</code> <span class="muted"> #cc9966</span></li>
+<li><span class="chip" style="background:#ddccaa"></span><code>text</code> <span class="muted"> #ddccaa</span></li>
+<li><span class="chip" style="background:#ffff99"></span><code>meter-on</code> <span class="muted"> #ffff99</span></li>
+<li><span class="chip" style="background:#7799aa"></span><code>meter-off</code> <span class="muted"> #7799aa</span></li>
+<li><span class="chip" style="background:#dd3322"></span><code>alert</code> <span class="muted"> #dd3322</span></li>
+<li><span class="chip" style="background:#cc6600"></span><code>focus</code> <span class="muted"> #cc6600</span></li>
+<li><span class="chip" style="background:#44ccee"></span><code>data</code> <span class="muted"> #44ccee</span></li>
+<li><span class="chip" style="background:#ffffff"></span><code>data-hi</code> <span class="muted"> #ffffff</span></li>
+<li><span class="chip" style="background:#44ccee"></span><code>display</code> <span class="muted">accent #44ccee</span></li>
+<li><span class="chip" style="background:#dd3322"></span><code>alert-text</code> <span class="muted">alert #dd3322</span></li>
+<li><span class="chip" style="background:#333333"></span><code>unlit</code> <span class="muted"> #333333</span></li>
+<li><span class="chip" style="background:#000000"></span><code>label-ink</code> <span class="muted">ink #000000</span></li>
+<li><span class="chip" style="background:#cc6600"></span><code>emphasis-ink</code> <span class="muted">focus #cc6600</span></li>
+<li><span class="chip" style="background:#44ccee"></span><code>value</code> <span class="muted">data #44ccee</span></li>
+<li><span class="chip" style="background:#7799aa"></span><code>muted</code> <span class="muted">meter-off #7799aa</span></li>
+<li><span class="chip" style="background:#44ccee"></span><code>ok</code> <span class="muted">accent #44ccee</span></li>
+<li><span class="chip" style="background:#cc9966"></span><code>warning</code> <span class="muted">stub #cc9966</span></li>
+<li><span class="chip" style="background:#44ccee"></span><code>added</code> <span class="muted">data #44ccee</span></li>
+<li><span class="chip" style="background:#dd3322"></span><code>removed</code> <span class="muted">alert #dd3322</span></li>
+<li><span class="chip" style="background:#3399cc"></span><code>accent-2</code> <span class="muted">block #3399cc</span></li>
+<li><span class="chip" style="background:#1177bb"></span><code>accent-3</code> <span class="muted">frame #1177bb</span></li>
+<li><span class="chip" style="background:#ffff99"></span><code>accent-4</code> <span class="muted">meter-on #ffff99</span></li>
+<li><span class="chip" style="background:#cc9966"></span><code>accent-5</code> <span class="muted">stub #cc9966</span></li></ul>
+  <h3>Roles by state</h3>
+  <div class="scroll"><table>
+    <thead><tr><th scope="col">Role</th><th scope="col">Lit</th><th scope="col">Off</th><th scope="col">Blink</th></tr></thead>
+    <tbody><tr><th scope="row"><code>frame</code><span class="hex">#1177bb</span></th>
+        <td><span class="pill" style="--bg:#1177bb;--lit:#1177bb;--dim:#003333;--ink:#000000;--vc:#44ccee"><span class="label">frame</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#1177bb;--dim:#003333;--ink:#000000;--vc:#7799aa"><span class="label">frame</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#1177bb;--lit:#1177bb;--dim:#003333;--ink:#000000;--vc:#44ccee"><span class="label">frame</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>block</code><span class="hex">#3399cc</span></th>
+        <td><span class="pill" style="--bg:#3399cc;--lit:#3399cc;--dim:#003366;--ink:#000000;--vc:#44ccee"><span class="label">block</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#3399cc;--dim:#003366;--ink:#000000;--vc:#7799aa"><span class="label">block</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#3399cc;--lit:#3399cc;--dim:#003366;--ink:#000000;--vc:#44ccee"><span class="label">block</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>accent</code><span class="hex">#44ccee</span></th>
+        <td><span class="pill" style="--bg:#44ccee;--lit:#44ccee;--dim:#336666;--ink:#000000;--vc:#44ccee"><span class="label">accent</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#44ccee;--dim:#336666;--ink:#000000;--vc:#7799aa"><span class="label">accent</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#44ccee;--lit:#44ccee;--dim:#336666;--ink:#000000;--vc:#44ccee"><span class="label">accent</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>stub</code><span class="hex">#cc9966</span></th>
+        <td><span class="pill" style="--bg:#cc9966;--lit:#cc9966;--dim:#663333;--ink:#000000;--vc:#44ccee"><span class="label">stub</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#cc9966;--dim:#663333;--ink:#000000;--vc:#7799aa"><span class="label">stub</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#cc9966;--lit:#cc9966;--dim:#663333;--ink:#000000;--vc:#44ccee"><span class="label">stub</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>text</code><span class="hex">#ddccaa</span></th>
+        <td><span class="pill" style="--bg:#ddccaa;--lit:#ddccaa;--dim:#666633;--ink:#000000;--vc:#44ccee"><span class="label">text</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#ddccaa;--dim:#666633;--ink:#000000;--vc:#7799aa"><span class="label">text</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#ddccaa;--lit:#ddccaa;--dim:#666633;--ink:#000000;--vc:#44ccee"><span class="label">text</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>meter-on</code><span class="hex">#ffff99</span></th>
+        <td><span class="pill" style="--bg:#ffff99;--lit:#ffff99;--dim:#666633;--ink:#000000;--vc:#44ccee"><span class="label">meter</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#ffff99;--dim:#666633;--ink:#000000;--vc:#7799aa"><span class="label">meter</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#ffff99;--lit:#ffff99;--dim:#666633;--ink:#000000;--vc:#44ccee"><span class="label">meter</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>meter-off</code><span class="hex">#7799aa</span></th>
+        <td><span class="pill" style="--bg:#7799aa;--lit:#7799aa;--dim:#333333;--ink:#000000;--vc:#44ccee"><span class="label">meter</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#7799aa;--dim:#333333;--ink:#000000;--vc:#7799aa"><span class="label">meter</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#7799aa;--lit:#7799aa;--dim:#333333;--ink:#000000;--vc:#44ccee"><span class="label">meter</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>alert</code><span class="hex">#dd3322</span></th>
+        <td><span class="pill" style="--bg:#dd3322;--lit:#dd3322;--dim:#660000;--ink:#000000;--vc:#44ccee"><span class="label">alert</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#dd3322;--dim:#660000;--ink:#000000;--vc:#7799aa"><span class="label">alert</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#dd3322;--lit:#dd3322;--dim:#660000;--ink:#000000;--vc:#44ccee"><span class="label">alert</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>focus</code><span class="hex">#cc6600</span></th>
+        <td><span class="pill" style="--bg:#cc6600;--lit:#cc6600;--dim:#663300;--ink:#000000;--vc:#44ccee"><span class="label">focus</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#cc6600;--dim:#663300;--ink:#000000;--vc:#7799aa"><span class="label">focus</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#cc6600;--lit:#cc6600;--dim:#663300;--ink:#000000;--vc:#44ccee"><span class="label">focus</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>data</code><span class="hex">#44ccee</span></th>
+        <td><span class="pill" style="--bg:#44ccee;--lit:#44ccee;--dim:#336666;--ink:#000000;--vc:#44ccee"><span class="label">data</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#44ccee;--dim:#336666;--ink:#000000;--vc:#7799aa"><span class="label">data</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#44ccee;--lit:#44ccee;--dim:#336666;--ink:#000000;--vc:#44ccee"><span class="label">data</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>display</code><span class="hex">#44ccee</span></th>
+        <td><span class="pill" style="--bg:#44ccee;--lit:#44ccee;--dim:#336666;--ink:#000000;--vc:#44ccee"><span class="label">displa</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#44ccee;--dim:#336666;--ink:#000000;--vc:#7799aa"><span class="label">displa</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#44ccee;--lit:#44ccee;--dim:#336666;--ink:#000000;--vc:#44ccee"><span class="label">displa</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>alert-text</code><span class="hex">#dd3322</span></th>
+        <td><span class="pill" style="--bg:#dd3322;--lit:#dd3322;--dim:#660000;--ink:#000000;--vc:#44ccee"><span class="label">alert</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#dd3322;--dim:#660000;--ink:#000000;--vc:#7799aa"><span class="label">alert</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#dd3322;--lit:#dd3322;--dim:#660000;--ink:#000000;--vc:#44ccee"><span class="label">alert</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>unlit</code><span class="hex">#333333</span></th>
+        <td><span class="pill" style="--bg:#333333;--lit:#333333;--dim:#000000;--ink:#000000;--vc:#44ccee"><span class="label">unlit</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#333333;--dim:#000000;--ink:#000000;--vc:#7799aa"><span class="label">unlit</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#333333;--lit:#333333;--dim:#000000;--ink:#000000;--vc:#44ccee"><span class="label">unlit</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>emphasis-ink</code><span class="hex">#cc6600</span></th>
+        <td><span class="pill" style="--bg:#cc6600;--lit:#cc6600;--dim:#663300;--ink:#000000;--vc:#44ccee"><span class="label">emphas</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#cc6600;--dim:#663300;--ink:#000000;--vc:#7799aa"><span class="label">emphas</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#cc6600;--lit:#cc6600;--dim:#663300;--ink:#000000;--vc:#44ccee"><span class="label">emphas</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>value</code><span class="hex">#44ccee</span></th>
+        <td><span class="pill" style="--bg:#44ccee;--lit:#44ccee;--dim:#336666;--ink:#000000;--vc:#44ccee"><span class="label">value</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#44ccee;--dim:#336666;--ink:#000000;--vc:#7799aa"><span class="label">value</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#44ccee;--lit:#44ccee;--dim:#336666;--ink:#000000;--vc:#44ccee"><span class="label">value</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>muted</code><span class="hex">#7799aa</span></th>
+        <td><span class="pill" style="--bg:#7799aa;--lit:#7799aa;--dim:#333333;--ink:#000000;--vc:#44ccee"><span class="label">muted</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#7799aa;--dim:#333333;--ink:#000000;--vc:#7799aa"><span class="label">muted</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#7799aa;--lit:#7799aa;--dim:#333333;--ink:#000000;--vc:#44ccee"><span class="label">muted</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>ok</code><span class="hex">#44ccee</span></th>
+        <td><span class="pill" style="--bg:#44ccee;--lit:#44ccee;--dim:#336666;--ink:#000000;--vc:#44ccee"><span class="label">ok</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#44ccee;--dim:#336666;--ink:#000000;--vc:#7799aa"><span class="label">ok</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#44ccee;--lit:#44ccee;--dim:#336666;--ink:#000000;--vc:#44ccee"><span class="label">ok</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>warning</code><span class="hex">#cc9966</span></th>
+        <td><span class="pill" style="--bg:#cc9966;--lit:#cc9966;--dim:#663333;--ink:#000000;--vc:#44ccee"><span class="label">warnin</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#cc9966;--dim:#663333;--ink:#000000;--vc:#7799aa"><span class="label">warnin</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#cc9966;--lit:#cc9966;--dim:#663333;--ink:#000000;--vc:#44ccee"><span class="label">warnin</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>added</code><span class="hex">#44ccee</span></th>
+        <td><span class="pill" style="--bg:#44ccee;--lit:#44ccee;--dim:#336666;--ink:#000000;--vc:#44ccee"><span class="label">added</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#44ccee;--dim:#336666;--ink:#000000;--vc:#7799aa"><span class="label">added</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#44ccee;--lit:#44ccee;--dim:#336666;--ink:#000000;--vc:#44ccee"><span class="label">added</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>removed</code><span class="hex">#dd3322</span></th>
+        <td><span class="pill" style="--bg:#dd3322;--lit:#dd3322;--dim:#660000;--ink:#000000;--vc:#44ccee"><span class="label">remove</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#dd3322;--dim:#660000;--ink:#000000;--vc:#7799aa"><span class="label">remove</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#dd3322;--lit:#dd3322;--dim:#660000;--ink:#000000;--vc:#44ccee"><span class="label">remove</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>accent-2</code><span class="hex">#3399cc</span></th>
+        <td><span class="pill" style="--bg:#3399cc;--lit:#3399cc;--dim:#003366;--ink:#000000;--vc:#44ccee"><span class="label">accent</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#3399cc;--dim:#003366;--ink:#000000;--vc:#7799aa"><span class="label">accent</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#3399cc;--lit:#3399cc;--dim:#003366;--ink:#000000;--vc:#44ccee"><span class="label">accent</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>accent-3</code><span class="hex">#1177bb</span></th>
+        <td><span class="pill" style="--bg:#1177bb;--lit:#1177bb;--dim:#003333;--ink:#000000;--vc:#44ccee"><span class="label">accent</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#1177bb;--dim:#003333;--ink:#000000;--vc:#7799aa"><span class="label">accent</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#1177bb;--lit:#1177bb;--dim:#003333;--ink:#000000;--vc:#44ccee"><span class="label">accent</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>accent-4</code><span class="hex">#ffff99</span></th>
+        <td><span class="pill" style="--bg:#ffff99;--lit:#ffff99;--dim:#666633;--ink:#000000;--vc:#44ccee"><span class="label">accent</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#ffff99;--dim:#666633;--ink:#000000;--vc:#7799aa"><span class="label">accent</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#ffff99;--lit:#ffff99;--dim:#666633;--ink:#000000;--vc:#44ccee"><span class="label">accent</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>accent-5</code><span class="hex">#cc9966</span></th>
+        <td><span class="pill" style="--bg:#cc9966;--lit:#cc9966;--dim:#663333;--ink:#000000;--vc:#44ccee"><span class="label">accent</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#cc9966;--dim:#663333;--ink:#000000;--vc:#7799aa"><span class="label">accent</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#cc9966;--lit:#cc9966;--dim:#663333;--ink:#000000;--vc:#44ccee"><span class="label">accent</span><span class="value">blink</span><span class="end"></span></span></td></tr></tbody>
+  </table></div>
+  <h3>Examples</h3>
+  <p class="muted">A system readout:</p>
+  <div class="row">
+    <span class="pill" style="--bg:#ffff99;--lit:#ffff99;--dim:#666633;--ink:#000000;--vc:#44ccee"><span class="label">CTX</span><span class="value">42%</span><span class="end"></span></span>
+    <span class="pill" style="--bg:#44ccee;--lit:#44ccee;--dim:#336666;--ink:#000000;--vc:#44ccee"><span class="label">5H</span><span class="value">8%</span><span class="end"></span></span>
+    <span class="pill blink" style="--bg:#44ccee;--lit:#44ccee;--dim:#336666;--ink:#000000;--vc:#dd3322"><span class="label">7D</span><span class="value">91% ↻Tue</span><span class="end"></span></span>
+    <span class="pill" style="--bg:#44ccee;--lit:#44ccee;--dim:#336666;--ink:#000000;--vc:#44ccee"><span class="label">DISK</span><span class="value">▓▓▓▓▓▓░░░░ 120G free</span><span class="end"></span></span>
+    <span class="pill" style="--bg:#1177bb;--lit:#1177bb;--dim:#003333;--ink:#000000;--vc:#44ccee"><span class="label">MODEL</span><span class="value">Opus</span><span class="end"></span></span>
+    <span class="pill" style="--bg:#3399cc;--lit:#3399cc;--dim:#003366;--ink:#000000;--vc:#44ccee"><span class="label">BR</span><span class="value">main</span><span class="end"></span></span>
+    <span class="pill" style="--bg:#333333;--lit:#7799aa;--dim:#333333;--ink:#000000;--vc:#7799aa"><span class="label">DIFF</span><span class="value">clean</span><span class="end"></span></span>
+  </div>
+  <p class="muted">A navigation row with an alert indicator:</p>
+  <div class="row">
+    <span class="pill" style="--bg:#44ccee;--lit:#44ccee;--dim:#336666;--ink:#000000;--vc:#44ccee"><span class="label">PATH</span><span class="value">~/code/lcars</span><span class="end"></span></span>
+    <span class="pill" style="--bg:#3399cc;--lit:#3399cc;--dim:#003366;--ink:#000000;--vc:#44ccee"><span class="label">BR</span><span class="value">feature</span><span class="end"></span></span>
+    <span class="pill" style="--bg:#ffff99;--lit:#ffff99;--dim:#666633;--ink:#000000;--vc:#44ccee"><span class="label">PR</span><span class="value">#12 APPR</span><span class="end"></span></span>
+    <span class="pill" style="--bg:#7799aa;--lit:#7799aa;--dim:#333333;--ink:#000000;--vc:#44ccee"><span class="label">DIFF</span><span class="value"><span style="color:#44ccee">+12</span> <span style="color:#dd3322">-3</span></span><span class="end"></span></span>
+    <span class="pill" style="--bg:#dd3322;--lit:#dd3322;--dim:#660000;--ink:#cc6600;--vc:#44ccee"><span class="label">ERR</span><span class="value">1</span><span class="end"></span></span>
+  </div>
+</section>
+<section id="pic">
+  <h2>PIC theme</h2>
+  <p class="desc">Picard season 1. bg, frame, block and alert are the official five from designer Andrew Jarvis; the blue, stub and text are thelcars.com extensions (https://memory-alpha.fandom.com/wiki/Library_Computer_Access_and_Retrieval_System).</p>
+  <h3>Roles</h3>
+  <ul class="roles"><li><span class="chip" style="background:#111419"></span><code>bg</code> <span class="muted"> #111419</span></li>
+<li><span class="chip" style="background:#111419"></span><code>ink</code> <span class="muted"> #111419</span></li>
+<li><span class="chip" style="background:#6d748c"></span><code>frame</code> <span class="muted"> #6d748c</span></li>
+<li><span class="chip" style="background:#9ea5ba"></span><code>block</code> <span class="muted"> #9ea5ba</span></li>
+<li><span class="chip" style="background:#37a6d1"></span><code>accent</code> <span class="muted"> #37a6d1</span></li>
+<li><span class="chip" style="background:#ff977b"></span><code>stub</code> <span class="muted"> #ff977b</span></li>
+<li><span class="chip" style="background:#f3f4f7"></span><code>text</code> <span class="muted"> #f3f4f7</span></li>
+<li><span class="chip" style="background:#37a6d1"></span><code>meter-on</code> <span class="muted"> #37a6d1</span></li>
+<li><span class="chip" style="background:#6d748c"></span><code>meter-off</code> <span class="muted"> #6d748c</span></li>
+<li><span class="chip" style="background:#e7442a"></span><code>alert</code> <span class="muted"> #e7442a</span></li>
+<li><span class="chip" style="background:#41c4f7"></span><code>focus</code> <span class="muted"> #41c4f7</span></li>
+<li><span class="chip" style="background:#ff977b"></span><code>data</code> <span class="muted"> #ff977b</span></li>
+<li><span class="chip" style="background:#f3f4f7"></span><code>data-hi</code> <span class="muted"> #f3f4f7</span></li>
+<li><span class="chip" style="background:#37a6d1"></span><code>display</code> <span class="muted">accent #37a6d1</span></li>
+<li><span class="chip" style="background:#e7442a"></span><code>alert-text</code> <span class="muted">alert #e7442a</span></li>
+<li><span class="chip" style="background:#333333"></span><code>unlit</code> <span class="muted"> #333333</span></li>
+<li><span class="chip" style="background:#111419"></span><code>label-ink</code> <span class="muted">ink #111419</span></li>
+<li><span class="chip" style="background:#41c4f7"></span><code>emphasis-ink</code> <span class="muted">focus #41c4f7</span></li>
+<li><span class="chip" style="background:#ff977b"></span><code>value</code> <span class="muted">data #ff977b</span></li>
+<li><span class="chip" style="background:#6d748c"></span><code>muted</code> <span class="muted">meter-off #6d748c</span></li>
+<li><span class="chip" style="background:#37a6d1"></span><code>ok</code> <span class="muted">accent #37a6d1</span></li>
+<li><span class="chip" style="background:#ff977b"></span><code>warning</code> <span class="muted">stub #ff977b</span></li>
+<li><span class="chip" style="background:#ff977b"></span><code>added</code> <span class="muted">data #ff977b</span></li>
+<li><span class="chip" style="background:#e7442a"></span><code>removed</code> <span class="muted">alert #e7442a</span></li>
+<li><span class="chip" style="background:#9ea5ba"></span><code>accent-2</code> <span class="muted">block #9ea5ba</span></li>
+<li><span class="chip" style="background:#6d748c"></span><code>accent-3</code> <span class="muted">frame #6d748c</span></li>
+<li><span class="chip" style="background:#37a6d1"></span><code>accent-4</code> <span class="muted">meter-on #37a6d1</span></li>
+<li><span class="chip" style="background:#ff977b"></span><code>accent-5</code> <span class="muted">stub #ff977b</span></li></ul>
+  <h3>Roles by state</h3>
+  <div class="scroll"><table>
+    <thead><tr><th scope="col">Role</th><th scope="col">Lit</th><th scope="col">Off</th><th scope="col">Blink</th></tr></thead>
+    <tbody><tr><th scope="row"><code>frame</code><span class="hex">#6d748c</span></th>
+        <td><span class="pill" style="--bg:#6d748c;--lit:#6d748c;--dim:#333333;--ink:#111419;--vc:#ff977b"><span class="label">frame</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#6d748c;--dim:#333333;--ink:#111419;--vc:#6d748c"><span class="label">frame</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#6d748c;--lit:#6d748c;--dim:#333333;--ink:#111419;--vc:#ff977b"><span class="label">frame</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>block</code><span class="hex">#9ea5ba</span></th>
+        <td><span class="pill" style="--bg:#9ea5ba;--lit:#9ea5ba;--dim:#333333;--ink:#111419;--vc:#ff977b"><span class="label">block</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#9ea5ba;--dim:#333333;--ink:#111419;--vc:#6d748c"><span class="label">block</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#9ea5ba;--lit:#9ea5ba;--dim:#333333;--ink:#111419;--vc:#ff977b"><span class="label">block</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>accent</code><span class="hex">#37a6d1</span></th>
+        <td><span class="pill" style="--bg:#37a6d1;--lit:#37a6d1;--dim:#003366;--ink:#111419;--vc:#ff977b"><span class="label">accent</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#37a6d1;--dim:#003366;--ink:#111419;--vc:#6d748c"><span class="label">accent</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#37a6d1;--lit:#37a6d1;--dim:#003366;--ink:#111419;--vc:#ff977b"><span class="label">accent</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>stub</code><span class="hex">#ff977b</span></th>
+        <td><span class="pill" style="--bg:#ff977b;--lit:#ff977b;--dim:#663333;--ink:#111419;--vc:#ff977b"><span class="label">stub</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#ff977b;--dim:#663333;--ink:#111419;--vc:#6d748c"><span class="label">stub</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#ff977b;--lit:#ff977b;--dim:#663333;--ink:#111419;--vc:#ff977b"><span class="label">stub</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>text</code><span class="hex">#f3f4f7</span></th>
+        <td><span class="pill" style="--bg:#f3f4f7;--lit:#f3f4f7;--dim:#666666;--ink:#111419;--vc:#ff977b"><span class="label">text</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#f3f4f7;--dim:#666666;--ink:#111419;--vc:#6d748c"><span class="label">text</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#f3f4f7;--lit:#f3f4f7;--dim:#666666;--ink:#111419;--vc:#ff977b"><span class="label">text</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>meter-on</code><span class="hex">#37a6d1</span></th>
+        <td><span class="pill" style="--bg:#37a6d1;--lit:#37a6d1;--dim:#003366;--ink:#111419;--vc:#ff977b"><span class="label">meter</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#37a6d1;--dim:#003366;--ink:#111419;--vc:#6d748c"><span class="label">meter</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#37a6d1;--lit:#37a6d1;--dim:#003366;--ink:#111419;--vc:#ff977b"><span class="label">meter</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>meter-off</code><span class="hex">#6d748c</span></th>
+        <td><span class="pill" style="--bg:#6d748c;--lit:#6d748c;--dim:#333333;--ink:#111419;--vc:#ff977b"><span class="label">meter</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#6d748c;--dim:#333333;--ink:#111419;--vc:#6d748c"><span class="label">meter</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#6d748c;--lit:#6d748c;--dim:#333333;--ink:#111419;--vc:#ff977b"><span class="label">meter</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>alert</code><span class="hex">#e7442a</span></th>
+        <td><span class="pill" style="--bg:#e7442a;--lit:#e7442a;--dim:#663300;--ink:#111419;--vc:#ff977b"><span class="label">alert</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#e7442a;--dim:#663300;--ink:#111419;--vc:#6d748c"><span class="label">alert</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#e7442a;--lit:#e7442a;--dim:#663300;--ink:#111419;--vc:#ff977b"><span class="label">alert</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>focus</code><span class="hex">#41c4f7</span></th>
+        <td><span class="pill" style="--bg:#41c4f7;--lit:#41c4f7;--dim:#336666;--ink:#111419;--vc:#ff977b"><span class="label">focus</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#41c4f7;--dim:#336666;--ink:#111419;--vc:#6d748c"><span class="label">focus</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#41c4f7;--lit:#41c4f7;--dim:#336666;--ink:#111419;--vc:#ff977b"><span class="label">focus</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>data</code><span class="hex">#ff977b</span></th>
+        <td><span class="pill" style="--bg:#ff977b;--lit:#ff977b;--dim:#663333;--ink:#111419;--vc:#ff977b"><span class="label">data</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#ff977b;--dim:#663333;--ink:#111419;--vc:#6d748c"><span class="label">data</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#ff977b;--lit:#ff977b;--dim:#663333;--ink:#111419;--vc:#ff977b"><span class="label">data</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>display</code><span class="hex">#37a6d1</span></th>
+        <td><span class="pill" style="--bg:#37a6d1;--lit:#37a6d1;--dim:#003366;--ink:#111419;--vc:#ff977b"><span class="label">displa</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#37a6d1;--dim:#003366;--ink:#111419;--vc:#6d748c"><span class="label">displa</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#37a6d1;--lit:#37a6d1;--dim:#003366;--ink:#111419;--vc:#ff977b"><span class="label">displa</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>alert-text</code><span class="hex">#e7442a</span></th>
+        <td><span class="pill" style="--bg:#e7442a;--lit:#e7442a;--dim:#663300;--ink:#111419;--vc:#ff977b"><span class="label">alert</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#e7442a;--dim:#663300;--ink:#111419;--vc:#6d748c"><span class="label">alert</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#e7442a;--lit:#e7442a;--dim:#663300;--ink:#111419;--vc:#ff977b"><span class="label">alert</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>unlit</code><span class="hex">#333333</span></th>
+        <td><span class="pill" style="--bg:#333333;--lit:#333333;--dim:#000000;--ink:#111419;--vc:#ff977b"><span class="label">unlit</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#333333;--dim:#000000;--ink:#111419;--vc:#6d748c"><span class="label">unlit</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#333333;--lit:#333333;--dim:#000000;--ink:#111419;--vc:#ff977b"><span class="label">unlit</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>emphasis-ink</code><span class="hex">#41c4f7</span></th>
+        <td><span class="pill" style="--bg:#41c4f7;--lit:#41c4f7;--dim:#336666;--ink:#111419;--vc:#ff977b"><span class="label">emphas</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#41c4f7;--dim:#336666;--ink:#111419;--vc:#6d748c"><span class="label">emphas</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#41c4f7;--lit:#41c4f7;--dim:#336666;--ink:#111419;--vc:#ff977b"><span class="label">emphas</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>value</code><span class="hex">#ff977b</span></th>
+        <td><span class="pill" style="--bg:#ff977b;--lit:#ff977b;--dim:#663333;--ink:#111419;--vc:#ff977b"><span class="label">value</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#ff977b;--dim:#663333;--ink:#111419;--vc:#6d748c"><span class="label">value</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#ff977b;--lit:#ff977b;--dim:#663333;--ink:#111419;--vc:#ff977b"><span class="label">value</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>muted</code><span class="hex">#6d748c</span></th>
+        <td><span class="pill" style="--bg:#6d748c;--lit:#6d748c;--dim:#333333;--ink:#111419;--vc:#ff977b"><span class="label">muted</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#6d748c;--dim:#333333;--ink:#111419;--vc:#6d748c"><span class="label">muted</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#6d748c;--lit:#6d748c;--dim:#333333;--ink:#111419;--vc:#ff977b"><span class="label">muted</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>ok</code><span class="hex">#37a6d1</span></th>
+        <td><span class="pill" style="--bg:#37a6d1;--lit:#37a6d1;--dim:#003366;--ink:#111419;--vc:#ff977b"><span class="label">ok</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#37a6d1;--dim:#003366;--ink:#111419;--vc:#6d748c"><span class="label">ok</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#37a6d1;--lit:#37a6d1;--dim:#003366;--ink:#111419;--vc:#ff977b"><span class="label">ok</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>warning</code><span class="hex">#ff977b</span></th>
+        <td><span class="pill" style="--bg:#ff977b;--lit:#ff977b;--dim:#663333;--ink:#111419;--vc:#ff977b"><span class="label">warnin</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#ff977b;--dim:#663333;--ink:#111419;--vc:#6d748c"><span class="label">warnin</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#ff977b;--lit:#ff977b;--dim:#663333;--ink:#111419;--vc:#ff977b"><span class="label">warnin</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>added</code><span class="hex">#ff977b</span></th>
+        <td><span class="pill" style="--bg:#ff977b;--lit:#ff977b;--dim:#663333;--ink:#111419;--vc:#ff977b"><span class="label">added</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#ff977b;--dim:#663333;--ink:#111419;--vc:#6d748c"><span class="label">added</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#ff977b;--lit:#ff977b;--dim:#663333;--ink:#111419;--vc:#ff977b"><span class="label">added</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>removed</code><span class="hex">#e7442a</span></th>
+        <td><span class="pill" style="--bg:#e7442a;--lit:#e7442a;--dim:#663300;--ink:#111419;--vc:#ff977b"><span class="label">remove</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#e7442a;--dim:#663300;--ink:#111419;--vc:#6d748c"><span class="label">remove</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#e7442a;--lit:#e7442a;--dim:#663300;--ink:#111419;--vc:#ff977b"><span class="label">remove</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>accent-2</code><span class="hex">#9ea5ba</span></th>
+        <td><span class="pill" style="--bg:#9ea5ba;--lit:#9ea5ba;--dim:#333333;--ink:#111419;--vc:#ff977b"><span class="label">accent</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#9ea5ba;--dim:#333333;--ink:#111419;--vc:#6d748c"><span class="label">accent</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#9ea5ba;--lit:#9ea5ba;--dim:#333333;--ink:#111419;--vc:#ff977b"><span class="label">accent</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>accent-3</code><span class="hex">#6d748c</span></th>
+        <td><span class="pill" style="--bg:#6d748c;--lit:#6d748c;--dim:#333333;--ink:#111419;--vc:#ff977b"><span class="label">accent</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#6d748c;--dim:#333333;--ink:#111419;--vc:#6d748c"><span class="label">accent</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#6d748c;--lit:#6d748c;--dim:#333333;--ink:#111419;--vc:#ff977b"><span class="label">accent</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>accent-4</code><span class="hex">#37a6d1</span></th>
+        <td><span class="pill" style="--bg:#37a6d1;--lit:#37a6d1;--dim:#003366;--ink:#111419;--vc:#ff977b"><span class="label">accent</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#37a6d1;--dim:#003366;--ink:#111419;--vc:#6d748c"><span class="label">accent</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#37a6d1;--lit:#37a6d1;--dim:#003366;--ink:#111419;--vc:#ff977b"><span class="label">accent</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>accent-5</code><span class="hex">#ff977b</span></th>
+        <td><span class="pill" style="--bg:#ff977b;--lit:#ff977b;--dim:#663333;--ink:#111419;--vc:#ff977b"><span class="label">accent</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#ff977b;--dim:#663333;--ink:#111419;--vc:#6d748c"><span class="label">accent</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#ff977b;--lit:#ff977b;--dim:#663333;--ink:#111419;--vc:#ff977b"><span class="label">accent</span><span class="value">blink</span><span class="end"></span></span></td></tr></tbody>
+  </table></div>
+  <h3>Examples</h3>
+  <p class="muted">A system readout:</p>
+  <div class="row">
+    <span class="pill" style="--bg:#37a6d1;--lit:#37a6d1;--dim:#003366;--ink:#111419;--vc:#37a6d1"><span class="label">CTX</span><span class="value">42%</span><span class="end"></span></span>
+    <span class="pill" style="--bg:#37a6d1;--lit:#37a6d1;--dim:#003366;--ink:#111419;--vc:#ff977b"><span class="label">5H</span><span class="value">8%</span><span class="end"></span></span>
+    <span class="pill blink" style="--bg:#37a6d1;--lit:#37a6d1;--dim:#003366;--ink:#111419;--vc:#e7442a"><span class="label">7D</span><span class="value">91% ↻Tue</span><span class="end"></span></span>
+    <span class="pill" style="--bg:#37a6d1;--lit:#37a6d1;--dim:#003366;--ink:#111419;--vc:#ff977b"><span class="label">DISK</span><span class="value">▓▓▓▓▓▓░░░░ 120G free</span><span class="end"></span></span>
+    <span class="pill" style="--bg:#6d748c;--lit:#6d748c;--dim:#333333;--ink:#111419;--vc:#ff977b"><span class="label">MODEL</span><span class="value">Opus</span><span class="end"></span></span>
+    <span class="pill" style="--bg:#9ea5ba;--lit:#9ea5ba;--dim:#333333;--ink:#111419;--vc:#ff977b"><span class="label">BR</span><span class="value">main</span><span class="end"></span></span>
+    <span class="pill" style="--bg:#333333;--lit:#6d748c;--dim:#333333;--ink:#111419;--vc:#6d748c"><span class="label">DIFF</span><span class="value">clean</span><span class="end"></span></span>
+  </div>
+  <p class="muted">A navigation row with an alert indicator:</p>
+  <div class="row">
+    <span class="pill" style="--bg:#37a6d1;--lit:#37a6d1;--dim:#003366;--ink:#111419;--vc:#ff977b"><span class="label">PATH</span><span class="value">~/code/lcars</span><span class="end"></span></span>
+    <span class="pill" style="--bg:#9ea5ba;--lit:#9ea5ba;--dim:#333333;--ink:#111419;--vc:#ff977b"><span class="label">BR</span><span class="value">feature</span><span class="end"></span></span>
+    <span class="pill" style="--bg:#37a6d1;--lit:#37a6d1;--dim:#003366;--ink:#111419;--vc:#37a6d1"><span class="label">PR</span><span class="value">#12 APPR</span><span class="end"></span></span>
+    <span class="pill" style="--bg:#6d748c;--lit:#6d748c;--dim:#333333;--ink:#111419;--vc:#ff977b"><span class="label">DIFF</span><span class="value"><span style="color:#ff977b">+12</span> <span style="color:#e7442a">-3</span></span><span class="end"></span></span>
+    <span class="pill" style="--bg:#e7442a;--lit:#e7442a;--dim:#663300;--ink:#41c4f7;--vc:#ff977b"><span class="label">ERR</span><span class="value">1</span><span class="end"></span></span>
+  </div>
+</section>
+<section id="voy">
+  <h2>VOY theme</h2>
+  <p class="desc">Voyager, pastel. Measured from Voyager screen captures on Memory Alpha (DVD era); panel-true values snapped to web-safe or doubled-nibble hex; alert lifted for AA.</p>
+  <h3>Roles</h3>
+  <ul class="roles"><li><span class="chip" style="background:#000000"></span><code>bg</code> <span class="muted"> #000000</span></li>
+<li><span class="chip" style="background:#000000"></span><code>ink</code> <span class="muted"> #000000</span></li>
+<li><span class="chip" style="background:#bbccdd"></span><code>frame</code> <span class="muted"> #bbccdd</span></li>
+<li><span class="chip" style="background:#eebb77"></span><code>block</code> <span class="muted"> #eebb77</span></li>
+<li><span class="chip" style="background:#eeaa66"></span><code>accent</code> <span class="muted"> #eeaa66</span></li>
+<li><span class="chip" style="background:#cc8877"></span><code>stub</code> <span class="muted"> #cc8877</span></li>
+<li><span class="chip" style="background:#cccccc"></span><code>text</code> <span class="muted"> #cccccc</span></li>
+<li><span class="chip" style="background:#88bbdd"></span><code>meter-on</code> <span class="muted"> #88bbdd</span></li>
+<li><span class="chip" style="background:#9999cc"></span><code>meter-off</code> <span class="muted"> #9999cc</span></li>
+<li><span class="chip" style="background:#bb6655"></span><code>alert</code> <span class="muted"> #bb6655</span></li>
+<li><span class="chip" style="background:#ccddaa"></span><code>focus</code> <span class="muted"> #ccddaa</span></li>
+<li><span class="chip" style="background:#cccc99"></span><code>data</code> <span class="muted"> #cccc99</span></li>
+<li><span class="chip" style="background:#ffffff"></span><code>data-hi</code> <span class="muted"> #ffffff</span></li>
+<li><span class="chip" style="background:#eeaa66"></span><code>display</code> <span class="muted">accent #eeaa66</span></li>
+<li><span class="chip" style="background:#bb6655"></span><code>alert-text</code> <span class="muted">alert #bb6655</span></li>
+<li><span class="chip" style="background:#333333"></span><code>unlit</code> <span class="muted"> #333333</span></li>
+<li><span class="chip" style="background:#000000"></span><code>label-ink</code> <span class="muted">ink #000000</span></li>
+<li><span class="chip" style="background:#ccddaa"></span><code>emphasis-ink</code> <span class="muted">focus #ccddaa</span></li>
+<li><span class="chip" style="background:#cccc99"></span><code>value</code> <span class="muted">data #cccc99</span></li>
+<li><span class="chip" style="background:#9999cc"></span><code>muted</code> <span class="muted">meter-off #9999cc</span></li>
+<li><span class="chip" style="background:#88bbdd"></span><code>ok</code> <span class="muted">accent #88bbdd</span></li>
+<li><span class="chip" style="background:#cc8877"></span><code>warning</code> <span class="muted">stub #cc8877</span></li>
+<li><span class="chip" style="background:#cccc99"></span><code>added</code> <span class="muted">data #cccc99</span></li>
+<li><span class="chip" style="background:#bb6655"></span><code>removed</code> <span class="muted">alert #bb6655</span></li>
+<li><span class="chip" style="background:#eebb77"></span><code>accent-2</code> <span class="muted">block #eebb77</span></li>
+<li><span class="chip" style="background:#bbccdd"></span><code>accent-3</code> <span class="muted">frame #bbccdd</span></li>
+<li><span class="chip" style="background:#88bbdd"></span><code>accent-4</code> <span class="muted">meter-on #88bbdd</span></li>
+<li><span class="chip" style="background:#cc8877"></span><code>accent-5</code> <span class="muted">stub #cc8877</span></li></ul>
+  <h3>Roles by state</h3>
+  <div class="scroll"><table>
+    <thead><tr><th scope="col">Role</th><th scope="col">Lit</th><th scope="col">Off</th><th scope="col">Blink</th></tr></thead>
+    <tbody><tr><th scope="row"><code>frame</code><span class="hex">#bbccdd</span></th>
+        <td><span class="pill" style="--bg:#bbccdd;--lit:#bbccdd;--dim:#336666;--ink:#000000;--vc:#cccc99"><span class="label">frame</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#bbccdd;--dim:#336666;--ink:#000000;--vc:#9999cc"><span class="label">frame</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#bbccdd;--lit:#bbccdd;--dim:#336666;--ink:#000000;--vc:#cccc99"><span class="label">frame</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>block</code><span class="hex">#eebb77</span></th>
+        <td><span class="pill" style="--bg:#eebb77;--lit:#eebb77;--dim:#663333;--ink:#000000;--vc:#cccc99"><span class="label">block</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#eebb77;--dim:#663333;--ink:#000000;--vc:#9999cc"><span class="label">block</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#eebb77;--lit:#eebb77;--dim:#663333;--ink:#000000;--vc:#cccc99"><span class="label">block</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>accent</code><span class="hex">#eeaa66</span></th>
+        <td><span class="pill" style="--bg:#eeaa66;--lit:#eeaa66;--dim:#663333;--ink:#000000;--vc:#cccc99"><span class="label">accent</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#eeaa66;--dim:#663333;--ink:#000000;--vc:#9999cc"><span class="label">accent</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#eeaa66;--lit:#eeaa66;--dim:#663333;--ink:#000000;--vc:#cccc99"><span class="label">accent</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>stub</code><span class="hex">#cc8877</span></th>
+        <td><span class="pill" style="--bg:#cc8877;--lit:#cc8877;--dim:#663333;--ink:#000000;--vc:#cccc99"><span class="label">stub</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#cc8877;--dim:#663333;--ink:#000000;--vc:#9999cc"><span class="label">stub</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#cc8877;--lit:#cc8877;--dim:#663333;--ink:#000000;--vc:#cccc99"><span class="label">stub</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>text</code><span class="hex">#cccccc</span></th>
+        <td><span class="pill" style="--bg:#cccccc;--lit:#cccccc;--dim:#666666;--ink:#000000;--vc:#cccc99"><span class="label">text</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#cccccc;--dim:#666666;--ink:#000000;--vc:#9999cc"><span class="label">text</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#cccccc;--lit:#cccccc;--dim:#666666;--ink:#000000;--vc:#cccc99"><span class="label">text</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>meter-on</code><span class="hex">#88bbdd</span></th>
+        <td><span class="pill" style="--bg:#88bbdd;--lit:#88bbdd;--dim:#333366;--ink:#000000;--vc:#cccc99"><span class="label">meter</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#88bbdd;--dim:#333366;--ink:#000000;--vc:#9999cc"><span class="label">meter</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#88bbdd;--lit:#88bbdd;--dim:#333366;--ink:#000000;--vc:#cccc99"><span class="label">meter</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>meter-off</code><span class="hex">#9999cc</span></th>
+        <td><span class="pill" style="--bg:#9999cc;--lit:#9999cc;--dim:#333366;--ink:#000000;--vc:#cccc99"><span class="label">meter</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#9999cc;--dim:#333366;--ink:#000000;--vc:#9999cc"><span class="label">meter</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#9999cc;--lit:#9999cc;--dim:#333366;--ink:#000000;--vc:#cccc99"><span class="label">meter</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>alert</code><span class="hex">#bb6655</span></th>
+        <td><span class="pill" style="--bg:#bb6655;--lit:#bb6655;--dim:#333333;--ink:#000000;--vc:#cccc99"><span class="label">alert</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#bb6655;--dim:#333333;--ink:#000000;--vc:#9999cc"><span class="label">alert</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#bb6655;--lit:#bb6655;--dim:#333333;--ink:#000000;--vc:#cccc99"><span class="label">alert</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>focus</code><span class="hex">#ccddaa</span></th>
+        <td><span class="pill" style="--bg:#ccddaa;--lit:#ccddaa;--dim:#666633;--ink:#000000;--vc:#cccc99"><span class="label">focus</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#ccddaa;--dim:#666633;--ink:#000000;--vc:#9999cc"><span class="label">focus</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#ccddaa;--lit:#ccddaa;--dim:#666633;--ink:#000000;--vc:#cccc99"><span class="label">focus</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>data</code><span class="hex">#cccc99</span></th>
+        <td><span class="pill" style="--bg:#cccc99;--lit:#cccc99;--dim:#666633;--ink:#000000;--vc:#cccc99"><span class="label">data</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#cccc99;--dim:#666633;--ink:#000000;--vc:#9999cc"><span class="label">data</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#cccc99;--lit:#cccc99;--dim:#666633;--ink:#000000;--vc:#cccc99"><span class="label">data</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>display</code><span class="hex">#eeaa66</span></th>
+        <td><span class="pill" style="--bg:#eeaa66;--lit:#eeaa66;--dim:#663333;--ink:#000000;--vc:#cccc99"><span class="label">displa</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#eeaa66;--dim:#663333;--ink:#000000;--vc:#9999cc"><span class="label">displa</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#eeaa66;--lit:#eeaa66;--dim:#663333;--ink:#000000;--vc:#cccc99"><span class="label">displa</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>alert-text</code><span class="hex">#bb6655</span></th>
+        <td><span class="pill" style="--bg:#bb6655;--lit:#bb6655;--dim:#333333;--ink:#000000;--vc:#cccc99"><span class="label">alert</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#bb6655;--dim:#333333;--ink:#000000;--vc:#9999cc"><span class="label">alert</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#bb6655;--lit:#bb6655;--dim:#333333;--ink:#000000;--vc:#cccc99"><span class="label">alert</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>unlit</code><span class="hex">#333333</span></th>
+        <td><span class="pill" style="--bg:#333333;--lit:#333333;--dim:#000000;--ink:#000000;--vc:#cccc99"><span class="label">unlit</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#333333;--dim:#000000;--ink:#000000;--vc:#9999cc"><span class="label">unlit</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#333333;--lit:#333333;--dim:#000000;--ink:#000000;--vc:#cccc99"><span class="label">unlit</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>emphasis-ink</code><span class="hex">#ccddaa</span></th>
+        <td><span class="pill" style="--bg:#ccddaa;--lit:#ccddaa;--dim:#666633;--ink:#000000;--vc:#cccc99"><span class="label">emphas</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#ccddaa;--dim:#666633;--ink:#000000;--vc:#9999cc"><span class="label">emphas</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#ccddaa;--lit:#ccddaa;--dim:#666633;--ink:#000000;--vc:#cccc99"><span class="label">emphas</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>value</code><span class="hex">#cccc99</span></th>
+        <td><span class="pill" style="--bg:#cccc99;--lit:#cccc99;--dim:#666633;--ink:#000000;--vc:#cccc99"><span class="label">value</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#cccc99;--dim:#666633;--ink:#000000;--vc:#9999cc"><span class="label">value</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#cccc99;--lit:#cccc99;--dim:#666633;--ink:#000000;--vc:#cccc99"><span class="label">value</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>muted</code><span class="hex">#9999cc</span></th>
+        <td><span class="pill" style="--bg:#9999cc;--lit:#9999cc;--dim:#333366;--ink:#000000;--vc:#cccc99"><span class="label">muted</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#9999cc;--dim:#333366;--ink:#000000;--vc:#9999cc"><span class="label">muted</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#9999cc;--lit:#9999cc;--dim:#333366;--ink:#000000;--vc:#cccc99"><span class="label">muted</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>ok</code><span class="hex">#88bbdd</span></th>
+        <td><span class="pill" style="--bg:#88bbdd;--lit:#88bbdd;--dim:#333366;--ink:#000000;--vc:#cccc99"><span class="label">ok</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#88bbdd;--dim:#333366;--ink:#000000;--vc:#9999cc"><span class="label">ok</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#88bbdd;--lit:#88bbdd;--dim:#333366;--ink:#000000;--vc:#cccc99"><span class="label">ok</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>warning</code><span class="hex">#cc8877</span></th>
+        <td><span class="pill" style="--bg:#cc8877;--lit:#cc8877;--dim:#663333;--ink:#000000;--vc:#cccc99"><span class="label">warnin</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#cc8877;--dim:#663333;--ink:#000000;--vc:#9999cc"><span class="label">warnin</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#cc8877;--lit:#cc8877;--dim:#663333;--ink:#000000;--vc:#cccc99"><span class="label">warnin</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>added</code><span class="hex">#cccc99</span></th>
+        <td><span class="pill" style="--bg:#cccc99;--lit:#cccc99;--dim:#666633;--ink:#000000;--vc:#cccc99"><span class="label">added</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#cccc99;--dim:#666633;--ink:#000000;--vc:#9999cc"><span class="label">added</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#cccc99;--lit:#cccc99;--dim:#666633;--ink:#000000;--vc:#cccc99"><span class="label">added</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>removed</code><span class="hex">#bb6655</span></th>
+        <td><span class="pill" style="--bg:#bb6655;--lit:#bb6655;--dim:#333333;--ink:#000000;--vc:#cccc99"><span class="label">remove</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#bb6655;--dim:#333333;--ink:#000000;--vc:#9999cc"><span class="label">remove</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#bb6655;--lit:#bb6655;--dim:#333333;--ink:#000000;--vc:#cccc99"><span class="label">remove</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>accent-2</code><span class="hex">#eebb77</span></th>
+        <td><span class="pill" style="--bg:#eebb77;--lit:#eebb77;--dim:#663333;--ink:#000000;--vc:#cccc99"><span class="label">accent</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#eebb77;--dim:#663333;--ink:#000000;--vc:#9999cc"><span class="label">accent</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#eebb77;--lit:#eebb77;--dim:#663333;--ink:#000000;--vc:#cccc99"><span class="label">accent</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>accent-3</code><span class="hex">#bbccdd</span></th>
+        <td><span class="pill" style="--bg:#bbccdd;--lit:#bbccdd;--dim:#336666;--ink:#000000;--vc:#cccc99"><span class="label">accent</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#bbccdd;--dim:#336666;--ink:#000000;--vc:#9999cc"><span class="label">accent</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#bbccdd;--lit:#bbccdd;--dim:#336666;--ink:#000000;--vc:#cccc99"><span class="label">accent</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>accent-4</code><span class="hex">#88bbdd</span></th>
+        <td><span class="pill" style="--bg:#88bbdd;--lit:#88bbdd;--dim:#333366;--ink:#000000;--vc:#cccc99"><span class="label">accent</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#88bbdd;--dim:#333366;--ink:#000000;--vc:#9999cc"><span class="label">accent</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#88bbdd;--lit:#88bbdd;--dim:#333366;--ink:#000000;--vc:#cccc99"><span class="label">accent</span><span class="value">blink</span><span class="end"></span></span></td></tr>
+<tr><th scope="row"><code>accent-5</code><span class="hex">#cc8877</span></th>
+        <td><span class="pill" style="--bg:#cc8877;--lit:#cc8877;--dim:#663333;--ink:#000000;--vc:#cccc99"><span class="label">accent</span><span class="value">lit</span><span class="end"></span></span></td>
+        <td><span class="pill" style="--bg:#333333;--lit:#cc8877;--dim:#663333;--ink:#000000;--vc:#9999cc"><span class="label">accent</span><span class="value">off</span><span class="end"></span></span></td>
+        <td><span class="pill blink" style="--bg:#cc8877;--lit:#cc8877;--dim:#663333;--ink:#000000;--vc:#cccc99"><span class="label">accent</span><span class="value">blink</span><span class="end"></span></span></td></tr></tbody>
+  </table></div>
+  <h3>Examples</h3>
+  <p class="muted">A system readout:</p>
+  <div class="row">
+    <span class="pill" style="--bg:#88bbdd;--lit:#88bbdd;--dim:#333366;--ink:#000000;--vc:#88bbdd"><span class="label">CTX</span><span class="value">42%</span><span class="end"></span></span>
+    <span class="pill" style="--bg:#eeaa66;--lit:#eeaa66;--dim:#663333;--ink:#000000;--vc:#cccc99"><span class="label">5H</span><span class="value">8%</span><span class="end"></span></span>
+    <span class="pill blink" style="--bg:#eeaa66;--lit:#eeaa66;--dim:#663333;--ink:#000000;--vc:#bb6655"><span class="label">7D</span><span class="value">91% ↻Tue</span><span class="end"></span></span>
+    <span class="pill" style="--bg:#88bbdd;--lit:#88bbdd;--dim:#333366;--ink:#000000;--vc:#cccc99"><span class="label">DISK</span><span class="value">▓▓▓▓▓▓░░░░ 120G free</span><span class="end"></span></span>
+    <span class="pill" style="--bg:#bbccdd;--lit:#bbccdd;--dim:#336666;--ink:#000000;--vc:#cccc99"><span class="label">MODEL</span><span class="value">Opus</span><span class="end"></span></span>
+    <span class="pill" style="--bg:#eebb77;--lit:#eebb77;--dim:#663333;--ink:#000000;--vc:#cccc99"><span class="label">BR</span><span class="value">main</span><span class="end"></span></span>
     <span class="pill" style="--bg:#333333;--lit:#9999cc;--dim:#333366;--ink:#000000;--vc:#9999cc"><span class="label">DIFF</span><span class="value">clean</span><span class="end"></span></span>
   </div>
   <p class="muted">A navigation row with an alert indicator:</p>
   <div class="row">
-    <span class="pill" style="--bg:#ff9900;--lit:#ff9900;--dim:#663300;--ink:#000000;--vc:#ffcc66"><span class="label">PATH</span><span class="value">~/code/lcars</span><span class="end"></span></span>
-    <span class="pill" style="--bg:#cc99cc;--lit:#cc99cc;--dim:#663366;--ink:#000000;--vc:#ffcc66"><span class="label">BR</span><span class="value">feature</span><span class="end"></span></span>
-    <span class="pill" style="--bg:#99ccff;--lit:#99ccff;--dim:#336666;--ink:#000000;--vc:#99ccff"><span class="label">PR</span><span class="value">#12 APPR</span><span class="end"></span></span>
-    <span class="pill" style="--bg:#9999cc;--lit:#9999cc;--dim:#333366;--ink:#000000;--vc:#ffcc66"><span class="label">DIFF</span><span class="value"><span style="color:#ffcc99">+12</span> <span style="color:#cc6666">-3</span></span><span class="end"></span></span>
-    <span class="pill" style="--bg:#cc6666;--lit:#cc6666;--dim:#663333;--ink:#ffff99;--vc:#ffcc66"><span class="label">ERR</span><span class="value">1</span><span class="end"></span></span>
-  </div>
-</section>
-<section id="2375">
-  <h2>2375 palette</h2>
-  <p class="desc">The 2375 series from trekcolors lcars_2375(), named by stardate year as trekcolors names it: https://leonawicz.github.io/trekcolors/reference/lcars_colors.html (data: https://github.com/leonawicz/trekcolors/blob/master/data-raw/data.R). Its colors sit off the 0x33 grid; dimmed colors still snap to it.</p>
-  <h3>Roles</h3>
-  <ul class="roles"><li><span class="chip" style="background:#ee9955"></span><code>text</code> <span class="muted">sandy-brown #ee9955</span></li>
-<li><span class="chip" style="background:#000000"></span><code>label-ink</code> <span class="muted">black #000000</span></li>
-<li><span class="chip" style="background:#ee9955"></span><code>emphasis-ink</code> <span class="muted">sandy-brown #ee9955</span></li>
-<li><span class="chip" style="background:#333333"></span><code>unlit</code> <span class="muted">unlit #333333</span></li>
-<li><span class="chip" style="background:#ee9955"></span><code>value</code> <span class="muted">sandy-brown #ee9955</span></li>
-<li><span class="chip" style="background:#9977aa"></span><code>muted</code> <span class="muted">lavender-purple #9977aa</span></li>
-<li><span class="chip" style="background:#dd6644"></span><code>alert</code> <span class="muted">red-damask #dd6644</span></li>
-<li><span class="chip" style="background:#bb6622"></span><code>warning</code> <span class="muted">bourbon #bb6622</span></li>
-<li><span class="chip" style="background:#6688cc"></span><code>ok</code> <span class="muted">danub #6688cc</span></li>
-<li><span class="chip" style="background:#bb6622"></span><code>accent</code> <span class="muted">bourbon #bb6622</span></li>
-<li><span class="chip" style="background:#9977aa"></span><code>accent-2</code> <span class="muted">lavender-purple #9977aa</span></li>
-<li><span class="chip" style="background:#4455bb"></span><code>accent-3</code> <span class="muted">indigo #4455bb</span></li>
-<li><span class="chip" style="background:#6688cc"></span><code>accent-4</code> <span class="muted">danub #6688cc</span></li>
-<li><span class="chip" style="background:#774466"></span><code>accent-5</code> <span class="muted">cosmic #774466</span></li>
-<li><span class="chip" style="background:#ee9955"></span><code>added</code> <span class="muted">sandy-brown #ee9955</span></li>
-<li><span class="chip" style="background:#dd6644"></span><code>removed</code> <span class="muted">red-damask #dd6644</span></li></ul>
-  <h3>Colors by state</h3>
-  <div class="scroll"><table>
-    <thead><tr><th scope="col">Color</th><th scope="col">Lit</th><th scope="col">Off</th><th scope="col">Blink</th></tr></thead>
-    <tbody><tr><th scope="row"><code>danub</code><span class="hex">#6688cc</span></th>
-        <td><span class="pill" style="--bg:#6688cc;--lit:#6688cc;--dim:#333366;--ink:#000000;--vc:#ee9955"><span class="label">danub</span><span class="value">lit</span><span class="end"></span></span></td>
-        <td><span class="pill" style="--bg:#333333;--lit:#6688cc;--dim:#333366;--ink:#000000;--vc:#9977aa"><span class="label">danub</span><span class="value">off</span><span class="end"></span></span></td>
-        <td><span class="pill blink" style="--bg:#6688cc;--lit:#6688cc;--dim:#333366;--ink:#000000;--vc:#ee9955"><span class="label">danub</span><span class="value">blink</span><span class="end"></span></span></td></tr>
-<tr><th scope="row"><code>indigo</code><span class="hex">#4455bb</span></th>
-        <td><span class="pill" style="--bg:#4455bb;--lit:#4455bb;--dim:#333333;--ink:#000000;--vc:#ee9955"><span class="label">indigo</span><span class="value">lit</span><span class="end"></span></span></td>
-        <td><span class="pill" style="--bg:#333333;--lit:#4455bb;--dim:#333333;--ink:#000000;--vc:#9977aa"><span class="label">indigo</span><span class="value">off</span><span class="end"></span></span></td>
-        <td><span class="pill blink" style="--bg:#4455bb;--lit:#4455bb;--dim:#333333;--ink:#000000;--vc:#ee9955"><span class="label">indigo</span><span class="value">blink</span><span class="end"></span></span></td></tr>
-<tr><th scope="row"><code>lavender-purple</code><span class="hex">#9977aa</span></th>
-        <td><span class="pill" style="--bg:#9977aa;--lit:#9977aa;--dim:#333333;--ink:#000000;--vc:#ee9955"><span class="label">lavend</span><span class="value">lit</span><span class="end"></span></span></td>
-        <td><span class="pill" style="--bg:#333333;--lit:#9977aa;--dim:#333333;--ink:#000000;--vc:#9977aa"><span class="label">lavend</span><span class="value">off</span><span class="end"></span></span></td>
-        <td><span class="pill blink" style="--bg:#9977aa;--lit:#9977aa;--dim:#333333;--ink:#000000;--vc:#ee9955"><span class="label">lavend</span><span class="value">blink</span><span class="end"></span></span></td></tr>
-<tr><th scope="row"><code>cosmic</code><span class="hex">#774466</span></th>
-        <td><span class="pill" style="--bg:#774466;--lit:#774466;--dim:#333333;--ink:#000000;--vc:#ee9955"><span class="label">cosmic</span><span class="value">lit</span><span class="end"></span></span></td>
-        <td><span class="pill" style="--bg:#333333;--lit:#774466;--dim:#333333;--ink:#000000;--vc:#9977aa"><span class="label">cosmic</span><span class="value">off</span><span class="end"></span></span></td>
-        <td><span class="pill blink" style="--bg:#774466;--lit:#774466;--dim:#333333;--ink:#000000;--vc:#ee9955"><span class="label">cosmic</span><span class="value">blink</span><span class="end"></span></span></td></tr>
-<tr><th scope="row"><code>red-damask</code><span class="hex">#dd6644</span></th>
-        <td><span class="pill" style="--bg:#dd6644;--lit:#dd6644;--dim:#663333;--ink:#000000;--vc:#ee9955"><span class="label">red</span><span class="value">lit</span><span class="end"></span></span></td>
-        <td><span class="pill" style="--bg:#333333;--lit:#dd6644;--dim:#663333;--ink:#000000;--vc:#9977aa"><span class="label">red</span><span class="value">off</span><span class="end"></span></span></td>
-        <td><span class="pill blink" style="--bg:#dd6644;--lit:#dd6644;--dim:#663333;--ink:#000000;--vc:#ee9955"><span class="label">red</span><span class="value">blink</span><span class="end"></span></span></td></tr>
-<tr><th scope="row"><code>medium-carmine</code><span class="hex">#aa5533</span></th>
-        <td><span class="pill" style="--bg:#aa5533;--lit:#aa5533;--dim:#333300;--ink:#000000;--vc:#ee9955"><span class="label">medium</span><span class="value">lit</span><span class="end"></span></span></td>
-        <td><span class="pill" style="--bg:#333333;--lit:#aa5533;--dim:#333300;--ink:#000000;--vc:#9977aa"><span class="label">medium</span><span class="value">off</span><span class="end"></span></span></td>
-        <td><span class="pill blink" style="--bg:#aa5533;--lit:#aa5533;--dim:#333300;--ink:#000000;--vc:#ee9955"><span class="label">medium</span><span class="value">blink</span><span class="end"></span></span></td></tr>
-<tr><th scope="row"><code>bourbon</code><span class="hex">#bb6622</span></th>
-        <td><span class="pill" style="--bg:#bb6622;--lit:#bb6622;--dim:#333300;--ink:#000000;--vc:#ee9955"><span class="label">bourbo</span><span class="value">lit</span><span class="end"></span></span></td>
-        <td><span class="pill" style="--bg:#333333;--lit:#bb6622;--dim:#333300;--ink:#000000;--vc:#9977aa"><span class="label">bourbo</span><span class="value">off</span><span class="end"></span></span></td>
-        <td><span class="pill blink" style="--bg:#bb6622;--lit:#bb6622;--dim:#333300;--ink:#000000;--vc:#ee9955"><span class="label">bourbo</span><span class="value">blink</span><span class="end"></span></span></td></tr>
-<tr><th scope="row"><code>sandy-brown</code><span class="hex">#ee9955</span></th>
-        <td><span class="pill" style="--bg:#ee9955;--lit:#ee9955;--dim:#663333;--ink:#000000;--vc:#ee9955"><span class="label">sandy</span><span class="value">lit</span><span class="end"></span></span></td>
-        <td><span class="pill" style="--bg:#333333;--lit:#ee9955;--dim:#663333;--ink:#000000;--vc:#9977aa"><span class="label">sandy</span><span class="value">off</span><span class="end"></span></span></td>
-        <td><span class="pill blink" style="--bg:#ee9955;--lit:#ee9955;--dim:#663333;--ink:#000000;--vc:#ee9955"><span class="label">sandy</span><span class="value">blink</span><span class="end"></span></span></td></tr>
-<tr><th scope="row"><code>unlit</code><span class="hex">#333333</span></th>
-        <td><span class="pill" style="--bg:#333333;--lit:#333333;--dim:#000000;--ink:#000000;--vc:#ee9955"><span class="label">unlit</span><span class="value">lit</span><span class="end"></span></span></td>
-        <td><span class="pill" style="--bg:#333333;--lit:#333333;--dim:#000000;--ink:#000000;--vc:#9977aa"><span class="label">unlit</span><span class="value">off</span><span class="end"></span></span></td>
-        <td><span class="pill blink" style="--bg:#333333;--lit:#333333;--dim:#000000;--ink:#000000;--vc:#ee9955"><span class="label">unlit</span><span class="value">blink</span><span class="end"></span></span></td></tr></tbody>
-  </table></div>
-  <h3>Examples</h3>
-  <p class="muted">A system readout:</p>
-  <div class="row">
-    <span class="pill" style="--bg:#6688cc;--lit:#6688cc;--dim:#333366;--ink:#000000;--vc:#6688cc"><span class="label">CTX</span><span class="value">42%</span><span class="end"></span></span>
-    <span class="pill" style="--bg:#bb6622;--lit:#bb6622;--dim:#333300;--ink:#000000;--vc:#ee9955"><span class="label">5H</span><span class="value">8%</span><span class="end"></span></span>
-    <span class="pill blink" style="--bg:#bb6622;--lit:#bb6622;--dim:#333300;--ink:#000000;--vc:#dd6644"><span class="label">7D</span><span class="value">91% ↻Tue</span><span class="end"></span></span>
-    <span class="pill" style="--bg:#6688cc;--lit:#6688cc;--dim:#333366;--ink:#000000;--vc:#ee9955"><span class="label">DISK</span><span class="value">▓▓▓▓▓▓░░░░ 120G free</span><span class="end"></span></span>
-    <span class="pill" style="--bg:#4455bb;--lit:#4455bb;--dim:#333333;--ink:#000000;--vc:#ee9955"><span class="label">MODEL</span><span class="value">Opus</span><span class="end"></span></span>
-    <span class="pill" style="--bg:#9977aa;--lit:#9977aa;--dim:#333333;--ink:#000000;--vc:#ee9955"><span class="label">BR</span><span class="value">main</span><span class="end"></span></span>
-    <span class="pill" style="--bg:#333333;--lit:#9977aa;--dim:#333333;--ink:#000000;--vc:#9977aa"><span class="label">DIFF</span><span class="value">clean</span><span class="end"></span></span>
-  </div>
-  <p class="muted">A navigation row with an alert indicator:</p>
-  <div class="row">
-    <span class="pill" style="--bg:#bb6622;--lit:#bb6622;--dim:#333300;--ink:#000000;--vc:#ee9955"><span class="label">PATH</span><span class="value">~/code/lcars</span><span class="end"></span></span>
-    <span class="pill" style="--bg:#9977aa;--lit:#9977aa;--dim:#333333;--ink:#000000;--vc:#ee9955"><span class="label">BR</span><span class="value">feature</span><span class="end"></span></span>
-    <span class="pill" style="--bg:#6688cc;--lit:#6688cc;--dim:#333366;--ink:#000000;--vc:#6688cc"><span class="label">PR</span><span class="value">#12 APPR</span><span class="end"></span></span>
-    <span class="pill" style="--bg:#9977aa;--lit:#9977aa;--dim:#333333;--ink:#000000;--vc:#ee9955"><span class="label">DIFF</span><span class="value"><span style="color:#ee9955">+12</span> <span style="color:#dd6644">-3</span></span><span class="end"></span></span>
-    <span class="pill" style="--bg:#dd6644;--lit:#dd6644;--dim:#663333;--ink:#ee9955;--vc:#ee9955"><span class="label">ERR</span><span class="value">1</span><span class="end"></span></span>
+    <span class="pill" style="--bg:#eeaa66;--lit:#eeaa66;--dim:#663333;--ink:#000000;--vc:#cccc99"><span class="label">PATH</span><span class="value">~/code/lcars</span><span class="end"></span></span>
+    <span class="pill" style="--bg:#eebb77;--lit:#eebb77;--dim:#663333;--ink:#000000;--vc:#cccc99"><span class="label">BR</span><span class="value">feature</span><span class="end"></span></span>
+    <span class="pill" style="--bg:#88bbdd;--lit:#88bbdd;--dim:#333366;--ink:#000000;--vc:#88bbdd"><span class="label">PR</span><span class="value">#12 APPR</span><span class="end"></span></span>
+    <span class="pill" style="--bg:#9999cc;--lit:#9999cc;--dim:#333366;--ink:#000000;--vc:#cccc99"><span class="label">DIFF</span><span class="value"><span style="color:#cccc99">+12</span> <span style="color:#bb6655">-3</span></span><span class="end"></span></span>
+    <span class="pill" style="--bg:#bb6655;--lit:#bb6655;--dim:#333333;--ink:#ccddaa;--vc:#cccc99"><span class="label">ERR</span><span class="value">1</span><span class="end"></span></span>
   </div>
 </section>
 

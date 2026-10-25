@@ -1,0 +1,174 @@
+{
+  "$description": "The Next Generation, classic warm. Fan reconstruction (thelcars.com Classic, https://www.thelcars.com/colors.php). No production hex values exist for TNG.",
+  "$extensions": {
+    "lcars.theme": {
+      "name": "TNG",
+      "era": "The Next Generation, classic warm"
+    }
+  },
+  "role": {
+    "$type": "color",
+    "bg": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "hex": "#000000"
+      }
+    },
+    "ink": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "hex": "#000000"
+      }
+    },
+    "frame": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.9176,
+          0.6118,
+          0.4471
+        ],
+        "hex": "#ea9c72"
+      }
+    },
+    "block": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.7294,
+          0.6431,
+          0.898
+        ],
+        "hex": "#baa4e5"
+      }
+    },
+    "accent": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.5333,
+          0.6,
+          1.0
+        ],
+        "hex": "#8899ff"
+      }
+    },
+    "stub": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.9216,
+          0.5804,
+          0.2275
+        ],
+        "hex": "#eb943a"
+      }
+    },
+    "text": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.8235,
+          0.6078,
+          0.498
+        ],
+        "hex": "#d29b7f"
+      }
+    },
+    "meter-on": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.5333,
+          0.6,
+          1.0
+        ],
+        "hex": "#8899ff"
+      }
+    },
+    "meter-off": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.8235,
+          0.6078,
+          0.498
+        ],
+        "hex": "#d29b7f"
+      }
+    },
+    "alert": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1.0,
+          0.1333,
+          0.0
+        ],
+        "hex": "#ff2200"
+      }
+    },
+    "focus": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1.0,
+          1.0,
+          0.6
+        ],
+        "hex": "#ffff99"
+      }
+    },
+    "data": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.9216,
+          0.5804,
+          0.2275
+        ],
+        "hex": "#eb943a"
+      }
+    },
+    "data-hi": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "hex": "#ffffff"
+      }
+    }
+  },
+  "mode": {
+    "light": {
+      "$description": "Light-scheme overrides measured for this theme (lab RS-09).",
+      "role": {
+        "$type": "color",
+        "meter-on": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.4,
+              0.5333,
+              0.8667
+            ],
+            "hex": "#6688dd"
+          }
+        }
+      }
+    }
+  }
+}
