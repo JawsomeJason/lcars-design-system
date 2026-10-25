@@ -11,7 +11,7 @@ the repo is public).
 
 | Path                     | What it is                                                      |
 | ------------------------ | --------------------------------------------------------------- |
-| `tokens/roles.tokens.json` | Every role: structural and semantic, defaults and minimum contrast; blink and dim |
+| `tokens/roles.tokens.json` | Every role: structural and semantic, with defaults; blink and dim |
 | `dist/tokens.json`       | Generated. The tokens resolved to plain hex, for consumers       |
 | `tokens/themes/*.tokens.json` | Themes (eras): each role's color, light-mode measurements, sources |
 | `tokens/modes/*.tokens.json` | Modes: shared `light` and `print` values                 |
@@ -55,7 +55,7 @@ tokens.type.capRatio;                           // 0.859375
 ```
 
 Each theme has `name`, `era`, `source`, an optional `standIn`, and `modes.{dark,light,print}` (role to
-hex). `minContrast` lists each role's minimum against `bg`; `type` holds typography; `state` holds
+hex). `type` holds typography; `state` holds
 `dim`, `dimSnap` and `blinkPeriodMs`.
 
 ## Use it from a shell

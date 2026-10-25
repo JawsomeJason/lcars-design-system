@@ -46,6 +46,7 @@ component written against roles works under any combination. Each theme file cit
 Structural roles (`frame`, `block`, `accent`, `stub`, `text`, `meter-on`, `meter-off`, `alert`,
 `focus`, `data`) describe how LCARS is built: frames never carry text, blocks carry `ink`. Semantic
 roles (`ok`, `warning`, `value`, `muted`, `added`, `removed`, `accent-2` to `accent-5`) alias
-structural ones, and a theme may point one elsewhere, as VOY points `ok` at its meter blue. Roles
-with a minimum contrast against `bg` carry it in `$extensions["lcars.minContrast"]`, and the tests
-enforce it in dark and light.
+structural ones, and a theme may point one elsewhere, as VOY points `ok` at its meter blue.
+
+Canon comes first: colors are what the screen shows, measured or reconstructed, never adjusted to
+meet a contrast target.

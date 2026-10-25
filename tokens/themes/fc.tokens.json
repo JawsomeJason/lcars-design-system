@@ -1,5 +1,5 @@
 {
-  "$description": "First Contact, Enterprise-E ops. Measured from First Contact 2023 Blu-ray frames (TrekCore) and Memory Alpha captures of the ops and helm consoles; exposure-normalized, snapped; alert lifted for AA (panel-true #930021).",
+  "$description": "First Contact, Enterprise-E ops. Measured from First Contact 2023 Blu-ray frames (TrekCore) and Memory Alpha captures of the ops and helm consoles; exposure-normalized, snapped; screen-true values, alert included.",
   "$extensions": {
     "lcars.theme": {
       "name": "FC",
@@ -111,11 +111,11 @@
       "$value": {
         "colorSpace": "srgb",
         "components": [
-          0.8,
-          0.2667,
-          0.3333
+          0.5765,
+          0.0,
+          0.1294
         ],
-        "hex": "#cc4455"
+        "hex": "#930021"
       }
     },
     "focus": {
@@ -154,7 +154,7 @@
   },
   "mode": {
     "light": {
-      "$description": "Light-scheme overrides measured for this theme (lab RS-09).",
+      "$description": "Light-scheme values measured for this theme in the LCARS lab.",
       "role": {
         "$type": "color",
         "bg": {
@@ -188,17 +188,6 @@
               0.0
             ],
             "hex": "#bb5500"
-          }
-        },
-        "meter-on": {
-          "$value": {
-            "colorSpace": "srgb",
-            "components": [
-              0.3333,
-              0.5333,
-              0.8667
-            ],
-            "hex": "#5588dd"
           }
         },
         "data": {

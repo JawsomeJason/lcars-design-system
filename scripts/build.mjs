@@ -112,10 +112,6 @@ const themes = readdirSync(join(root, 'tokens/themes'))
   .sort((a, b) => (a.id === DEFAULT ? -1 : b.id === DEFAULT ? 1 : a.id.localeCompare(b.id)));
 const palettes = themes;
 
-// WCAG contrast of fg on bg.
-const luminance = (hex) => { const [r, g, b] = rgb(hex).map((c) => srgbToLinear(c / 255)); return 0.2126 * r + 0.7152 * g + 0.0722 * b; };
-const contrast = (a, b) => { const [x, y] = [luminance(a), luminance(b)].sort((p, q) => q - p); return (x + 0.05) / (y + 0.05); };
-
 const dimmed = (hex) =>
   '#' + rgb(hex).map((c) => (Math.floor((2 * c * dimPercent + 100 * snap) / (200 * snap)) * snap).toString(16).padStart(2, '0')).join('');
 // case arms: the default goes last, as the catch-all
@@ -389,7 +385,6 @@ function tokensJson() {
     default: { theme: DEFAULT, mode: 'dark' },
     state: { dim, dimSnap: state['dim-snap'].$value, blinkPeriodMs: blinkSeconds * 1000 },
     type: resolvedType(),
-    minContrast: Object.fromEntries(tokens(roles.role).filter(([, v]) => v.$extensions?.['lcars.minContrast']).map(([n, v]) => [n, v.$extensions['lcars.minContrast']])),
     themes: Object.fromEntries(themes.map((p) => [p.id, {
       name: p.title,
       era: p.era,

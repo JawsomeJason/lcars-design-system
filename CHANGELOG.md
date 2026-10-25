@@ -2,6 +2,15 @@
 
 Versions follow the rules in the README's "Versions" section.
 
+## 0.5.0
+
+Canon first (breaking below 1.0: color values change and a field is removed):
+
+- Screen-true alerts replace the contrast-lifted ones: VOY `#873421` (still a stand-in), FC `#930021`,
+  NEM `#bf0000`.
+- Light mode keeps each theme's own meter color; the moves made to reach 3:1 are gone.
+- No contrast minimums: `minContrast` leaves `dist/tokens.json`, and the contrast test is removed.
+
 ## 0.4.0
 
 Breaking (below 1.0, breaking changes bump the minor):

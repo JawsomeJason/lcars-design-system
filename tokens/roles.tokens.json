@@ -1,5 +1,5 @@
 {
-  "$description": "Every role a component may use. Structural roles come from the LCARS lab; semantic roles alias them by default, and a theme may point one elsewhere. minContrast is against bg, per theme and mode.",
+  "$description": "Every role a component may use. Structural roles come from the LCARS lab; semantic roles alias them by default, and a theme may point one elsewhere. Canon first: values come from the screen, not from contrast targets.",
   "role": {
     "$type": "color",
     "bg": {
@@ -16,38 +16,23 @@
     },
     "block": {
       "$description": "Sidebar blocks and buttons. Carries ink.",
-      "$value": "{theme}",
-      "$extensions": {
-        "lcars.minContrast": 3
-      }
+      "$value": "{theme}"
     },
     "accent": {
       "$description": "Code bars, tabs, titles and headings.",
-      "$value": "{theme}",
-      "$extensions": {
-        "lcars.minContrast": 4.5
-      }
+      "$value": "{theme}"
     },
     "stub": {
       "$description": "Short counter-color segments.",
-      "$value": "{theme}",
-      "$extensions": {
-        "lcars.minContrast": 3
-      }
+      "$value": "{theme}"
     },
     "text": {
       "$description": "Reading text on the page.",
-      "$value": "{theme}",
-      "$extensions": {
-        "lcars.minContrast": 4.5
-      }
+      "$value": "{theme}"
     },
     "meter-on": {
       "$description": "Filled meter segments.",
-      "$value": "{theme}",
-      "$extensions": {
-        "lcars.minContrast": 3
-      }
+      "$value": "{theme}"
     },
     "meter-off": {
       "$description": "Empty meter segments and quiet readouts.",
@@ -55,24 +40,15 @@
     },
     "alert": {
       "$description": "Error state only, always paired with text.",
-      "$value": "{theme}",
-      "$extensions": {
-        "lcars.minContrast": 4.5
-      }
+      "$value": "{theme}"
     },
     "focus": {
       "$description": "The lit focus ring in the gap.",
-      "$value": "{theme}",
-      "$extensions": {
-        "lcars.minContrast": 3
-      }
+      "$value": "{theme}"
     },
     "data": {
       "$description": "Numbers in a data cascade or readout.",
-      "$value": "{theme}",
-      "$extensions": {
-        "lcars.minContrast": 4.5
-      }
+      "$value": "{theme}"
     },
     "data-hi": {
       "$description": "The highlighted number in a cascade.",
@@ -80,17 +56,11 @@
     },
     "display": {
       "$description": "Display text set on the page, such as headings. The accent in dark schemes; light schemes darken the frame.",
-      "$value": "{role.accent}",
-      "$extensions": {
-        "lcars.minContrast": 4.5
-      }
+      "$value": "{role.accent}"
     },
     "alert-text": {
       "$description": "Alert text on the page.",
-      "$value": "{role.alert}",
-      "$extensions": {
-        "lcars.minContrast": 4.5
-      }
+      "$value": "{role.alert}"
     },
     "unlit": {
       "$description": "The block color of an off component.",

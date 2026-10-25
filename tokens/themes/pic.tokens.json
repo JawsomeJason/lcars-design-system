@@ -151,24 +151,5 @@
         "hex": "#f3f4f7"
       }
     }
-  },
-  "mode": {
-    "light": {
-      "$description": "Light-scheme overrides measured for this theme (lab RS-09).",
-      "role": {
-        "$type": "color",
-        "meter-on": {
-          "$value": {
-            "colorSpace": "srgb",
-            "components": [
-              0.2,
-              0.5333,
-              0.7333
-            ],
-            "hex": "#3388bb"
-          }
-        }
-      }
-    }
   }
 }

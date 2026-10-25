@@ -1,5 +1,5 @@
 {
-  "$description": "Nemesis, Enterprise-E blue. Measured from Nemesis 2023 Blu-ray frames (TrekCore) and Memory Alpha captures; blue grade cast removed, snapped; alert lifted for AA (panel-true #bf0000).",
+  "$description": "Nemesis, Enterprise-E blue. Measured from Nemesis 2023 Blu-ray frames (TrekCore) and Memory Alpha captures; blue grade cast removed, snapped; screen-true values, alert included.",
   "$extensions": {
     "lcars.theme": {
       "name": "NEM",
@@ -111,11 +111,11 @@
       "$value": {
         "colorSpace": "srgb",
         "components": [
-          0.8667,
-          0.2,
-          0.1333
+          0.749,
+          0.0,
+          0.0
         ],
-        "hex": "#dd3322"
+        "hex": "#bf0000"
       }
     },
     "focus": {
@@ -154,7 +154,7 @@
   },
   "mode": {
     "light": {
-      "$description": "Light-scheme overrides measured for this theme (lab RS-09).",
+      "$description": "Light-scheme values measured for this theme in the LCARS lab.",
       "role": {
         "$type": "color",
         "bg": {
@@ -188,17 +188,6 @@
               0.0
             ],
             "hex": "#bb5500"
-          }
-        },
-        "meter-on": {
-          "$value": {
-            "colorSpace": "srgb",
-            "components": [
-              0.5333,
-              0.5333,
-              0.1333
-            ],
-            "hex": "#888822"
           }
         },
         "data": {
