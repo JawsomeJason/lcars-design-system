@@ -10,6 +10,7 @@ const ERAS = {
   fc: { show: 'First Contact', years: '1996', stardate: ['Stardate', '50893.5'], blurb: 'The Enterprise-E arrives with darker, film-graded panels: bronze frames, lavender blocks, pale cyan headings and a deep red alert. Measured from the 2023 Blu-ray.' },
   nem: { show: 'Nemesis', years: '2002', stardate: ['Stardate', '56844.9'], blurb: 'The Enterprise-E regraded toward blue: deep blue frames, cyan headings, a hard red alert. Measured from the 2023 Blu-ray with the blue grade cast removed.' },
   pic: { show: 'Picard, season 1', years: '2020', stardate: ['Year', '2399'], blurb: 'Slate and steel on a blue-black page. It is built on the only studio-sourced LCARS hex values found, posted by designer Andrew Jarvis; the blue, stub and text are thelcars.com extensions.' },
+  ld: { show: 'Lower Decks', years: '2020–2024', stardate: ['Year', '2380'], blurb: 'Mike McMahan calls Lower Decks “our version” of the TNG era, just hand drawn: butter, honey and harvest gold on black, with orange stubs and an October-sunset alert. The colors are thelcars.com’s Lower Decks set; which color plays which role is this system’s reading.' },
 };
 const ERA_ORDER = Object.keys(ERAS);
 
@@ -233,12 +234,6 @@ export function site({ themes, roles, type, version, dimmed, blinkSeconds, dim, 
   const erasSection = `<section id="eras">${sh(2)}
   <p class="lede">Okuda imagined panels that reconfigure themselves, so each era repainted the same grammar. A theme is one era’s colors, assigned to every role. Choose one and the whole page repaints.</p>
   <div class="panels">${eras.map(eraCard).join('\n')}
-    <article class="era">
-      ${h3('Lower Decks · planned')}
-      <p>Mike McMahan calls Lower Decks “our version” of the TNG era, hand drawn. It joins once its frames are measured.</p>
-      ${h3('Deep Space Nine · open')}
-      <p>The station was built by Cardassians and its Ops screens keep their look. No sourced palette exists yet for the show’s Starfleet panels.</p>
-    </article>
   </div>
 </section>`;
 

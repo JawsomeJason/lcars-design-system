@@ -24,7 +24,7 @@ into `docs/`, which GitHub Pages serves from `main`.
 | `scripts/build.mjs`      | Generates every committed output from the tokens                |
 
 Tokens use the [Design Tokens Community Group format](https://www.designtokens.org/tr/drafts/format/)
-(`$value`, `$type`). Themes: `tng` (default), `pic`, `voy`, `fc` and `nem`, measured or reconstructed
+(`$value`, `$type`). Themes: `tng` (default), `pic`, `voy`, `fc`, `nem` and `ld`, measured or reconstructed
 in the thejase.com LCARS lab; each file cites its sources. Modes: `dark` (default), `light`, `print`.
 
 ## Implementations
@@ -44,7 +44,7 @@ A consumer reads the resolved `dist/tokens.json`, never the DTCG files, or uses 
 Pin a release straight from GitHub; it is not on npm:
 
 ```json
-"devDependencies": { "lcars-design-system": "github:JawsomeJason/lcars-design-system#semver:^0.6.0" }
+"devDependencies": { "lcars-design-system": "github:JawsomeJason/lcars-design-system#semver:^0.7.0" }
 ```
 
 ```js
@@ -82,7 +82,7 @@ a consumer has to do:
 - **Patch:** descriptions, docs or metadata only.
 
 Below 1.0, a breaking change bumps the minor version instead (0.3 to 0.4), so pin with a caret
-(`^0.6.0`), which stays within one minor.
+(`^0.7.0`), which stays within one minor.
 
 To release: update `version` in `package.json` and `CHANGELOG.md`, run the tests, commit, then
 `git tag vX.Y.Z && git push --tags && gh release create vX.Y.Z --notes-from-tag` or with the changelog

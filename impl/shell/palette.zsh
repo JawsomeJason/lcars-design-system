@@ -36,6 +36,38 @@ case ${LCARS_THEME:-${LCARS_PALETTE:-tng}} in
       accent-4 '#6688ee'
       accent-5 '#dd7722'
     ) ;;
+  ld)
+    typeset -g lcars_theme=ld lcars_palette=ld
+    LCARS=(
+      bg '#000000'
+      ink '#000000'
+      frame '#ff9911'
+      block '#ffcc99'
+      accent '#ffeecc'
+      stub '#ff7700'
+      text '#ffcc99'
+      meter-on '#ffaa44'
+      meter-off '#cc5500'
+      alert '#ff4400'
+      focus '#ffeecc'
+      data '#ffaa44'
+      data-hi '#ffffff'
+      display '#ffeecc'
+      alert-text '#ff4400'
+      unlit '#333333'
+      label-ink '#000000'
+      emphasis-ink '#ffeecc'
+      value '#ffaa44'
+      muted '#cc5500'
+      ok '#ffeecc'
+      warning '#ff7700'
+      added '#ffaa44'
+      removed '#ff4400'
+      accent-2 '#ffcc99'
+      accent-3 '#ff9911'
+      accent-4 '#ffaa44'
+      accent-5 '#ff7700'
+    ) ;;
   nem)
     typeset -g lcars_theme=nem lcars_palette=nem
     LCARS=(

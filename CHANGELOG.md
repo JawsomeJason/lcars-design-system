@@ -2,6 +2,14 @@
 
 Versions follow the rules in the README's "Versions" section.
 
+## 0.7.0
+
+- **Lower Decks theme**, `ld`: thelcars.com's Lower Decks colors (butter, daybreak, harvest gold,
+  honey, october sunset, orange, pumpkin pie) assigned to roles after the TNG theme's structure.
+  The assignment is ours; the theme says so.
+- The guide shows Lower Decks with the other eras and drops the open Deep Space Nine card: there will
+  be no DS9 theme.
+
 ## 0.6.0
 
 - The docs site becomes a guide to LCARS: its history and Okuda's rules, an annotated anatomy, every

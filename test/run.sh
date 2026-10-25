@@ -50,6 +50,7 @@ t "VOY points ok at its meter blue"               spot voy dark ok '#88bbdd'
 t "VOY light display is measured, not derived"     spot voy light display '#555566'
 t "NEM keeps its canon meter yellow in light mode"   spot nem light meter-on '#ffff99'
 t "light mode keeps ink dark"                      spot tng light ink '#000000'
+t "LD alert is thelcars october sunset"           spot ld dark alert '#ff4400'
 t "print text is black"  spot fc print text '#000000'
 t "print ink is white"   spot fc print ink '#ffffff'
 

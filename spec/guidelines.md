@@ -38,7 +38,7 @@ success; it reads as a different design language.
 ## Themes and modes
 
 A **theme** is one era's look: its colors assigned to every role, in every mode, with its sources.
-Themes: TNG, PIC, VOY, FC and NEM; Lower Decks is planned once measured. A **mode** cuts across
+Themes: TNG, VOY, FC, NEM, PIC and LD (Lower Decks). A **mode** cuts across
 themes: `dark` (default), `light` and `print`. Every theme resolves every role in every mode, so a
 component written against roles works under any combination. Each theme file cites its sources in
 `$description` and marks stand-in values. Components never name a raw color.

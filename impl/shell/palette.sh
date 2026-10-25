@@ -4,7 +4,7 @@
 # of its colors and roles, lcars_colors and lcars_roles (the names), and lcars_rgb NAME, which sets
 # lcars_rgb_out to the R;G;B of a color or role name, or returns 1.
 lcars_dim_percent=40 lcars_dim_step=51 lcars_blink_seconds=1
-lcars_themes='tng fc nem pic voy' lcars_palettes=$lcars_themes
+lcars_themes='tng fc ld nem pic voy' lcars_palettes=$lcars_themes
 case ${LCARS_THEME:-${LCARS_PALETTE:-tng}} in
   fc)
     lcars_theme=fc lcars_palette=fc
@@ -68,6 +68,72 @@ case ${LCARS_THEME:-${LCARS_PALETTE:-tng}} in
         accent-3) lcars_rgb_out='170;119;68' ;;
         accent-4) lcars_rgb_out='102;136;238' ;;
         accent-5) lcars_rgb_out='221;119;34' ;;
+        *) return 1 ;;
+      esac
+    }
+    ;;
+  ld)
+    lcars_theme=ld lcars_palette=ld
+    lcars_colors='bg ink frame block accent stub text meter-on meter-off alert focus data data-hi display alert-text unlit label-ink emphasis-ink value muted ok warning added removed accent-2 accent-3 accent-4 accent-5'
+    lcars_roles='bg ink frame block accent stub text meter-on meter-off alert focus data data-hi display alert-text unlit label-ink emphasis-ink value muted ok warning added removed accent-2 accent-3 accent-4 accent-5'
+    lcars_bg='0;0;0'
+    lcars_ink='0;0;0'
+    lcars_frame='255;153;17'
+    lcars_block='255;204;153'
+    lcars_accent='255;238;204'
+    lcars_stub='255;119;0'
+    lcars_text='255;204;153'
+    lcars_meter_on='255;170;68'
+    lcars_meter_off='204;85;0'
+    lcars_alert='255;68;0'
+    lcars_focus='255;238;204'
+    lcars_data='255;170;68'
+    lcars_data_hi='255;255;255'
+    lcars_display='255;238;204'
+    lcars_alert_text='255;68;0'
+    lcars_unlit='51;51;51'
+    lcars_label_ink='0;0;0'
+    lcars_emphasis_ink='255;238;204'
+    lcars_value='255;170;68'
+    lcars_muted='204;85;0'
+    lcars_ok='255;238;204'
+    lcars_warning='255;119;0'
+    lcars_added='255;170;68'
+    lcars_removed='255;68;0'
+    lcars_accent_2='255;204;153'
+    lcars_accent_3='255;153;17'
+    lcars_accent_4='255;170;68'
+    lcars_accent_5='255;119;0'
+    lcars_rgb() {
+      case $1 in
+        bg) lcars_rgb_out='0;0;0' ;;
+        ink) lcars_rgb_out='0;0;0' ;;
+        frame) lcars_rgb_out='255;153;17' ;;
+        block) lcars_rgb_out='255;204;153' ;;
+        accent) lcars_rgb_out='255;238;204' ;;
+        stub) lcars_rgb_out='255;119;0' ;;
+        text) lcars_rgb_out='255;204;153' ;;
+        meter-on) lcars_rgb_out='255;170;68' ;;
+        meter-off) lcars_rgb_out='204;85;0' ;;
+        alert) lcars_rgb_out='255;68;0' ;;
+        focus) lcars_rgb_out='255;238;204' ;;
+        data) lcars_rgb_out='255;170;68' ;;
+        data-hi) lcars_rgb_out='255;255;255' ;;
+        display) lcars_rgb_out='255;238;204' ;;
+        alert-text) lcars_rgb_out='255;68;0' ;;
+        unlit) lcars_rgb_out='51;51;51' ;;
+        label-ink) lcars_rgb_out='0;0;0' ;;
+        emphasis-ink) lcars_rgb_out='255;238;204' ;;
+        value) lcars_rgb_out='255;170;68' ;;
+        muted) lcars_rgb_out='204;85;0' ;;
+        ok) lcars_rgb_out='255;238;204' ;;
+        warning) lcars_rgb_out='255;119;0' ;;
+        added) lcars_rgb_out='255;170;68' ;;
+        removed) lcars_rgb_out='255;68;0' ;;
+        accent-2) lcars_rgb_out='255;204;153' ;;
+        accent-3) lcars_rgb_out='255;153;17' ;;
+        accent-4) lcars_rgb_out='255;170;68' ;;
+        accent-5) lcars_rgb_out='255;119;0' ;;
         *) return 1 ;;
       esac
     }

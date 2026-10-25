@@ -1,0 +1,155 @@
+{
+  "$description": "Lower Decks, hand-drawn TNG era. Fan reconstruction (thelcars.com Lower Decks colors, https://www.thelcars.com/colors.php: butter, daybreak, harvest gold, honey, october sunset, orange, pumpkin pie). thelcars publishes the colors by name, not by role; the role assignment is ours, after the TNG theme's structure. No production hex values exist for Lower Decks.",
+  "$extensions": {
+    "lcars.theme": {
+      "name": "LD",
+      "era": "Lower Decks, hand-drawn TNG era"
+    }
+  },
+  "role": {
+    "$type": "color",
+    "bg": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "hex": "#000000"
+      }
+    },
+    "ink": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "hex": "#000000"
+      }
+    },
+    "frame": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1.0,
+          0.6,
+          0.0667
+        ],
+        "hex": "#ff9911"
+      }
+    },
+    "block": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1.0,
+          0.8,
+          0.6
+        ],
+        "hex": "#ffcc99"
+      }
+    },
+    "accent": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1.0,
+          0.9333,
+          0.8
+        ],
+        "hex": "#ffeecc"
+      }
+    },
+    "stub": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1.0,
+          0.4667,
+          0.0
+        ],
+        "hex": "#ff7700"
+      }
+    },
+    "text": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1.0,
+          0.8,
+          0.6
+        ],
+        "hex": "#ffcc99"
+      }
+    },
+    "meter-on": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1.0,
+          0.6667,
+          0.2667
+        ],
+        "hex": "#ffaa44"
+      }
+    },
+    "meter-off": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.8,
+          0.3333,
+          0.0
+        ],
+        "hex": "#cc5500"
+      }
+    },
+    "alert": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1.0,
+          0.2667,
+          0.0
+        ],
+        "hex": "#ff4400"
+      }
+    },
+    "focus": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1.0,
+          0.9333,
+          0.8
+        ],
+        "hex": "#ffeecc"
+      }
+    },
+    "data": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1.0,
+          0.6667,
+          0.2667
+        ],
+        "hex": "#ffaa44"
+      }
+    },
+    "data-hi": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "hex": "#ffffff"
+      }
+    }
+  }
+}
