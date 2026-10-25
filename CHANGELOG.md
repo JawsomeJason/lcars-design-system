@@ -2,6 +2,10 @@
 
 Versions follow the rules in the README's "Versions" section.
 
+## 0.3.0
+
+- Typography: `tokens/type.tokens.json` (display and body families, weights, tracking, the display cap-height ratio, six type levels) and `spec/type.md`. Resolved into `dist/tokens.json` under `type`. Minor: new tokens.
+
 ## 0.2.1
 
 - `exports` now allows the DTCG source (`lcars-design-system/tokens/...`) and the specs (`lcars-design-system/spec/...`); 0.1.0 and 0.2.0 blocked them.

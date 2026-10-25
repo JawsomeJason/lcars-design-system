@@ -15,6 +15,7 @@ the repo is public).
 | `dist/tokens.json`       | Generated. The tokens resolved to plain hex, for consumers       |
 | `tokens/palettes/*.tokens.json` | Palettes: named colors and which color fills each role   |
 | `spec/pill.md`           | The pill component: anatomy, states, roles                      |
+| `tokens/type.tokens.json`, `spec/type.md` | Typography: faces, weights, tracking, cap ratio, levels |
 | `spec/guidelines.md`     | What colors mean, escalation, shape rules                       |
 | `impl/shell/`            | Terminal implementation: generated palettes and the renderer    |
 | `docs/index.html`        | The generated reference page                                    |

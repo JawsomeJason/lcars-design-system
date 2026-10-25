@@ -1,0 +1,68 @@
+{
+  "$description": "Typography: families, weights, tracking, the display face's cap-height ratio, and the type levels. Measured from the LCARS resume PDF and the thejase.com LCARS lab. Sizes are not tokens: display text takes its size from the bar it sits in (spec/type.md).",
+  "font": {
+    "$type": "fontFamily",
+    "display": {
+      "$description": "Condensed display face for labels, headings and readouts. Antonio (SIL Open Font License, https://fonts.google.com/specimen/Antonio) stands in for Swiss 911 Ultra Compressed, the LCARS face, which is commercial.",
+      "$value": ["Antonio", "Arial Narrow", "Avenir Next Condensed", "sans-serif"]
+    },
+    "body": {
+      "$description": "Reading face for running text. Lato (SIL Open Font License, https://fonts.google.com/specimen/Lato), weights 300 and 400.",
+      "$value": ["Lato", "Helvetica Neue", "Arial", "sans-serif"]
+    }
+  },
+  "weight": {
+    "$type": "fontWeight",
+    "title": { "$value": 700 },
+    "display": { "$value": 400 },
+    "body": { "$value": 400 },
+    "light": { "$value": 300 }
+  },
+  "tracking": {
+    "$type": "dimension",
+    "$description": "Letter spacing in em, measured from the PDF (InDesign units / 1000).",
+    "title": { "$value": { "value": -0.06, "unit": "em" } },
+    "display": { "$value": { "value": -0.05, "unit": "em" } },
+    "sidebar": { "$value": { "value": -0.04, "unit": "em" } },
+    "meta": { "$value": { "value": -0.025, "unit": "em" } },
+    "text": { "$value": { "value": 0, "unit": "em" } }
+  },
+  "metric": {
+    "$type": "number",
+    "cap-ratio": {
+      "$description": "Display face cap height per em: Antonio's 1760 of 2048 units. Display text set in a bar of height b takes font-size b / cap-ratio, so its caps fill the bar exactly.",
+      "$value": 0.859375
+    },
+    "body-leading": {
+      "$description": "Body line height: 14pt leading on 9pt type.",
+      "$value": 1.5556
+    }
+  },
+  "level": {
+    "$type": "typography",
+    "title": {
+      "$description": "The largest display line, such as a name or page title. Caps fill the bar.",
+      "$value": { "fontFamily": "{font.display}", "fontWeight": "{weight.title}", "letterSpacing": "{tracking.title}", "case": "upper", "fit": "bar" }
+    },
+    "row-label": {
+      "$description": "A label that fills a row, such as MAIL or WWW.",
+      "$value": { "fontFamily": "{font.display}", "fontWeight": "{weight.display}", "letterSpacing": "{tracking.display}", "case": "upper", "fit": "bar" }
+    },
+    "heading": {
+      "$description": "A section heading set in its section bar.",
+      "$value": { "fontFamily": "{font.display}", "fontWeight": "{weight.display}", "letterSpacing": "{tracking.display}", "case": "upper", "fit": "bar" }
+    },
+    "label": {
+      "$description": "Names and titles beside content, such as employer names and job titles.",
+      "$value": { "fontFamily": "{font.display}", "fontWeight": "{weight.display}", "letterSpacing": "{tracking.sidebar}", "case": "upper", "fit": "free" }
+    },
+    "body": {
+      "$description": "Running text.",
+      "$value": { "fontFamily": "{font.body}", "fontWeight": "{weight.body}", "letterSpacing": "{tracking.text}", "lineHeight": "{metric.body-leading}", "case": "as-written", "fit": "free" }
+    },
+    "meta": {
+      "$description": "Codes, dates and contact values: small display text.",
+      "$value": { "fontFamily": "{font.display}", "fontWeight": "{weight.display}", "letterSpacing": "{tracking.meta}", "case": "upper", "fit": "free" }
+    }
+  }
+}

@@ -10,6 +10,7 @@ const DEFAULT = 'tng';
 const readJson = (p) => JSON.parse(readFileSync(join(root, p), 'utf8'));
 
 const roles = readJson('tokens/roles.tokens.json');
+const type = readJson('tokens/type.tokens.json');
 const tokens = (group) => Object.entries(group).filter(([k]) => !k.startsWith('$'));
 
 const hexOf = (token, where) => {
@@ -302,12 +303,34 @@ function indexHtml() {
 `;
 }
 
+// Type tokens resolved: aliases replaced, dimensions as CSS-ready strings ('-0.05em').
+function resolvedType() {
+  const lookup = (ref) => {
+    const path = /^\{([a-z0-9.-]+)\}$/.exec(ref)?.[1];
+    if (!path) return ref;
+    const token = path.split('.').reduce((o, k) => o?.[k], type);
+    if (!token) throw new Error(`type.tokens.json: unknown reference ${ref}`);
+    return plain(token.$value);
+  };
+  const plain = (v) => (v && typeof v === 'object' && 'unit' in v ? `${v.value}${v.unit}` : typeof v === 'string' ? lookup(v) : v);
+  const group = (g) => Object.fromEntries(tokens(g).map(([k, t]) => [k, plain(t.$value)]));
+  return {
+    font: group(type.font),
+    weight: group(type.weight),
+    tracking: group(type.tracking),
+    capRatio: type.metric['cap-ratio'].$value,
+    bodyLeading: type.metric['body-leading'].$value,
+    level: Object.fromEntries(tokens(type.level).map(([k, t]) => [k, Object.fromEntries(Object.entries(t.$value).map(([p, v]) => [p, plain(v)]))])),
+  };
+}
+
 // The tokens resolved for consumers: no aliases, no $value objects, one plain hex per color and role.
 function tokensJson() {
   const out = {
     $description: header('').trim() + ' Resolved from the DTCG tokens: every palette lists its colors and every role as hex.',
     default: DEFAULT,
     state: { dim, dimSnap: state['dim-snap'].$value, blinkPeriodMs: blinkSeconds * 1000 },
+    type: resolvedType(),
     palettes: Object.fromEntries(palettes.map((p) => [p.id, {
       name: p.title,
       source: p.description,
