@@ -2,6 +2,10 @@
 
 Versions follow the rules in the README's "Versions" section.
 
+## 0.2.1
+
+- `exports` now allows the DTCG source (`lcars-design-system/tokens/...`) and the specs (`lcars-design-system/spec/...`); 0.1.0 and 0.2.0 blocked them.
+
 ## 0.2.0
 
 - New role `text`: body text on the background (TNG tanoi, 2375 sandy-brown). Minor: a new role.
