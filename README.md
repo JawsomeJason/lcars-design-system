@@ -12,6 +12,7 @@ the repo is public).
 | Path                     | What it is                                                      |
 | ------------------------ | --------------------------------------------------------------- |
 | `tokens/roles.tokens.json` | Semantic roles components use, plus blink and dim settings    |
+| `dist/tokens.json`       | Generated. The tokens resolved to plain hex, for consumers       |
 | `tokens/palettes/*.tokens.json` | Palettes: named colors and which color fills each role   |
 | `spec/pill.md`           | The pill component: anatomy, states, roles                      |
 | `spec/guidelines.md`     | What colors mean, escalation, shape rules                       |
@@ -28,11 +29,29 @@ Tokens use the [Design Tokens Community Group format](https://www.designtokens.o
 The spec layer (`tokens/`, `spec/`) describes components without reference to any medium: shapes
 in proportions of block height, colors as roles, blink as a period and a dim factor. Each
 implementation under `impl/` maps that onto one medium and documents the mapping in its own README.
-A consumer picks an implementation and never reads the tokens directly.
+A consumer reads the resolved `dist/tokens.json`, never the DTCG files, or uses an implementation.
 
 - `impl/shell/` draws pills in truecolor terminals and zsh prompts. See
   [`impl/shell/README.md`](impl/shell/README.md).
 - `impl/css/` is planned. `docs/index.html` already shows how pills look in CSS.
+
+## Use it from JavaScript
+
+Pin a release straight from GitHub; it is not on npm:
+
+```json
+"devDependencies": { "lcars-design-system": "github:JawsomeJason/lcars-design-system#semver:^0.1.0" }
+```
+
+```js
+const tokens = require('lcars-design-system'); // dist/tokens.json
+const tng = tokens.palettes[tokens.default];
+tng.roles.ok;           // '#99ccff'
+tokens.state.dim;       // 0.4
+```
+
+Each palette has `colors` (name to hex) and `roles` (role to hex); `state` holds `dim`, `dimSnap`
+and `blinkPeriodMs`.
 
 ## Use it from a shell
 
@@ -45,6 +64,19 @@ lcars_pill accent PATH "$PWD" && printf '%s\n' "$lcars_pill_out"
 
 The generated files are committed, so consumers need no build step. Keep a fallback for machines
 without the repo.
+
+## Versions
+
+Releases are git tags (`v0.1.0`) with GitHub releases, listed in `CHANGELOG.md`. A version says what
+a consumer has to do:
+
+- **Major:** a role or palette is removed or renamed, or a role's meaning changes.
+- **Minor:** a new role, palette or component spec, or a color value changes.
+- **Patch:** descriptions, docs or metadata only.
+
+To release: update `version` in `package.json` and `CHANGELOG.md`, run the tests, commit, then
+`git tag vX.Y.Z && git push --tags && gh release create vX.Y.Z --notes-from-tag` or with the changelog
+entry as notes.
 
 ## Change it
 

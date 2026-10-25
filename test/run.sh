@@ -42,6 +42,17 @@ check_palette() {
   done)
   eq "$got" "$expected"
 }
+check_dist() {
+  got=$(node -e '
+    const t = require("./dist/tokens.json");
+    const rgb = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16)).join(";");
+    for (const f of require("fs").readdirSync("tokens/palettes")) {
+      const id = f.split(".")[0], p = t.palettes[id];
+      for (const [k, h] of Object.entries({ ...p.colors, ...p.roles })) console.log(id, k, rgb(h));
+    }')
+  eq "$(printf '%s\n' "$got" | sort)" "$(printf '%s\n' "$expected" | sort)"
+}
+t "dist/tokens.json resolves every token in every palette" check_dist
 t "palette.sh resolves every token in every palette"  check_palette sh $SH/palette.sh
 t "palette.zsh resolves every token in every palette" check_palette zsh $SH/palette.zsh
 t "token count is non-trivial" [ "$(printf '%s\n' "$expected" | wc -l)" -ge 50 ]

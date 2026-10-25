@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-// Generates every committed output from tokens/: impl/shell/palette.sh, impl/shell/palette.zsh and
-// docs/index.html. `node scripts/build.mjs --check` exits 1 when a committed output is stale.
-import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
+// Generates every committed output from tokens/: dist/tokens.json, impl/shell/palette.sh,
+// impl/shell/palette.zsh and docs/index.html. `node scripts/build.mjs --check` exits 1 when a committed output is stale.
+import { readFileSync, writeFileSync, readdirSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -302,7 +302,24 @@ function indexHtml() {
 `;
 }
 
+// The tokens resolved for consumers: no aliases, no $value objects, one plain hex per color and role.
+function tokensJson() {
+  const out = {
+    $description: header('').trim() + ' Resolved from the DTCG tokens: every palette lists its colors and every role as hex.',
+    default: DEFAULT,
+    state: { dim, dimSnap: state['dim-snap'].$value, blinkPeriodMs: blinkSeconds * 1000 },
+    palettes: Object.fromEntries(palettes.map((p) => [p.id, {
+      name: p.title,
+      source: p.description,
+      colors: Object.fromEntries(p.colors),
+      roles: Object.fromEntries(p.roles.map(([n, h]) => [n, h])),
+    }])),
+  };
+  return JSON.stringify(out, null, 2) + '\n';
+}
+
 const outputs = {
+  'dist/tokens.json': tokensJson(),
   'impl/shell/palette.sh': paletteSh(),
   'impl/shell/palette.zsh': paletteZsh(),
   'docs/index.html': indexHtml(),
@@ -316,6 +333,6 @@ for (const [path, body] of Object.entries(outputs)) {
   try { current = readFileSync(full, 'utf8'); } catch {}
   if (current === body) continue;
   if (check) { console.error(`stale: ${path}`); stale++; }
-  else { writeFileSync(full, body); console.log(`wrote ${path}`); }
+  else { mkdirSync(dirname(full), { recursive: true }); writeFileSync(full, body); console.log(`wrote ${path}`); }
 }
 process.exit(stale ? 1 : 0);
