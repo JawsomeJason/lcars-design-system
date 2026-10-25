@@ -9,7 +9,7 @@ case ${LCARS_PALETTE:-tng} in
   2375)
     lcars_palette=2375
     lcars_colors='danub indigo lavender-purple cosmic red-damask medium-carmine bourbon sandy-brown unlit black'
-    lcars_roles='label-ink emphasis-ink unlit value muted alert warning ok accent accent-2 accent-3 accent-4 accent-5 added removed'
+    lcars_roles='text label-ink emphasis-ink unlit value muted alert warning ok accent accent-2 accent-3 accent-4 accent-5 added removed'
     lcars_danub='102;136;204'
     lcars_indigo='68;85;187'
     lcars_lavender_purple='153;119;170'
@@ -20,6 +20,7 @@ case ${LCARS_PALETTE:-tng} in
     lcars_sandy_brown='238;153;85'
     lcars_unlit='51;51;51'
     lcars_black='0;0;0'
+    lcars_text='238;153;85'
     lcars_label_ink='0;0;0'
     lcars_emphasis_ink='238;153;85'
     lcars_value='238;153;85'
@@ -46,6 +47,7 @@ case ${LCARS_PALETTE:-tng} in
         sandy-brown) lcars_rgb_out='238;153;85' ;;
         unlit) lcars_rgb_out='51;51;51' ;;
         black) lcars_rgb_out='0;0;0' ;;
+        text) lcars_rgb_out='238;153;85' ;;
         label-ink) lcars_rgb_out='0;0;0' ;;
         emphasis-ink) lcars_rgb_out='238;153;85' ;;
         value) lcars_rgb_out='238;153;85' ;;
@@ -67,7 +69,7 @@ case ${LCARS_PALETTE:-tng} in
   *)
     lcars_palette=tng
     lcars_colors='atomic-tangerine golden-tanoi tanoi pale-canary lilac hopbush melrose blue-bell anakiwa mariner chestnut-rose eggplant unlit black'
-    lcars_roles='label-ink emphasis-ink unlit value muted alert warning ok accent accent-2 accent-3 accent-4 accent-5 added removed'
+    lcars_roles='text label-ink emphasis-ink unlit value muted alert warning ok accent accent-2 accent-3 accent-4 accent-5 added removed'
     lcars_atomic_tangerine='255;153;0'
     lcars_golden_tanoi='255;204;102'
     lcars_tanoi='255;204;153'
@@ -82,6 +84,7 @@ case ${LCARS_PALETTE:-tng} in
     lcars_eggplant='102;68;102'
     lcars_unlit='51;51;51'
     lcars_black='0;0;0'
+    lcars_text='255;204;153'
     lcars_label_ink='0;0;0'
     lcars_emphasis_ink='255;255;153'
     lcars_value='255;204;102'
@@ -112,6 +115,7 @@ case ${LCARS_PALETTE:-tng} in
         eggplant) lcars_rgb_out='102;68;102' ;;
         unlit) lcars_rgb_out='51;51;51' ;;
         black) lcars_rgb_out='0;0;0' ;;
+        text) lcars_rgb_out='255;204;153' ;;
         label-ink) lcars_rgb_out='0;0;0' ;;
         emphasis-ink) lcars_rgb_out='255;255;153' ;;
         value) lcars_rgb_out='255;204;102' ;;

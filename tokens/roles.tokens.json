@@ -2,6 +2,10 @@
   "$description": "Semantic roles. Components use these, never raw colors. Defaults alias the TNG palette; every palette file restates each role.",
   "role": {
     "$type": "color",
+    "text": {
+      "$description": "Body text on the background: running prose, as opposed to a value or a label.",
+      "$value": "{color.tanoi}"
+    },
     "label-ink": {
       "$description": "Text on a lit label block.",
       "$value": "{color.black}"

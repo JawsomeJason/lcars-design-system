@@ -9,6 +9,7 @@
 | `alert`   | Wrong, or needs action now            | chestnut-rose #cc6666 |
 | `muted`   | Present but unimportant; off values   | blue-bell #9999cc |
 | `value`   | A plain reading                       | golden-tanoi #ffcc66 |
+| `text`    | Body text: prose, not a reading       | tanoi #ffcc99    |
 
 Identity colors (`accent` through `accent-5`) name what a pill is. Status colors say how it is.
 Put status on the value when the reading is the news, and on the block when the whole pill is.

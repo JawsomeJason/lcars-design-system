@@ -120,6 +120,9 @@
   },
   "role": {
     "$type": "color",
+    "text": {
+      "$value": "{color.sandy-brown}"
+    },
     "label-ink": {
       "$value": "{color.black}"
     },

@@ -2,6 +2,10 @@
 
 Versions follow the rules in the README's "Versions" section.
 
+## 0.2.0
+
+- New role `text`: body text on the background (TNG tanoi, 2375 sandy-brown). Minor: a new role.
+
 ## 0.1.0
 
 - First release: roles and the TNG and 2375 palettes as DTCG tokens, the pill spec, the guidelines,

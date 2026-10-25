@@ -193,7 +193,7 @@ function indexHtml() {
     color-scheme: dark;
     --h: 1.6rem;
     --page: #000;
-    --text: ${tng.hex.tanoi};
+    --text: ${tng.hex.text};
     --muted: ${tng.hex.muted};
     --rule: ${tng.hex['atomic-tangerine']};
     --blink: ${blinkSeconds * 2}s;
