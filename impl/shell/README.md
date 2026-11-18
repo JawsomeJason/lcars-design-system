@@ -14,7 +14,7 @@ Both palette files come from `tokens/` through `node scripts/build.mjs`. Never e
 ## Use
 
 ```sh
-LCARS_DS=${LCARS_DS:-$HOME/code/lcars-design-system}
+LCARS_DS=${LCARS_DS:-$HOME/code/personal/lcars-design-system}
 . "$LCARS_DS/impl/shell/palette.sh"     # zsh: palette.zsh
 . "$LCARS_DS/impl/shell/pill.sh"
 

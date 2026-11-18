@@ -37,7 +37,7 @@ A consumer picks an implementation and never reads the tokens directly.
 ## Use it from a shell
 
 ```sh
-LCARS_DS=${LCARS_DS:-$HOME/code/lcars-design-system}
+LCARS_DS=${LCARS_DS:-$HOME/code/personal/lcars-design-system}
 . "$LCARS_DS/impl/shell/palette.sh"
 . "$LCARS_DS/impl/shell/pill.sh"
 lcars_pill accent PATH "$PWD" && printf '%s\n' "$lcars_pill_out"
